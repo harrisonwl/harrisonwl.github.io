@@ -1,13 +1,13 @@
 ---
 layout: default
-title: "ReWire Functional Hardware Description"
+title: "William L. Harrison, Ph.D"
 ---
 
 {% comment %} Here is the syntax for figures from jekyll_figure.
 {% figure 4Ps pdf 'Your caption here' %}
 {% endcomment %}
 
-#### __ReWire: Functional Hardware Description__
+#### __Hi I'm Bill__
 
 [ReWire](https://github.com/mu-chaco/ReWire) is an open source programming language for designing, implementing, and formally verifying hardware artifacts. ReWire is a language for high-level synthesis based in the functional language [Haskell](https://www.haskell.org). Functional languages are a commonly proposed approach to alleviating the well-known FPGA programmability problem---a.k.a., the three P's (Productivity, Performance and Portability). But the ReWire approach takes this one step further with _Provability_.
 
