@@ -1,0 +1,14 @@
+---
+layout: page
+title: "Case Study #2: SHA-256"
+category: doc
+date: 2016-07-06 09:26:00
+order: 6
+---
+
+The SHA-2 (Secure Hash Algorithm) is a set of cryptographic hash functions designed by the National Security Agency and SHA-256 is one of these algorithms. These algorithms were defined semi-formally in documents produced by [NIST](http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf).
+
+
+{% comment %}
+Coming soon!
+{% endcomment %}

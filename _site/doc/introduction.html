@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>ReWire : Introduction</title>
+        <meta name="description" content="Hardware circuits from functional specifications">
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/ReWire/css/syntax.css">
+        <link rel="stylesheet" href="/ReWire/css/main.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div id="header" class="col-sm-12">
+                    <h4><a class="brand" href="/ReWire/">ReWire</a>
+    <small>Hardware circuits from functional specifications</small>
+</h4>
+
+                </div>
+            </div>
+
+            <div class="row">
+                
+                
+                    <div id="navigation" class="col-sm-2">
+                        <ul class="nav nav-list">
+    <li><a href="/ReWire/">Home</a></li>
+    
+        
+        
+
+        
+            
+                <li class="nav-header">Documentation</li>
+            
+            <li data-order="6"><a href="/ReWire/doc/sha256.html">Case Study #2: SHA-256</a></li>
+        
+            
+            <li data-order="5"><a href="/ReWire/doc/crossbarswitch.html">Case Study #1: Crossbar Switch</a></li>
+        
+            
+            <li data-order="4"><a href="/ReWire/doc/language-reference.html">Language Reference</a></li>
+        
+            
+            <li data-order="3"><a href="/ReWire/doc/quick-start.html">Quick Start</a></li>
+        
+            
+            <li data-order="2"><a href="/ReWire/doc/installing-rewire.html">Installing ReWire</a></li>
+        
+            
+            <li data-order="1"><a href="/ReWire/doc/introduction.html">Introduction</a></li>
+        
+    
+        
+        
+
+        
+    
+        
+        
+
+        
+    
+        
+        
+
+        
+    
+        
+        
+
+        
+    
+<!-- List additional links. It is recommended to add a divider
+    e.g. <li class="divider"></li> first to break up the content. -->
+</ul>
+
+                    </div>
+
+                    <div id="content" class="col-sm-10">
+                        <div class="page-header">
+    <h2>Introduction
+        
+    </h2>
+</div>
+
+<p>ReWire is a <a href="https://en.wikipedia.org/wiki/Purely_functional">purely functional</a> language for creating secure hardware designs that can be implemented on FPGAs, developed at the <a href="http://www.missouri.edu/">University of Missouri</a> Center for High Assurance Computing. 
+The ReWire language is a subset of <a href="http://www.haskell.org/">Haskell</a> that places some restrictions on the use of recursion. The ReWire compiler <code class="highlighter-rouge">rwc</code> translates ReWire programs into synthesizable VHDL.</p>
+
+<p>This instruction manual has four parts:</p>
+
+<ol>
+  <li>a discussion of how to acquire and install ReWire and its dependencies;</li>
+  <li>a “quick start” tutorial that walks the user through the process of compiling and running a simple example program, both in simulation and on hardware;</li>
+  <li>a detailed discussion of the ReWire language; and</li>
+  <li>a detailed case study in the ReWire design flow.</li>
+</ol>
+
+<p>While we aim to make this guide as self-contained as possible, prior knowledge of Haskell and some experience with basic FPGA development will be helpful.</p>
+
+
+                    </div>
+                
+            </div>
+
+            
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    Documentation for <a href="https://github.com/mu-chaco/ReWire">ReWire</a>
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function orderNav() {
+                var list,
+                    section,
+                    header,
+                    sections = [],
+                    lists = {},
+                    headers = {};
+
+                var navUl = document.querySelectorAll('#navigation ul')[0],
+                    navLis = document.querySelectorAll('#navigation ul li');
+
+                if (!navUl) return;
+
+                for (var i = 0; i < navLis.length; i++) {
+                    var order, li = navLis[i];
+
+                    if (li.classList.contains('nav-header')) {
+                        section = li.textContent || li.innerText;
+                        sections.push(section);
+                        headers[section] = li;
+                        continue;
+                    }
+
+                    if (!lists[section]) {
+                        lists[section] = [];
+                    }
+
+                    order = parseFloat(li.getAttribute('data-order'))
+                    lists[section].push([order, li]);
+                }
+
+                for (var i = 0; i < sections.length; i++) {
+                    section = sections[i];
+                    list = lists[section].sort(function(a, b) {
+                        return a[0] - b[0];
+                    });
+
+                    if (header = headers[section]) {
+                        navUl.appendChild(header);
+                    }
+                    for (var j = 0; j < list.length; j++) {
+                        navUl.appendChild(list[j][1]);
+                    }
+                }
+            }
+
+            if (document.querySelectorAll) orderNav();
+        </script>
+        
+    </body>
+</html>

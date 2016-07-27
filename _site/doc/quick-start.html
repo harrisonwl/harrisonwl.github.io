@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>ReWire : Quick Start</title>
+        <meta name="description" content="Hardware circuits from functional specifications">
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/ReWire/css/syntax.css">
+        <link rel="stylesheet" href="/ReWire/css/main.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div id="header" class="col-sm-12">
+                    <h4><a class="brand" href="/ReWire/">ReWire</a>
+    <small>Hardware circuits from functional specifications</small>
+</h4>
+
+                </div>
+            </div>
+
+            <div class="row">
+                
+                
+                    <div id="navigation" class="col-sm-2">
+                        <ul class="nav nav-list">
+    <li><a href="/ReWire/">Home</a></li>
+    
+        
+        
+
+        
+            
+                <li class="nav-header">Documentation</li>
+            
+            <li data-order="6"><a href="/ReWire/doc/sha256.html">Case Study #2: SHA-256</a></li>
+        
+            
+            <li data-order="5"><a href="/ReWire/doc/crossbarswitch.html">Case Study #1: Crossbar Switch</a></li>
+        
+            
+            <li data-order="4"><a href="/ReWire/doc/language-reference.html">Language Reference</a></li>
+        
+            
+            <li data-order="3"><a href="/ReWire/doc/quick-start.html">Quick Start</a></li>
+        
+            
+            <li data-order="2"><a href="/ReWire/doc/installing-rewire.html">Installing ReWire</a></li>
+        
+            
+            <li data-order="1"><a href="/ReWire/doc/introduction.html">Introduction</a></li>
+        
+    
+        
+        
+
+        
+    
+        
+        
+
+        
+    
+        
+        
+
+        
+    
+        
+        
+
+        
+    
+<!-- List additional links. It is recommended to add a divider
+    e.g. <li class="divider"></li> first to break up the content. -->
+</ul>
+
+                    </div>
+
+                    <div id="content" class="col-sm-10">
+                        <div class="page-header">
+    <h2>Quick Start
+        
+    </h2>
+</div>
+
+<p>In this section we will walk through the process of compiling, simulating, and running a ReWire program. The purpose of this tutorial is not to help you understand the ReWire language, just how to use the ReWire compiler.</p>
+
+<p>We will be working with every functional programmer’s favorite example: the <a href="http://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci sequence</a>. The Fibonacci sequence is defined as 0, 1, 1, 2, 3, 5, 8, 13, … . In other words, the first two elements of the sequence are 0 and 1, and the <i>n</i>th element of the sequence (for <i>n</i> &gt; 1) is obtained by adding together the two elements that precede it. We will use ReWire to build a circuit that displays one element of the Fibonacci sequence per clock tick, in order, in 8-bit binary on a bank of LEDs.</p>
+
+<p>The following block diagram illustrates the inputs and outputs of the circuit. The one-bit <code class="highlighter-rouge">pause</code> input will cause the circuit to pause operation (i.e., hold its current value) when high; it will be connected to a toggle switch. The outputs <code class="highlighter-rouge">fib[0:7]</code> are to be connected to the LEDs on the FPGA board.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>     ______________________
+     |                    |
+  ---| pause              |
+     |           fib[0:7] |-/-
+  ---|&gt;                   |
+     |____________________|
+</code></pre>
+</div>
+
+<p>This tutorial was written with a <a href="http://www.xilinx.com/products/boards-and-kits/hw-spar3e-sk-us-g.html">Spartan-3E Starter Kit</a> board in mind, though it should not be hard to adapt the example to different Xilinx boards. Since the Spartan-3E Starter Kit has been discontinued, we will soon be updating this example to run on a newer board.</p>
+
+<h1 id="source-code">Source Code</h1>
+
+<p>The source code for our example comes in two pieces: <code class="highlighter-rouge">Fibonacci.hs</code>, which is a Haskell source file, and <code class="highlighter-rouge">prims.vhd</code>, which contains the code for a natively defined VHDL function <code class="highlighter-rouge">plusW8</code>. <a href="https://github.com/mu-chaco/ReWire/tree/master/examples/Fibonacci">These files</a> are available in the ReWire source tree at <code class="highlighter-rouge">/examples/Fibonacci</code>. For purposes of this tutorial, you don’t need to worry about the exact meaning of this code, but one point is important to note up front. Every ReWire program must have a symbol named <code class="highlighter-rouge">start</code> whose type is of the form <code class="highlighter-rouge">ReT i o I ()</code>, where <code class="highlighter-rouge">i</code> and <code class="highlighter-rouge">o</code> are the type of the circuit’s input and output respectively. (The clock input is always implicitly present.)</p>
+
+<p>In this case, our circuit takes a one-bit input and produces an eight-bit word as output, so we have (in <code class="highlighter-rouge">Fibonacci.hs</code>):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">start</span> <span class="o">::</span> <span class="kt">ReT</span> <span class="kt">Bit</span> <span class="kt">W8</span> <span class="kt">I</span> <span class="nb">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">begin</span>
+</code></pre>
+</div>
+
+<p>The example source code in its entirety follows.</p>
+
+<h2 id="fibonaccihs"><code class="highlighter-rouge">Fibonacci.hs</code></h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">--</span>
+<span class="c1">-- The compiler doesn't yet support a "prelude" so we will have to define a</span>
+<span class="c1">-- few things ourselves!</span>
+<span class="c1">--</span>
+<span class="kr">data</span> <span class="kt">Bit</span>        <span class="o">=</span> <span class="kt">Zero</span> <span class="o">|</span> <span class="kt">One</span>
+<span class="kr">data</span> <span class="kt">W8</span>         <span class="o">=</span> <span class="kt">W8</span> <span class="kt">Bit</span> <span class="kt">Bit</span> <span class="kt">Bit</span> <span class="kt">Bit</span> <span class="kt">Bit</span> <span class="kt">Bit</span> <span class="kt">Bit</span> <span class="kt">Bit</span>
+
+<span class="n">plusW8</span> <span class="o">::</span> <span class="kt">W8</span> <span class="o">-&gt;</span> <span class="kt">W8</span> <span class="o">-&gt;</span> <span class="kt">W8</span>
+<span class="cp">{-# INLINE plusW8 #-}</span>
+<span class="n">plusW8</span> <span class="o">=</span> <span class="n">nativeVhdl</span> <span class="s">"plusW8"</span> <span class="n">plusW8</span>
+
+<span class="n">zeroW8</span> <span class="o">::</span> <span class="kt">W8</span>
+<span class="n">zeroW8</span> <span class="o">=</span> <span class="kt">W8</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span>
+
+<span class="n">oneW8</span> <span class="o">::</span> <span class="kt">W8</span>
+<span class="n">oneW8</span> <span class="o">=</span> <span class="kt">W8</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">Zero</span> <span class="kt">One</span>
+
+<span class="c1">--</span>
+<span class="c1">-- End stuff that will eventually be in the prelude.</span>
+<span class="c1">--</span>
+
+<span class="n">start</span> <span class="o">::</span> <span class="kt">ReT</span> <span class="kt">Bit</span> <span class="kt">W8</span> <span class="kt">I</span> <span class="nb">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">begin</span>
+
+<span class="n">begin</span> <span class="o">::</span> <span class="kt">ReT</span> <span class="kt">Bit</span> <span class="kt">W8</span> <span class="kt">I</span> <span class="nb">()</span>
+<span class="n">begin</span> <span class="o">=</span> <span class="n">loop</span> <span class="n">zeroW8</span> <span class="n">oneW8</span>
+
+<span class="n">loop</span> <span class="o">::</span> <span class="kt">W8</span> <span class="o">-&gt;</span> <span class="kt">W8</span> <span class="o">-&gt;</span> <span class="kt">ReT</span> <span class="kt">Bit</span> <span class="kt">W8</span> <span class="kt">I</span> <span class="nb">()</span>
+<span class="n">loop</span> <span class="n">n</span> <span class="n">m</span> <span class="o">=</span> <span class="kr">do</span> <span class="n">b</span> <span class="o">&lt;-</span> <span class="n">signal</span> <span class="n">n</span>
+              <span class="kr">case</span> <span class="n">b</span> <span class="kr">of</span>
+                  <span class="kt">One</span>  <span class="o">-&gt;</span> <span class="n">loop</span> <span class="n">n</span> <span class="n">m</span>
+                  <span class="kt">Zero</span> <span class="o">-&gt;</span> <span class="n">loop</span> <span class="n">m</span> <span class="p">(</span><span class="n">plusW8</span> <span class="n">n</span> <span class="n">m</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="primsvhd"><code class="highlighter-rouge">prims.vhd</code></h2>
+
+<pre><code class="language-vhdl">library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+package prims is
+  pure function plusW8 (x : std_logic_vector; y : std_logic_vector) return std_logic_vector;
+end prims;
+
+package body prims is
+  pure function plusW8 (x : std_logic_vector; y : std_logic_vector) return std_logic_vector is
+  begin
+	return (std_logic_vector(unsigned(x)+unsigned(y)));
+  end plusW8;
+end prims;
+</code></pre>
+
+<h1 id="building-a-circuit-from-the-example">Building a Circuit from the Example</h1>
+
+<p>Getting our ReWire program to run on an FPGA requires two basic steps. First, we use the <code class="highlighter-rouge">rwc</code> compiler to translate the Haskell part of the program (here <code class="highlighter-rouge">Fibonacci.hs</code>) into VHDL:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>     _____________                ______________
+    |             \              |              \
+    | Fibonacci.hs | --&gt; rwc --&gt; | Fibonacci.vhd |
+    |______________|             |_______________|
+</code></pre>
+</div>
+
+<p>Second, we hand off the resulting VHDL file, along with our <code class="highlighter-rouge">prims.vhd</code> in case our program contains any user-defined native VHDL functions, to a standard VHDL synthesis toolchain like ISE or Vivado:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>     ______________
+    |              \
+    | Fibonacci.vhd |---.
+    |_______________|   |     
+                        +---&gt; VHDL toolchain (ISE, Vivado, ...)
+     ______________     |
+    |              \    |
+    |   prims.vhd   |---'
+    |_______________|
+</code></pre>
+</div>
+
+<h2 id="step-1-running-rwc">Step 1: Running <code class="highlighter-rouge">rwc</code></h2>
+
+<p>The first step, running the compiler, is straightforward. The command:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ rwc [sourcefile.hs] -o [destfile.vhd]
+</code></pre>
+</div>
+
+<p>will compile the file <em>sourcefile.hs</em> and generate VHDL that will be saved in the file <em>destfile.vhd</em>. So for our example we invoke the compiler as follows:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ cd ReWire/examples/Fibonacci        # or wherever you have placed the source files listed above
+$ rwc Fibonacci.hs -o Fibonacci.vhd
+</code></pre>
+</div>
+
+<p>This will generate a VHDL file called <code class="highlighter-rouge">Fibonacci.vhd</code> which is ready for simulation and synthesis. The top-level entity in this VHDL file is called <code class="highlighter-rouge">rewire</code> and has the following declaration:</p>
+
+<pre><code class="language-vhdl">entity rewire is
+  Port ( clk : in std_logic ;
+         input : in std_logic_vector (0 to 0);
+         output : out std_logic_vector (0 to 7));
+end rewire;
+</code></pre>
+
+<p>In fact, the ReWire compiler will always produce a VHDL entity named <code class="highlighter-rouge">rewire</code> with ports named <code class="highlighter-rouge">clk</code>, <code class="highlighter-rouge">input</code>, and <code class="highlighter-rouge">output</code>. The width of <code class="highlighter-rouge">input</code> and <code class="highlighter-rouge">output</code> (here 1 and 8 bits respectively) are determined by the type of <code class="highlighter-rouge">start</code>.</p>
+
+<h2 id="step-2-creating-an-ise-project">Step 2: Creating an ISE Project</h2>
+
+<p>Having generated VHDL for our Fibonacci circuit, the next step is to import that VHDL into the ISE Design Suite. First, <strong>open the ISE Project Navigator</strong>. (FIXME double-check this: On Windows, this is likely found in Start -&gt; Xilinx -&gt; ISE Design Suite -&gt; Project Navigator. If you are using Linux, please refer to the ISE documentation.)</p>
+
+<p>You should be greeted first with a splash screen, then with the main Project Navigator window, which looks something like this:</p>
+
+<p><img src="/ReWire/images/ss1.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>You wil need to create a new ISE project. <strong>Select File -&gt; New Project</strong> to open the New Project Wizard:</p>
+
+<p><img src="/ReWire/images/ss2.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>In the box marked <strong>Name</strong>, enter <em>Fibonacci</em>. In the box marked <strong>Location</strong>, select a directory in which to store the project. A subdirectory for the new project will automatically be filled in under <strong>Working Directory</strong>. You do not need to change this. Now, <strong>click Next</strong> to proceed to the Project Settings screen:</p>
+
+<p><img src="/ReWire/images/ss3.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Under <strong>Evaluation Development Board</strong>, select <em>Spartan-3E Starter Board</em>. Under <strong>Preferred Language</strong>, select <em>VHDL</em>. <strong>Click Next, then click Finish.</strong></p>
+
+<p>You should now have an empty ISE project open in the main Project Navigator window. Now select <strong>Project -&gt; Add Copy of Source</strong>.</p>
+
+<p><img src="/ReWire/images/ss4.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p><strong>Browse to the directory where the example source files are contained</strong>, and <strong>select both Fibonacci.vhd and prims.vhd</strong>. Then click <strong>Open</strong>, and click <strong>OK</strong> on the dialog box that follows.</p>
+
+<p>The Fibonacci source files should now show up under the “Design” pane on the left side of the Project Navigator window, with <code class="highlighter-rouge">rewire</code> marked as the top-level entity:</p>
+
+<p><img src="/ReWire/images/ss5.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<h2 id="step-3-simulating-the-circuit">Step 3: Simulating the Circuit</h2>
+
+<p>Before loading our circuit onto the board, it is advisable to test the circuit in a VHDL simulator and verify correct operation at the behavioral level. ISE comes with a simulator called ISim that we can use for this purpose.</p>
+
+<p>Under the “Design” pane, <strong>select Simulation</strong>, <strong>click on rewire</strong>, then <strong>open up the submenu labeled “ISim Simulator”</strong>:</p>
+
+<p><img src="/ReWire/images/ss6.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Now <strong>double-click Simulate Behavioral Model</strong>. The ISim simulator should load. The default settings are a bit over-eager, and will run the simulation for a few microseconds at start up, which (since we haven’t yet provided a defined input) will result in some strange results. To undo this, select <strong>Simulation -&gt; Restart</strong>. You should now see a window that looks like the following (your display may be showing more signals, but it is just <code class="highlighter-rouge">clk</code>, <code class="highlighter-rouge">input</code>, and <code class="highlighter-rouge">outputs</code> that we are interested in):</p>
+
+<p><img src="/ReWire/images/ss8.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Because our design is a clocked, sequential circuit, we must supply a clock signal. <strong>Right click on <code class="highlighter-rouge">clk</code> and select Force Clock</strong>:</p>
+
+<p><img src="/ReWire/images/ss9.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Under <strong>Leading Edge Value</strong>, enter 0. Under <strong>Trailing Edge Value</strong>, enter 1. Since we are only simulating at a behavioral level, it does not matter what clock period we choose, since we are assuming that things like gate delay are nil. Just enter 4ps (i.e., 4 picoseconds) under <strong>Period</strong>. Leave other values at defaults. Click <strong>OK</strong>.</p>
+
+<p>We must also supply a value for the input. <strong>Right click on <code class="highlighter-rouge">input</code> and select Force Constant</strong>:</p>
+
+<p><img src="/ReWire/images/ss10.png" style="display: block; margin: 0 auto; display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Initially, let’s force the input (i.e. the <code class="highlighter-rouge">pause</code> signal) to zero. <strong>Enter 0 under Force to Value</strong> and <strong>click OK</strong>.</p>
+
+<p>Now, <strong>enter 1ps in the run time field</strong> at the upper right corner of the window:</p>
+
+<p><img src="/ReWire/images/ss11.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Finally, <strong>click the “run for specified time” button</strong> (which has a small “play button” symbol and a picture of an hourglass) a few times, and observe the output in the waveform display pane:</p>
+
+<p><img src="/ReWire/images/ss12.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Obviously something is happening, but is it the Fibonacci sequence? To make the output easier to read, <strong>right click on <code class="highlighter-rouge">output</code>, select Radix, and select Unsigned Decimal</strong>. This will change the display value for the <code class="highlighter-rouge">output</code> waveform from binary to decimal:</p>
+
+<p><img src="/ReWire/images/ss13.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Observe that over the first few clock ticks, the circuit is outputting 0, 1 (for two clock cycles!), 2, 3, 5, 8, 13, 21, 34, 55… these are indeed the first few elements of the Fibonacci sequence!</p>
+
+<p>Finally, we should test to make sure that the <code class="highlighter-rouge">pause</code> switch works. <strong>Right click on <code class="highlighter-rouge">input</code>, select Force Constant, change the value to 1, click OK, then press the “run for specified time” button a few more times:</strong></p>
+
+<p><img src="/ReWire/images/ss14.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Notice that the value remains unchanged even as the clock continues to tick. Now force the switch back to “off”: <strong>right click on <code class="highlighter-rouge">input</code>, select Force Constant, change the value to 0, click OK, then press the “run for specified time” button a few more times:</strong></p>
+
+<p><img src="/ReWire/images/ss15.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>Observe that the circuit resumes operation on subsequent clock ticks. Thus everything seems to be in order! (Note that if the circuit is allowed to run long enough (i.e. past the 13th element of the sequence), the output value will overflow and wrap around. This is the expected behavior; it is, after all, only an example.)</p>
+
+<p>You can now <strong>close the ISim window</strong>; if you receive a prompt about saving the waveform configuration, you can say no.</p>
+
+<h2 id="step-4-implementing-the-circuit-on-the-board">Step 4: Implementing the Circuit on the Board</h2>
+
+<p>No FPGA project can be considered successful until we have actually made some LEDs flash, so in this section we will load our circuit onto our Spartan-3E Starter Kit board. For testing purposes, we will connect the clock signal to the on-board 50MHz oscillator at FPGA pin C9; the <code class="highlighter-rouge">pause</code> input to the switch SW0 at FPGA pin L13; and the output bits to the LEDs located at the lower right corner of the board, at FPGA pins F9, E9, D11, C11, F11, E11, E12, and F12 (from left to right):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>                             ______________________
+                             |                    |
+        switch SW0 [L13] ----| pause              |
+                             |           fib[0:7] |-/--- LEDs LD7 through LD0
+on-board oscillator [C9] ----|&gt;                   |      [F9,E9,D11,C11,F11,E11,E12,F12]
+                             |____________________|
+</code></pre>
+</div>
+
+<p>(Obviously our choice of a 50MHz clock will make it impossible to view the sequence in real time, but the <code class="highlighter-rouge">pause</code> switch will make it possible to peek in on the sequence.)</p>
+
+<p>To map VHDL inputs and outputs to FPGA pins, we must add a UCF constraint file to our project. First, <strong>select Implementation in the Design pane at the upper left corner of the Project Navigator window</strong>. Then select <strong>Project -&gt; New Source -&gt; Implementation Constraints File</strong>. Under <strong>File name</strong>, enter <code class="highlighter-rouge">Fibonacci.ucf</code>, then <strong>click Next</strong> and <strong>click Finish</strong>. An editor window for the (new, blank) UCF file will appear. <strong>Enter the following text</strong> and select <strong>File -&gt; Save</strong>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>NET "clk" LOC="C9";
+NET "input[0]" LOC="L13";
+NET "output[0]" LOC="F9";
+NET "output[1]" LOC="E9";
+NET "output[2]" LOC="D11";
+NET "output[3]" LOC="C11";
+NET "output[4]" LOC="F11";
+NET "output[5]" LOC="E11";
+NET "output[6]" LOC="E12";
+NET "output[7]" LOC="F12";
+</code></pre>
+</div>
+
+<p>With the UCF file added to the project, we can now <em>synthesize and implement</em> our circuit. <strong>Select <code class="highlighter-rouge">rewire</code> in the Design pane</strong>, then under the <strong>Processes</strong> pane, <strong>double-click Implement Design</strong>:</p>
+
+<p><img src="/ReWire/images/ss16.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+
+<p>ISE will automatically run the “Synthesize - XST” process, then the “Implement Design” process. If everything goes as expected, you will see a few VHDL-related warnings fly by in the console during the synthesis phase; these may be ignored.</p>
+
+<p>Once the implementation process has finished, <strong>double-click Generate Programming File</strong> under the <strong>Processes</strong> pane to generate the bitstream file for configuring the FPGA. Then double-click <strong>Configure Target Device</strong>. If you are prompted to add an iMPACT project file, <strong>click OK</strong>.</p>
+
+<p>(FIXME: need to grab some screenshots and flesh out the rest of the process…)</p>
+
+
+                    </div>
+                
+            </div>
+
+            
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    Documentation for <a href="https://github.com/mu-chaco/ReWire">ReWire</a>
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function orderNav() {
+                var list,
+                    section,
+                    header,
+                    sections = [],
+                    lists = {},
+                    headers = {};
+
+                var navUl = document.querySelectorAll('#navigation ul')[0],
+                    navLis = document.querySelectorAll('#navigation ul li');
+
+                if (!navUl) return;
+
+                for (var i = 0; i < navLis.length; i++) {
+                    var order, li = navLis[i];
+
+                    if (li.classList.contains('nav-header')) {
+                        section = li.textContent || li.innerText;
+                        sections.push(section);
+                        headers[section] = li;
+                        continue;
+                    }
+
+                    if (!lists[section]) {
+                        lists[section] = [];
+                    }
+
+                    order = parseFloat(li.getAttribute('data-order'))
+                    lists[section].push([order, li]);
+                }
+
+                for (var i = 0; i < sections.length; i++) {
+                    section = sections[i];
+                    list = lists[section].sort(function(a, b) {
+                        return a[0] - b[0];
+                    });
+
+                    if (header = headers[section]) {
+                        navUl.appendChild(header);
+                    }
+                    for (var j = 0; j < list.length; j++) {
+                        navUl.appendChild(list[j][1]);
+                    }
+                }
+            }
+
+            if (document.querySelectorAll) orderNav();
+        </script>
+        
+    </body>
+</html>

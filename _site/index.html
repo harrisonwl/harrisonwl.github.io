@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+
+        <title>ReWire : ReWire Functional Hardware Description</title>
+        <meta name="description" content="Hardware circuits from functional specifications">
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/ReWire/css/syntax.css">
+        <link rel="stylesheet" href="/ReWire/css/main.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div id="header" class="col-sm-12">
+                    <h4><a class="brand" href="/ReWire/">ReWire</a>
+    <small>Hardware circuits from functional specifications</small>
+</h4>
+
+                </div>
+            </div>
+
+            <div class="row">
+                
+                
+                    <div id="navigation" class="col-sm-2">
+                        <ul class="nav nav-list">
+    <li><a href="/ReWire/">Home</a></li>
+    
+        
+        
+
+        
+            
+                <li class="nav-header">Documentation</li>
+            
+            <li data-order="6"><a href="/ReWire/doc/sha256.html">Case Study #2: SHA-256</a></li>
+        
+            
+            <li data-order="5"><a href="/ReWire/doc/crossbarswitch.html">Case Study #1: Crossbar Switch</a></li>
+        
+            
+            <li data-order="4"><a href="/ReWire/doc/language-reference.html">Language Reference</a></li>
+        
+            
+            <li data-order="3"><a href="/ReWire/doc/quick-start.html">Quick Start</a></li>
+        
+            
+            <li data-order="2"><a href="/ReWire/doc/installing-rewire.html">Installing ReWire</a></li>
+        
+            
+            <li data-order="1"><a href="/ReWire/doc/introduction.html">Introduction</a></li>
+        
+    
+        
+        
+
+        
+    
+        
+        
+
+        
+    
+        
+        
+
+        
+    
+        
+        
+
+        
+    
+<!-- List additional links. It is recommended to add a divider
+    e.g. <li class="divider"></li> first to break up the content. -->
+</ul>
+
+                    </div>
+
+                    <div id="content" class="col-sm-10">
+                        
+<h4 id="rewire-functional-hardware-description"><strong>ReWire: Functional Hardware Description</strong></h4>
+
+<p><a href="https://github.com/mu-chaco/ReWire">ReWire</a> is an open source programming language for designing, implementing, and formally verifying hardware artifacts. ReWire is a language for high-level synthesis based in the functional language <a href="https://www.haskell.org">Haskell</a>. Functional languages are a commonly proposed approach to alleviating the well-known FPGA programmability problem—a.k.a., the three P’s (Productivity, Performance and Portability). But the ReWire approach takes this one step further with <em>Provability</em>.</p>
+
+<p><img src="/ReWire/images/4Ps.pdf" style="display: block; margin: 0 auto; max-width: 50%;" alt="Screenshot" /></p>
+
+<p>ReWire programs <em>are</em> Haskell programs. That means, every ReWire program <em>is</em> a Haskell program as well. And so, ReWire inherits many of Haskell’s fine qualities, including:</p>
+
+<ul>
+  <li>Pure functions and types, monads, equational reasoning, etc.</li>
+  <li>Formal semantics supporting formal reasoning.</li>
+</ul>
+
+<p>ReWire programs, however, may all be translated directly to VHDL using the ReWire compiler:</p>
+
+<p><img src="/ReWire/images/ReWire.pdf" style="display: block; margin: 0 auto; max-width: 75%;" alt="Screenshot" /></p>
+
+<p>Why does all this distinguish us from other research efforts? Read on!</p>
+
+<h4 id="just-say-no-to-semantic-archaeology"><strong>Just Say No! to Semantic Archaeology</strong></h4>
+
+<p>Say you have a hardware design written in a production hardware description language (HDL) like VHDL or Verilog and you need to formally verify some properties of the design and implementation. Where do you start?</p>
+
+<p>Well, you can’t reason directly about the HDL code. Why not? <em>Because the HDL possesses no formal semantics!</em> Using traditional formal methods for hardware (e.g., <a href="http://dl.acm.org/citation.cfm?id=519876">Kropf 1999</a>), one must laboriously formulate a formal model in the logic of a theorem prover. We call this process <em>semantic archaeology</em> and it is expensive, time-consuming and error-prone (i.e., how do you know that your formal specification is related to the concrete HDL design?). Semantic archaeology is the bane of formal methods.</p>
+
+<p>Because ReWire has a formal semantics, one can reason about hardware designs in ReWire directly on the ReWire code itself just as one would about a normal pure functional program. One can also apply tools and techniques from software verification to hardware verification (e.g., as we have with <a href="https://coq.inria.fr">Coq</a> and <a href="http://dl.acm.org/citation.cfm?id=1662663">language-based methods in security</a>). For more information, please consult the reading below or send an <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#114;&#101;&#119;&#105;&#114;&#101;&#045;&#113;&#117;&#101;&#115;&#116;&#105;&#111;&#110;&#115;&#064;&#103;&#111;&#111;&#103;&#108;&#101;&#103;&#114;&#111;&#117;&#112;&#115;&#046;&#099;&#111;&#109;">email</a>.</p>
+
+<h5 id="further-reading"><strong>Further Reading</strong></h5>
+
+<ul>
+  <li><em>A Programming Model for Reconfigurable Computing Based in Functional Concurrency</em>, William L. Harrison, Adam Procter, Ian Graves, Michela Becchi, and Gerard Allwein. ReCoSoC 2016 <a href="/ReWire/assets/papers/recosoc16.pdf">pdf</a> <a href="/ReWire/assets/papers/slides-recosoc16.pdf">slides</a>.</li>
+  <li><em>Provably Correct Development of Reconfigurable Hardware Designs via Equational Reasoning</em>, Ian Graves, Adam Procter, William L. Harrison, and Gerard Allwein. FPT 2015 <a href="/ReWire/assets/papers/fpt15.pdf">pdf</a> <a href="/ReWire/assets/papers/slides-fpt15.pdf">slides</a>.</li>
+  <li><em>A Principled Approach to Secure Multi-Core Processor Design with ReWire</em>, Adam Procter, William Harrison, Ian Graves, Michela Becchi, and Gerard Allwein. ACM Transactions on Embedded Computing Systems (to appear) <a href="/ReWire/assets/papers/tecs16.pdf">pdf</a>.</li>
+  <li><em>Semantics Driven Hardware Design, Implementation, and Verification with ReWire</em>, Adam Procter, William Harrison, Ian Graves, Michela Becchi, and Gerard Allwein. LCTES 2015 <a href="/ReWire/assets/papers/lctes15.pdf">pdf</a>.</li>
+  <li><em>Hardware Synthesis from Functional Embedded Domain-Specific Languages:
+A Case Study in Regular Expression Compilation</em>, Ian Graves, Adam Procter, William Harrison, Michela Becchi, and Gerard Allwein. ARC 2015 <a href="/ReWire/assets/papers/arc15.pdf">pdf</a>.</li>
+</ul>
+
+
+                    </div>
+                
+            </div>
+
+            
+
+            <div class="row">
+                <div id="footer" class="col-sm-12">
+                    Documentation for <a href="https://github.com/mu-chaco/ReWire">ReWire</a>
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function orderNav() {
+                var list,
+                    section,
+                    header,
+                    sections = [],
+                    lists = {},
+                    headers = {};
+
+                var navUl = document.querySelectorAll('#navigation ul')[0],
+                    navLis = document.querySelectorAll('#navigation ul li');
+
+                if (!navUl) return;
+
+                for (var i = 0; i < navLis.length; i++) {
+                    var order, li = navLis[i];
+
+                    if (li.classList.contains('nav-header')) {
+                        section = li.textContent || li.innerText;
+                        sections.push(section);
+                        headers[section] = li;
+                        continue;
+                    }
+
+                    if (!lists[section]) {
+                        lists[section] = [];
+                    }
+
+                    order = parseFloat(li.getAttribute('data-order'))
+                    lists[section].push([order, li]);
+                }
+
+                for (var i = 0; i < sections.length; i++) {
+                    section = sections[i];
+                    list = lists[section].sort(function(a, b) {
+                        return a[0] - b[0];
+                    });
+
+                    if (header = headers[section]) {
+                        navUl.appendChild(header);
+                    }
+                    for (var j = 0; j < list.length; j++) {
+                        navUl.appendChild(list[j][1]);
+                    }
+                }
+            }
+
+            if (document.querySelectorAll) orderNav();
+        </script>
+        
+    </body>
+</html>
