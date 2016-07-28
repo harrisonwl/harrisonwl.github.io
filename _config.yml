@@ -1,6 +1,6 @@
 # Site title and subtitle. This is used in _includes/header.html
-title: 'ReWire'
-subtitle: 'Hardware circuits from functional specifications'
+title: 'William L. Harrison, Ph.D'
+subtitle: 'Center for High Assurance Computing'
 
 #gems: [jekyll_figure]
 #
@@ -24,7 +24,7 @@ codeurl: 'https://github.com/mu-chaco/ReWire'
 
 # Default categories (in order) to appear in the navigation
 sections: [
-    ['doc', 'Documentation'],
+    ['doc', ''],
     ['tut', 'Tutorial'],
     ['ref', 'Reference'],
     ['dev', 'Developers'],
@@ -33,7 +33,7 @@ sections: [
 
 # Keep as an empty string if served up at the root. If served up at a specific
 # path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project
-baseurl: '/ReWire'
+baseurl: ''
 
 # Dates are not included in permalinks
 permalink: none
@@ -60,3 +60,4 @@ redcarpet:
         'tables',
         'hardwrap'
     ]
+

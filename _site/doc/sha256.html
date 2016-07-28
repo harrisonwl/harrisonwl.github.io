@@ -5,20 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width">
 
-        <title>ReWire : Case Study #2: SHA-256</title>
-        <meta name="description" content="Hardware circuits from functional specifications">
+        <title>William L. Harrison, Ph.D : Case Study #2: SHA-256</title>
+        <meta name="description" content="Center for High Assurance Computing">
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/ReWire/css/syntax.css">
-        <link rel="stylesheet" href="/ReWire/css/main.css">
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
 
         <div class="container">
             <div class="row">
                 <div id="header" class="col-sm-12">
-                    <h4><a class="brand" href="/ReWire/">ReWire</a>
-    <small>Hardware circuits from functional specifications</small>
+                    <h4><a class="brand" href="/">William L. Harrison, Ph.D</a>
+    <small>Center for High Assurance Computing</small>
 </h4>
 
                 </div>
@@ -29,31 +29,34 @@
                 
                     <div id="navigation" class="col-sm-2">
                         <ul class="nav nav-list">
-    <li><a href="/ReWire/">Home</a></li>
+    <li><a href="/">Home</a></li>
     
         
         
 
         
             
-                <li class="nav-header">Documentation</li>
+                <li class="nav-header"></li>
             
-            <li data-order="6"><a href="/ReWire/doc/sha256.html">Case Study #2: SHA-256</a></li>
+            <li data-order="6"><a href="/doc/publications.html">Publications</a></li>
         
             
-            <li data-order="5"><a href="/ReWire/doc/crossbarswitch.html">Case Study #1: Crossbar Switch</a></li>
+            <li data-order="6"><a href="/doc/sha256.html">Case Study #2: SHA-256</a></li>
         
             
-            <li data-order="4"><a href="/ReWire/doc/language-reference.html">Language Reference</a></li>
+            <li data-order="5"><a href="/doc/crossbarswitch.html">Case Study #1: Crossbar Switch</a></li>
         
             
-            <li data-order="3"><a href="/ReWire/doc/quick-start.html">Quick Start</a></li>
+            <li data-order="4"><a href="/doc/language-reference.html">Language Reference</a></li>
         
             
-            <li data-order="2"><a href="/ReWire/doc/installing-rewire.html">Installing ReWire</a></li>
+            <li data-order="3"><a href="/doc/quick-start.html">Quick Start</a></li>
         
             
-            <li data-order="1"><a href="/ReWire/doc/introduction.html">Introduction</a></li>
+            <li data-order="2"><a href="/doc/installing-rewire.html">Installing ReWire</a></li>
+        
+            
+            <li data-order="1"><a href="/doc/introduction.html">Introduction</a></li>
         
     
         
@@ -108,17 +111,17 @@ The whole derivation takes place within the Haskell functional language and so t
 
 <h5 id="overview"><strong>Overview</strong></h5>
 
-<p>The development in this case study proceeds along the same lines as in <a href="/ReWire/doc/crossbarswitch.html">Case Study #1</a>. That is, first we develop a reference semantics for SHA-256 in Haskell, show how to transform it into a ReWire implementation, and, finally, show how the resulting implementation is synthesized. The code that we make use of in this is as follows:</p>
+<p>The development in this case study proceeds along the same lines as in <a href="/doc/crossbarswitch.html">Case Study #1</a>. That is, first we develop a reference semantics for SHA-256 in Haskell, show how to transform it into a ReWire implementation, and, finally, show how the resulting implementation is synthesized. The code that we make use of in this is as follows:</p>
 
 <ul>
-  <li><a href="/ReWire/assets/code/sha256/ReWirePrelude.hs">ReWirePrelude.hs</a>: some standard definitions.</li>
-  <li><a href="/ReWire/assets/code/sha256/Reference256.hs">Reference256.hs</a>: the reference semantics for SHA-256 in Haskell.</li>
-  <li><a href="/ReWire/assets/code/sha256/TestHarness.hs">TestHarness.hs</a>: harness for testing specifications.</li>
-  <li><a href="/ReWire/assets/code/sha256/FirstImplementation.hs">FirstImplementation.hs</a> and <a href="/ReWire/assets/code/sha256/SecondImplementation.hs">SecondImplementation.hs</a>: two derived implementations of SHA256 in Haskell.</li>
-  <li><a href="/ReWire/assets/code/sha256/RWFirstImplementation.hs">RWFirstImplementation.hs</a> and <a href="/ReWire/assets/code/sha256/RWSecondImplementation.hs">RWSecondImplementation.hs</a>: two derived implementations of SHA256 in ReWire.</li>
-  <li><a href="/ReWire/assets/code/sha256/RWFirstImplementation.vhd">RWFirstImplementation.vhd</a> and <a href="/ReWire/assets/code/sha256/RWSecondImplementation.vhd">RWSecondImplementation.vhd</a>: two VHDL implementations of SHA256 generated by the ReWire compiler.</li>
-  <li><a href="/ReWire/assets/code/sha256/Counter.hs">Counter.hs</a>, <a href="/ReWire/assets/code/sha256/Globals256.hs">Globals256.hs</a>, <a href="/ReWire/assets/code/sha256/MetaprogrammingRW.hs">MetaprogrammingRW.hs</a>, and <a href="/ReWire/assets/code/sha256/prims.vhd">prims.vhd</a>: various and sundry files whose purpose will be explained along the way.</li>
-  <li><a href="/ReWire/assets/code/sha256/sha256-casestudy.tar.gz">Tarball of All This Code</a>.</li>
+  <li><a href="/assets/code/sha256/ReWirePrelude.hs">ReWirePrelude.hs</a>: some standard definitions.</li>
+  <li><a href="/assets/code/sha256/Reference256.hs">Reference256.hs</a>: the reference semantics for SHA-256 in Haskell.</li>
+  <li><a href="/assets/code/sha256/TestHarness.hs">TestHarness.hs</a>: harness for testing specifications.</li>
+  <li><a href="/assets/code/sha256/FirstImplementation.hs">FirstImplementation.hs</a> and <a href="/assets/code/sha256/SecondImplementation.hs">SecondImplementation.hs</a>: two derived implementations of SHA256 in Haskell.</li>
+  <li><a href="/assets/code/sha256/RWFirstImplementation.hs">RWFirstImplementation.hs</a> and <a href="/assets/code/sha256/RWSecondImplementation.hs">RWSecondImplementation.hs</a>: two derived implementations of SHA256 in ReWire.</li>
+  <li><a href="/assets/code/sha256/RWFirstImplementation.vhd">RWFirstImplementation.vhd</a> and <a href="/assets/code/sha256/RWSecondImplementation.vhd">RWSecondImplementation.vhd</a>: two VHDL implementations of SHA256 generated by the ReWire compiler.</li>
+  <li><a href="/assets/code/sha256/Counter.hs">Counter.hs</a>, <a href="/assets/code/sha256/Globals256.hs">Globals256.hs</a>, <a href="/assets/code/sha256/MetaprogrammingRW.hs">MetaprogrammingRW.hs</a>, and <a href="/assets/code/sha256/prims.vhd">prims.vhd</a>: various and sundry files whose purpose will be explained along the way.</li>
+  <li><a href="/assets/code/sha256/sha256-casestudy.tar.gz">Tarball of All This Code</a>.</li>
 </ul>
 
 <h3 id="ii-haskell-reference-semantics-for-sha-256">II. Haskell Reference Semantics for SHA-256</h3>
@@ -181,7 +184,7 @@ $M_0^{(i)},\ldots,M_{15}^{(i)}$ and represented in Haskell with the type <code c
 
 <p>SHA-256 defines a number of operations on 32-bit words called <em>logical operators</em> in Sections 3.2 and 4.1.2 of <a href="http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf">NIST</a>. These are excerpted in part below:</p>
 
-<p><img src="/ReWire/images/sha256-functions.png" style="display: block; margin: 0 auto; max-width: 75%;" alt="Screenshot" /></p>
+<p><img src="/images/sha256-functions.png" style="display: block; margin: 0 auto; max-width: 75%;" alt="Screenshot" /></p>
 
 <p>Each of these functions transliterates simply into Haskell using built-in functions and data from the Haskell libraries, <code class="highlighter-rouge">Data.Bit</code> and <code class="highlighter-rouge">Data.Word</code>.
 Within the code listing below, <code class="highlighter-rouge">.&amp;.</code>, <code class="highlighter-rouge">complement</code>, and <code class="highlighter-rouge">xor</code> are, resp., the bitwise <em>and</em>, complement and exclusive <em>or</em> operations. The <code class="highlighter-rouge">rotateR</code> and <code class="highlighter-rouge">shiftR</code> functions are the rotate right and shift right operations.</p>
@@ -704,7 +707,7 @@ Using the ReWire compiler, we can produce synthesizable VHDL and synthesize to a
 Note that this board possesses sufficient I/O pins to accommodate <code class="highlighter-rouge">devsha256''</code>.</p>
 
 <p>The table below presents the synthesis numbers for <code class="highlighter-rouge">devsha256''</code> for the Xilinx ISE toolset targeting the Spartan-3E. The maximum clock rate was 60 MHz.
-<img src="/ReWire/images/SHA256-performance.pdf" style="display: block; margin: 0 auto;" height="50" alt="Screenshot" />
+<img src="/images/SHA256-performance.pdf" style="display: block; margin: 0 auto;" height="50" alt="Screenshot" />
 There are 76 cycles per output, and so the total throughput for <code class="highlighter-rouge">devsha256''</code> is calculated as:</p>
 
 <script type="math/tex; mode=display">(60 \mathit{MHz} \times 512 \mathit{bits}) / 76 \mathit{cycles} = 404 \mathit{Mbps}</script>
@@ -722,7 +725,7 @@ The performance numbers should be taken merely as indicative that performance is
 
             <div class="row">
                 <div id="footer" class="col-sm-12">
-                    Documentation for <a href="https://github.com/mu-chaco/ReWire">ReWire</a>
+                    Documentation for <a href="https://github.com/mu-chaco/ReWire">William L. Harrison, Ph.D</a>
 
                 </div>
             </div>

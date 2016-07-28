@@ -5,20 +5,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width">
 
-        <title>ReWire : Quick Start</title>
-        <meta name="description" content="Hardware circuits from functional specifications">
+        <title>William L. Harrison, Ph.D : Quick Start</title>
+        <meta name="description" content="Center for High Assurance Computing">
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/ReWire/css/syntax.css">
-        <link rel="stylesheet" href="/ReWire/css/main.css">
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
 
         <div class="container">
             <div class="row">
                 <div id="header" class="col-sm-12">
-                    <h4><a class="brand" href="/ReWire/">ReWire</a>
-    <small>Hardware circuits from functional specifications</small>
+                    <h4><a class="brand" href="/">William L. Harrison, Ph.D</a>
+    <small>Center for High Assurance Computing</small>
 </h4>
 
                 </div>
@@ -29,31 +29,34 @@
                 
                     <div id="navigation" class="col-sm-2">
                         <ul class="nav nav-list">
-    <li><a href="/ReWire/">Home</a></li>
+    <li><a href="/">Home</a></li>
     
         
         
 
         
             
-                <li class="nav-header">Documentation</li>
+                <li class="nav-header"></li>
             
-            <li data-order="6"><a href="/ReWire/doc/sha256.html">Case Study #2: SHA-256</a></li>
+            <li data-order="6"><a href="/doc/publications.html">Publications</a></li>
         
             
-            <li data-order="5"><a href="/ReWire/doc/crossbarswitch.html">Case Study #1: Crossbar Switch</a></li>
+            <li data-order="6"><a href="/doc/sha256.html">Case Study #2: SHA-256</a></li>
         
             
-            <li data-order="4"><a href="/ReWire/doc/language-reference.html">Language Reference</a></li>
+            <li data-order="5"><a href="/doc/crossbarswitch.html">Case Study #1: Crossbar Switch</a></li>
         
             
-            <li data-order="3"><a href="/ReWire/doc/quick-start.html">Quick Start</a></li>
+            <li data-order="4"><a href="/doc/language-reference.html">Language Reference</a></li>
         
             
-            <li data-order="2"><a href="/ReWire/doc/installing-rewire.html">Installing ReWire</a></li>
+            <li data-order="3"><a href="/doc/quick-start.html">Quick Start</a></li>
         
             
-            <li data-order="1"><a href="/ReWire/doc/introduction.html">Introduction</a></li>
+            <li data-order="2"><a href="/doc/installing-rewire.html">Installing ReWire</a></li>
+        
+            
+            <li data-order="1"><a href="/doc/introduction.html">Introduction</a></li>
         
     
         
@@ -231,27 +234,27 @@ end rewire;
 
 <p>You should be greeted first with a splash screen, then with the main Project Navigator window, which looks something like this:</p>
 
-<p><img src="/ReWire/images/ss1.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss1.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>You wil need to create a new ISE project. <strong>Select File -&gt; New Project</strong> to open the New Project Wizard:</p>
 
-<p><img src="/ReWire/images/ss2.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss2.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>In the box marked <strong>Name</strong>, enter <em>Fibonacci</em>. In the box marked <strong>Location</strong>, select a directory in which to store the project. A subdirectory for the new project will automatically be filled in under <strong>Working Directory</strong>. You do not need to change this. Now, <strong>click Next</strong> to proceed to the Project Settings screen:</p>
 
-<p><img src="/ReWire/images/ss3.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss3.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Under <strong>Evaluation Development Board</strong>, select <em>Spartan-3E Starter Board</em>. Under <strong>Preferred Language</strong>, select <em>VHDL</em>. <strong>Click Next, then click Finish.</strong></p>
 
 <p>You should now have an empty ISE project open in the main Project Navigator window. Now select <strong>Project -&gt; Add Copy of Source</strong>.</p>
 
-<p><img src="/ReWire/images/ss4.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss4.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p><strong>Browse to the directory where the example source files are contained</strong>, and <strong>select both Fibonacci.vhd and prims.vhd</strong>. Then click <strong>Open</strong>, and click <strong>OK</strong> on the dialog box that follows.</p>
 
 <p>The Fibonacci source files should now show up under the “Design” pane on the left side of the Project Navigator window, with <code class="highlighter-rouge">rewire</code> marked as the top-level entity:</p>
 
-<p><img src="/ReWire/images/ss5.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss5.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <h2 id="step-3-simulating-the-circuit">Step 3: Simulating the Circuit</h2>
 
@@ -259,45 +262,45 @@ end rewire;
 
 <p>Under the “Design” pane, <strong>select Simulation</strong>, <strong>click on rewire</strong>, then <strong>open up the submenu labeled “ISim Simulator”</strong>:</p>
 
-<p><img src="/ReWire/images/ss6.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss6.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Now <strong>double-click Simulate Behavioral Model</strong>. The ISim simulator should load. The default settings are a bit over-eager, and will run the simulation for a few microseconds at start up, which (since we haven’t yet provided a defined input) will result in some strange results. To undo this, select <strong>Simulation -&gt; Restart</strong>. You should now see a window that looks like the following (your display may be showing more signals, but it is just <code class="highlighter-rouge">clk</code>, <code class="highlighter-rouge">input</code>, and <code class="highlighter-rouge">outputs</code> that we are interested in):</p>
 
-<p><img src="/ReWire/images/ss8.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss8.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Because our design is a clocked, sequential circuit, we must supply a clock signal. <strong>Right click on <code class="highlighter-rouge">clk</code> and select Force Clock</strong>:</p>
 
-<p><img src="/ReWire/images/ss9.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss9.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Under <strong>Leading Edge Value</strong>, enter 0. Under <strong>Trailing Edge Value</strong>, enter 1. Since we are only simulating at a behavioral level, it does not matter what clock period we choose, since we are assuming that things like gate delay are nil. Just enter 4ps (i.e., 4 picoseconds) under <strong>Period</strong>. Leave other values at defaults. Click <strong>OK</strong>.</p>
 
 <p>We must also supply a value for the input. <strong>Right click on <code class="highlighter-rouge">input</code> and select Force Constant</strong>:</p>
 
-<p><img src="/ReWire/images/ss10.png" style="display: block; margin: 0 auto; display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss10.png" style="display: block; margin: 0 auto; display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Initially, let’s force the input (i.e. the <code class="highlighter-rouge">pause</code> signal) to zero. <strong>Enter 0 under Force to Value</strong> and <strong>click OK</strong>.</p>
 
 <p>Now, <strong>enter 1ps in the run time field</strong> at the upper right corner of the window:</p>
 
-<p><img src="/ReWire/images/ss11.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss11.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Finally, <strong>click the “run for specified time” button</strong> (which has a small “play button” symbol and a picture of an hourglass) a few times, and observe the output in the waveform display pane:</p>
 
-<p><img src="/ReWire/images/ss12.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss12.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Obviously something is happening, but is it the Fibonacci sequence? To make the output easier to read, <strong>right click on <code class="highlighter-rouge">output</code>, select Radix, and select Unsigned Decimal</strong>. This will change the display value for the <code class="highlighter-rouge">output</code> waveform from binary to decimal:</p>
 
-<p><img src="/ReWire/images/ss13.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss13.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Observe that over the first few clock ticks, the circuit is outputting 0, 1 (for two clock cycles!), 2, 3, 5, 8, 13, 21, 34, 55… these are indeed the first few elements of the Fibonacci sequence!</p>
 
 <p>Finally, we should test to make sure that the <code class="highlighter-rouge">pause</code> switch works. <strong>Right click on <code class="highlighter-rouge">input</code>, select Force Constant, change the value to 1, click OK, then press the “run for specified time” button a few more times:</strong></p>
 
-<p><img src="/ReWire/images/ss14.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss14.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Notice that the value remains unchanged even as the clock continues to tick. Now force the switch back to “off”: <strong>right click on <code class="highlighter-rouge">input</code>, select Force Constant, change the value to 0, click OK, then press the “run for specified time” button a few more times:</strong></p>
 
-<p><img src="/ReWire/images/ss15.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss15.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>Observe that the circuit resumes operation on subsequent clock ticks. Thus everything seems to be in order! (Note that if the circuit is allowed to run long enough (i.e. past the 13th element of the sequence), the output value will overflow and wrap around. This is the expected behavior; it is, after all, only an example.)</p>
 
@@ -335,7 +338,7 @@ NET "output[7]" LOC="F12";
 
 <p>With the UCF file added to the project, we can now <em>synthesize and implement</em> our circuit. <strong>Select <code class="highlighter-rouge">rewire</code> in the Design pane</strong>, then under the <strong>Processes</strong> pane, <strong>double-click Implement Design</strong>:</p>
 
-<p><img src="/ReWire/images/ss16.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
+<p><img src="/images/ss16.png" style="display: block; margin: 0 auto; max-width: 100%;" alt="Screenshot" /></p>
 
 <p>ISE will automatically run the “Synthesize - XST” process, then the “Implement Design” process. If everything goes as expected, you will see a few VHDL-related warnings fly by in the console during the synthesis phase; these may be ignored.</p>
 
@@ -352,7 +355,7 @@ NET "output[7]" LOC="F12";
 
             <div class="row">
                 <div id="footer" class="col-sm-12">
-                    Documentation for <a href="https://github.com/mu-chaco/ReWire">ReWire</a>
+                    Documentation for <a href="https://github.com/mu-chaco/ReWire">William L. Harrison, Ph.D</a>
 
                 </div>
             </div>

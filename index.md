@@ -1,44 +1,53 @@
 ---
 layout: default
-title: "William L. Harrison, Ph.D"
+title: "Home"
 ---
 
 {% comment %} Here is the syntax for figures from jekyll_figure.
 {% figure 4Ps pdf 'Your caption here' %}
 {% endcomment %}
 
-#### __Hi I'm Bill__
 
-[ReWire](https://github.com/mu-chaco/ReWire) is an open source programming language for designing, implementing, and formally verifying hardware artifacts. ReWire is a language for high-level synthesis based in the functional language [Haskell](https://www.haskell.org). Functional languages are a commonly proposed approach to alleviating the well-known FPGA programmability problem---a.k.a., the three P's (Productivity, Performance and Portability). But the ReWire approach takes this one step further with _Provability_.
+<div class="main_block">
 
+    <div class="inner_block">
+    <img src="{{ site.baseurl }}/images/tame-face-pic.jpg"  style="display: block; margin: 0 auto; max-width: 50%;" alt="Screenshot" height="165" width="165"/>
+    </div>
 
-<img src="{{ site.baseurl }}/images/4Ps.pdf" style="display: block; margin: 0 auto; max-width: 50%;" alt="Screenshot" />
+    <div class="inner_block">
 
-ReWire programs _are_ Haskell programs. That means, every ReWire program _is_ a Haskell program as well. And so, ReWire inherits many of Haskell's fine qualities, including:
+    </div>    
+</div>
 
-* Pure functions and types, monads, equational reasoning, etc.
-* Formal semantics supporting formal reasoning.
+<div></div>
 
+#### __Biographical information__
 
-ReWire programs, however, may all be translated directly to VHDL using the ReWire compiler:
-
-<img src="{{ site.baseurl }}/images/ReWire.pdf" style="display: block; margin: 0 auto; max-width: 75%;" alt="Screenshot" />
-
-
-Why does all this distinguish us from other research efforts? Read on!
-
-#### __Just Say No! to Semantic Archaeology__
-
-Say you have a hardware design written in a production hardware description language (HDL) like VHDL or Verilog and you need to formally verify some properties of the design and implementation. Where do you start?
-
-Well, you can't reason directly about the HDL code. Why not? _Because the HDL possesses no formal semantics!_ Using traditional formal methods for hardware (e.g., [Kropf 1999](http://dl.acm.org/citation.cfm?id=519876)), one must laboriously formulate a formal model in the logic of a theorem prover. We call this process _semantic archaeology_ and it is expensive, time-consuming and error-prone (i.e., how do you know that your formal specification is related to the concrete HDL design?). Semantic archaeology is the bane of formal methods.
-
-Because ReWire has a formal semantics, one can reason about hardware designs in ReWire directly on the ReWire code itself just as one would about a normal pure functional program. One can also apply tools and techniques from software verification to hardware verification (e.g., as we have with [Coq](https://coq.inria.fr) and [language-based methods in security](http://dl.acm.org/citation.cfm?id=1662663)). For more information, please consult the reading below or send an [email](mailto:rewire-questions@googlegroups.com).
+* Director, MU Center for High Assurance Computing
+* Associate Professor of Computer Science (joined MU in 2003)
+* Recipient: NSF CAREER Award 2008 (CyberTrust program) 
+* Post-doctoral Researcher at Oregon Graduate Institute from June 2000-August 2003 
+* Visiting Lecturer (Computer Science), Indiana University, September 1999-May 2000 
+* Ph.D (Computer Science), University of Illinois at Urbana-Champaign 2001 
+* M.S. (Computer Science), University of California at Davis, August, 1992 
+* B.A. (Mathematics), University of California at Berkeley, May 1986
 
 
+#### __Research Interests__
+Language-based methods in computer security, all aspects of programming languages design and implementation, model-driven system design and synthesis, Computer and information security, malware analysis, and formal methods.
 
+#### __Contact Information__
+* __Address:__ 318 Engineering Building North, University of Missouri, Columbia, MO 65209
+* __Email:__ harrisonwl@missouri.edu 
 
-##### __Further Reading__
+#### __External Links__
+* <a href="https://www.researchgate.net/profile/William_Harrison6">My ResearchGate profile</a>
+* <a href="http://engineering.missouri.edu/person/harrisonw/">MU College of Engineering Page</a>
+* <a href="http://mu-chaco.github.io/ReWire/">The ReWire Functional Hardware Description Language</a>
+* <a href="https://cal.berkeley.edu/william.harrison">Berkeley Alumni Page</a>
+* <a href="https://github.com/harrisonwl">My GitHub profile</a>
+
+#### __Recent Publications__
 
 * _A Programming Model for Reconfigurable Computing Based in Functional Concurrency_, William L. Harrison, Adam Procter, Ian Graves, Michela Becchi, and Gerard Allwein. ReCoSoC 2016 [pdf]({{ site.baseurl }}/assets/papers/recosoc16.pdf) [slides]({{ site.baseurl }}/assets/papers/slides-recosoc16.pdf).
 * _Provably Correct Development of Reconfigurable Hardware Designs via Equational Reasoning_, Ian Graves, Adam Procter, William L. Harrison, and Gerard Allwein. FPT 2015 [pdf]({{ site.baseurl }}/assets/papers/fpt15.pdf) [slides]({{ site.baseurl }}/assets/papers/slides-fpt15.pdf).
