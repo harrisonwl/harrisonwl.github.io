@@ -11,7 +11,7 @@
  articleno = {13},
  numpages = {10},
  abstract = "There is no such thing as high assurance without high assurance hardware. High assurance hardware is essential, because any and all high assurance systems ultimately depend on hardware that conforms to, and does not undermine, critical system properties and invariants. And yet, high assurance hardware development is stymied by the conceptual gap between formal methods and hardware description languages used by engineers. This paper presents ReWire, a functional programming language providing a suitable foundation for formal verification of hardware designs, and a compiler for that language that translates high-level, semantics-driven designs directly into working hardware. ReWire's design and implementation are presented, along with a case study in the design of a secure multicore processor, demonstrating both ReWire's expressiveness as a programming language and its power as a framework for formal, high-level reasoning about hardware systems.",                 
- pdf = "https://harrisonwl.github.io/assets/papers/lctes15.pdf",
+ url_Paper = {https://harrisonwl.github.io/assets/papers/lctes15.pdf},
 } 
 
                   
@@ -26,7 +26,7 @@ title={Hardware Synthesis from Functional Embedded Domain-Specific Languages: A 
 author={Graves, Ian and Procter, Adam and Harrison, William L. and Becchi, Michela and Allwein, Gerard},
 pages={41-52},
 abstract = "Although FPGAs have the potential to bring software-like flexibility and agility to the hardware world, designing for FPGAs remains a difficult task divorced from standard software engineering norms. A better programming flow would go far towards realizing the potential of widely deployed, programmable hardware. We propose a general methodology based on domain specific languages embedded in the functional language Haskell to bridge the gap between high level abstractions that support programmer productivity and the need for high performance in FPGA circuit implementations. We illustrate this methodology with a framework for regular expression to hardware compilers, written in Haskell, that supports high programmer productivity while producing circuits whose performance matches and, indeed, exceeds that of a state of the art, hand-optimized VHDL-based tool. For example, after applying a  novel optimization pass, throughput increased an average of 28.3 percent over the state of the art tool for one set of benchmarks.",
-pdf = "https://harrisonwl.github.io/assets/papers/arc15.pdf",
+ url_Paper = "https://harrisonwl.github.io/assets/papers/arc15.pdf",
 }
 
 
@@ -39,7 +39,7 @@ month={Dec},
 pages={446-449}, 
 abstract={The functional programming community has developed a number of powerful abstractions for dealing with diverse programming models in a modular way. Beginning with a core of pure, side effect free computation, modular monadic semantics (MMS) allows designers to construct domain-specific languages by adding layers of semantic features, such as mutable state and I/O, in an a' la carte fashion. In the realm of interpreter and compiler construction, the benefits of this approach are manifold and well explored. This paper advocates bringing the tools of MMS to bear on hardware design and verification. In particular, we shall discuss a prototype compiler called ReWire which translates high-level MMS hardware specifications into working circuits on FPGAs. This enables designers to tackle the complexity of hardware design in a modular way, without compromising efficiency.}, 
 keywords={electronic engineering computing;field programmable gate arrays;formal verification;functional programming;program compilers;FPGA;MMS;ReWire;compiler construction;diverse programming models;domain-specific languages;functional programming;hardware design;modular monadic semantics;semantics-directed machine architecture;verification;Field programmable gate arrays;Hardware;Microcontrollers;Ports (Computers);Random access memory;Registers;Semantics}, 
-   pdf = "https://harrisonwl.github.io/assets/papers/icfpt13.pdf",
+    url_Paper = "https://harrisonwl.github.io/assets/papers/icfpt13.pdf",
 }
 
 @inproceedings{qasa13,
@@ -48,7 +48,7 @@ keywords={electronic engineering computing;field programmable gate arrays;formal
    author = "Robert Harrison and William L. Harrison",
    year = 2013,
    abstract = "Covert channels are mechanisms for communication where a legitimate channel carries a hidden message, and where the hidden message is conveyed using legal operations of the legitimate channel. Quantitative modeling of the response of the covert channel to noise results in an enhanced understanding of the channel and delimits the range of conditions under which a covert channel can operate effectively. The analysis of two covert channels using the confusion matrix and noise models shows that the techniques presented in this paper are widely applicable to covert information flows in noisy channels.",               
-   pdf = "https://harrisonwl.github.io/assets/papers/interchannel.pdf",
+    url_Paper = "https://harrisonwl.github.io/assets/papers/interchannel.pdf",
 }
 
 @article{LLP13,
@@ -68,7 +68,7 @@ keywords={electronic engineering computing;field programmable gate arrays;formal
    booktitle = "Proceedings of the 2012 International Conference on Formal Engineering Methods",
    author = "William L. Harrison, Adam Procter and Gerard Allwein",
    year = 2012,
-  pdf = "https://harrisonwl.github.io/assets/papers/icfem12.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/icfem12.pdf",
   abstract = "In this paper, we establish a semantic foundation for the safe
 execution of untrusted code. Our approach extends Moggi's computational $\lambda$-calculus in two dimensions with operations for asynchronous concurrency, shared state and software faults and with an effect type system $\grave{a}$ la Wadler providing fine-grained control of effects. An equational system for fault isolation is exhibited and its soundness demonstrated with a semantics based on monad transformers. Our formalization of the equational system in the Coq theorem prover is discussed. We argue that the approach may be generalized to capture other safety properties, including information flow security.",
    }                  
@@ -78,7 +78,7 @@ execution of untrusted code. Our approach extends Moggi's computational $\lambda
    booktitle = "Proceedings of the 2012 Systems Software Verification Conference",
    author = "Chris Hathhorn, Michela Becchi, William L. Harrison and Adam Procter",
    year = 2012,
-  pdf = "https://harrisonwl.github.io/assets/papers/ssv12.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/ssv12.pdf",
   abstract = "We extend an off-the-shelf, executable formal semantics of C (Ellison and Rosiu's K Framework semantics) with the core features of CUDA-C. The hybrid CPU/GPU computation model of CUDA-C presents challenges not just for programmers, but also for practitioners of formal methods. Our formal semantics helps expose and clarify these issues. We demonstrate the usefulness of our semantics by generating a tool from it
 capable of detecting some race conditions and deadlocks in CUDA-C programs. We discuss limitations of our model and argue that its extensibility can easily
 enable a wider range of verification tasks.",
@@ -89,7 +89,7 @@ enable a wider range of verification tasks.",
    booktitle = "Proceedings of the 2012 Conference on Non-Classical Logics",
    author = "Gerard Allwein, William L. Harrison and David Andrews",
    year = 2012,
-  pdf = "https://harrisonwl.github.io/assets/papers/ncl12.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/ncl12.pdf",
   abstract = "Simulation relations have been discovered in many areas: Computer Science, philosophical and modal logic, and set theory. However, the simulation condition is strictly a first-order logic statement. We extend modal logic with modalities and axioms, the latter's modeling conditions are the simulation conditions. The modalities are normal, i.e., commute with either conjunctions or disjunctions and preserve either Truth or Falsity (respectively). The simulations are considered arrows in a category where the objects are descriptive, general frames. One can augment the simulation modalities by axioms for requiring the underlying modeling simulations to be bisimulations or to be p-morphisms. The modal systems presented are multi-sorted and both sound and complete with respect to their algebraic and Kripke semantics.",
    }                  
                   
@@ -98,7 +98,7 @@ enable a wider range of verification tasks.",
    booktitle = "Proceedings of the 2012 Trends in Functional Programming Conference",
    author = "Adam Procter, William L. Harrison and Aaron Stump",
    year = 2012,
-  pdf = "https://harrisonwl.github.io/assets/papers/tfp12.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/tfp12.pdf",
   abstract = "Pure, lazy functional languages like Haskell provide a sound basis for formal reasoning about programs in an equational style. In
 practice, however, equational reasoning is underutilized. We suggest that part
 of the reason for this is the lack of accessible tools for developing
@@ -115,7 +115,7 @@ follows familiar functional programming idioms.",
    booktitle = "Proceedings of the 2011 International Conference on Engineering Reconfigurable Systems and Algorithms (ERSA11)",
    author = "Gerard Allwein and William L. Harrison",
    year = 2011,
-  pdf = "https://harrisonwl.github.io/assets/papers/ersa2011a.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/ersa2011a.pdf",
   abstract = "It has long been held that information flow security models should be organized with respect to a theory of information, but typically they are not. The appeal of a information-theoretic foundation for information flow security seems natural, compelling and, indeed, almost tautological. This article illustrates how channel theory---a theory of information based in logic---can provide a basis for noninterference style security models. The evidence presented here suggests that channel theory is a useful organizing principle for information flow security.",
    }
 
@@ -124,7 +124,7 @@ follows familiar functional programming idioms.",
    booktitle = "Proceedings of the 2011 International Conference on Engineering Reconfigurable Systems and Algorithms (ERSA11)",
    author = "William L. Harrison and Benjamin Schulz and Adam Procter and Andrew Lukefahr and Gerard Allwein",
    year = 2011,
-     pdf = "https://harrisonwl.github.io/assets/papers/ersa2011b.pdf",
+      url_Paper = "https://harrisonwl.github.io/assets/papers/ersa2011b.pdf",
   abstract = "High assurance systems have been defined as systems ``you would bet your life on.'' This article discusses the application of a form of functional programming---what we call ``monadic programming''---to the generation of high assurance and secure systems. Monadic programming languages leverage algebraic structures from denotational semantics and functional programming---monads---as a flexible, modular organizing principle for secure system design and implementation. Monadic programming languages are domain-specific functional languages that are both sufficiently expressive to express essential system behaviors and semantically straightforward to support formal verification.",
    }   
 
@@ -136,7 +136,7 @@ follows familiar functional programming idioms.",
  year = 2011,
  pages = {81-110},
  note = {Extended version of \cite{AllweinYangHarrison:2010}},
-      pdf = "https://harrisonwl.github.io/assets/papers/llp2011.pdf",
+       url_Paper = "https://harrisonwl.github.io/assets/papers/llp2011.pdf",
   abstract = "We recast parts of decision theory in terms of channel theory
 concentrating on qualitative issues. Channel theory allows one to move
 between model theoretic and language theoretic notions as is necessary for
@@ -164,7 +164,7 @@ year        ={2010},
   booktitle = {Advances in Modal Logic},
   year      = {2010},
   pages     = {1-21},
-       pdf = "https://harrisonwl.github.io/assets/papers/aiml10.pdf",
+        url_Paper = "https://harrisonwl.github.io/assets/papers/aiml10.pdf",
   abstract = "
 Modal logic is extended by partially ordering the modalities. The modalities are normal, i.e., commute
 with either conjunctions or disjunctions and preserve either Truth or Falsity (respectively). The partial
@@ -183,7 +183,7 @@ author = {W. Harrison and A. Procter and J. Agron and G. Kimmel and G. Allwein},
  booktitle = {DSL '09: Proc. of the IFIP TC 2 Working Conference on Domain-Specific Languages},
  year = {2009},
  pages = {20--44},
-      pdf = "https://harrisonwl.github.io/assets/papers/dsl09.pdf",
+       url_Paper = "https://harrisonwl.github.io/assets/papers/dsl09.pdf",
   abstract = "Recent research has shown how the formal modeling of concurrent systems can benefit from monadic structuring. With this approach, a formal system model is really a program in a domain specific language defined by a monad for shared-state concurrency. Can these models be compiled into efficient implementations?  This paper addresses this question and presents an overview of techniques for compiling monadic concurrency models directly into reasonably efficient software and hardware implementations. The implementation techniques described in this article form the basis of a semantics-directed approach to model-driven engineering.",
  } 
 
@@ -200,7 +200,7 @@ author = {W. Harrison and A. Procter and J. Agron and G. Kimmel and G. Allwein},
  numpages = {55},
  publisher = {IOS Press},
  address = {Amsterdam, The Netherlands, The Netherlands},
-      pdf = "https://harrisonwl.github.io/assets/papers/jcs09.pdf",
+       url_Paper = "https://harrisonwl.github.io/assets/papers/jcs09.pdf",
   abstract = "This paper advocates a novel approach to the construction of secure
 software: controlling information flow and maintaining integrity via
 monadic encapsulation of effects. This approach is {\em constructive},
@@ -224,7 +224,7 @@ booktitle = {Proceedings of the Mathematics of Program Construction (MPC08)},
 year = {2008},
 pages = {153--176},
 numpages = {24},
-     pdf = "https://harrisonwl.github.io/assets/papers/mpc08.pdf",
+      url_Paper = "https://harrisonwl.github.io/assets/papers/mpc08.pdf",
   abstract = "Asynchronous interrupts abound in computing systems, yet they remain a
 thorny concept for both programming and verification practice.
 The ubiquity of interrupts underscores the importance of developing
@@ -250,7 +250,7 @@ interrupt-driven computation as well.",
  publisher = {ACM},
  address = {New York, NY, USA},
  keywords = {domain-specific languages, monads, staged programming},
-      pdf = "https://harrisonwl.github.io/assets/papers/haskell08.pdf",
+       url_Paper = "https://harrisonwl.github.io/assets/papers/haskell08.pdf",
   abstract = "Monads as an organizing principle for programming and semantics are notoriously difficult to grasp, yet they are a central and powerful abstraction in Haskell. This paper introduces a domain-specific language, MonadLab, that simplifies the construction of monads, and describes its implementation in Template Haskell. MonadLab makes monad construction truly first class, meaning that arcane theoretical issues with respect to monad transformers are completely hidden from the programmer. The motivation behind the design of MonadLab is to make monadic programming in Haskell simpler while providing a tool for non-Haskell experts that will assist them in understanding this powerful abstraction.",
 } 
 
@@ -305,7 +305,7 @@ and hold for whole classes of monads, thereby yielding proofs of great generalit
   pages     = {158-172},
   month     = {July},                  
   year      = {2006},
-    pdf = "https://harrisonwl.github.io/assets/papers/amast06.pdf",
+     url_Paper = "https://harrisonwl.github.io/assets/papers/amast06.pdf",
   abstract = "This article demonstrates how a powerful and expressive abstraction from concurrency theory---monads of resumptions---plays a dual r\^{o}le as a programming tool
 for concurrent applications.  
 The article demonstrates how a
@@ -338,7 +338,7 @@ Haskell.",
   year   = 2005,
   pages = {837-891},
   hjournal = "yes",
-  pdf = "https://harrisonwl.github.io/assets/papers/jfp05.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/jfp05.pdf",
   abstract = "Haskell is a functional programming language whose
                   evaluation is lazy by default. However, Haskell also
                   provides pattern matching facilities which add a
@@ -367,7 +367,7 @@ Haskell.",
      year = 2005,
      address = "Tsukuba, Japan",
      hconf = "yes",
-     pdf = "https://harrisonwl.github.io/assets/papers/aplas05.pdf",
+      url_Paper = "https://harrisonwl.github.io/assets/papers/aplas05.pdf",
      abstract = "Polymorphic recursion is a useful extension of Hindley-
 Milner typing and has been incorporated in the functional programming
 language Haskell. It allows the expression of efficient algorithms
@@ -392,7 +392,7 @@ in a straightforward and intuitively appealing manner."
 	address = "Minneapolis, MN",
 	pages = {169-176},
         hconf = "yes",
-        pdf = "https://harrisonwl.github.io/assets/papers/bibe05.pdf",	
+         url_Paper = "https://harrisonwl.github.io/assets/papers/bibe05.pdf",	
 	abstract = "RNA plays a critical role in mediating every step of cellular information transfer from genes to functional proteins. Pseudoknots are widely occurring structural  motifs found in all types of RNA and are also functionally important. Therefore predicting their structures is an important problem. In this paper, we present a new RNA pseudoknot prediction model based on term rewriting rather than on dynamic programming, comparative sequence analysis, or context-free grammars. The model we describe is implemented using the Mfold RNA/DNA folding package and the term rewriting language Maude. Our model was tested on 211 pseudoknots in PseudoBase and achieves an average accuracy of 74.085% compared to the experimentally determined structure. In fact, most pseudoknots discovered by our method achieve an accuracy of above 90%. These results indicate that term rewriting has a broad potential in RNA applications from prediction of pseudoknots to higher level RNA structures involving complex RNA tertiary interactions.",
 }
 
@@ -405,7 +405,7 @@ in a straightforward and intuitively appealing manner."
 	address = "Aix-en-Provence, France",
 	pages = {16-30},
         hconf = "yes",
-        pdf = "https://harrisonwl.github.io/assets/papers/csfw05.pdf",	
+         url_Paper = "https://harrisonwl.github.io/assets/papers/csfw05.pdf",	
 	abstract = "This paper advocates controlling information flow and maintaining integrity via monadic encapsulation of effects. This approach is constructive, relying on properties of monads and monad transformers to build, verify, and extend secure software systems. We illustrate this approach by construction of abstract operating systems called separation kernels.",
 }
 
@@ -418,7 +418,7 @@ in a straightforward and intuitively appealing manner."
   month =        "September",
   year =         "2004",
   hconf = "yes",
-  pdf = "https://harrisonwl.github.io/assets/papers/embc04.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/embc04.pdf",
   abstract = "Bioinformatics is the application of Computer Science techniques to problems in Biology, and this paper explores one such application with great potential: the modeling of life cycles of autonomous, intercommunicating cellular systems using domain-specific programming languages (DSLs). We illustrate this approach for the simple photo-synthetic bacterium \emph{R. Sphaeroides} with a DSL called CellSys embedded in the programming language Haskell."
 }
 
@@ -431,7 +431,7 @@ in a straightforward and intuitively appealing manner."
   year =         "2003",
   note = "21 pages",
   hconf = "yes",
-  pdf = "https://harrisonwl.github.io/assets/papers/fcs03.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/fcs03.pdf",
   abstract = "This paper advocates a novel approach to language-based security: by structuring software with monads (a form of abstract data type for effects), we are able to maintain separation of effects by construction. The thesis of this work is that well-understood properties of monads and monad transformers aid in the construction and verification of secure software. We introduce a formulation of non-interference based on monads rather than the typical trace-based formulation. Using this formulation, we prove a non-interference style property for a simple instance of our system model. Because monads may be easily and safely represented within any pure, higher-order, typed functional language, the resulting system models may be directly realized within such a language.",
 }
 
@@ -443,7 +443,7 @@ in a straightforward and intuitively appealing manner."
    address = "Copenhagen, Denmark",
    year  = "2002",
    hconf = "yes",
-   pdf = "https://harrisonwl.github.io/assets/papers/wrs02.pdf",
+    url_Paper = "https://harrisonwl.github.io/assets/papers/wrs02.pdf",
    abstract = "Haskell is a functional programming language with nominally non-strict
 semantics, implying that evaluation of a Haskell expression proceeds by
 demand-driven reduction.  However, Haskell also provides pattern 
@@ -471,7 +471,7 @@ pattern-matching in Haskell and the reduction order that it entails.",
   pages =        "68--93",
   series =       "Lecture Notes in Computer Science",
   hconf = "yes",
-  pdf = "https://harrisonwl.github.io/assets/papers/mpc02.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/mpc02.pdf",
   abstract = "Functional languages have the lambda calculus at their core, but then depart from this firm foundation by including features that alter their default evaluation order. The resulting mixed evaluation---partly lazy and partly strict---complicates the formal semantics of these languages. The functional language Haskell is such a language, with features such as pattern-matching, case expressions with guards, etc., introducing a modicum of strictness into the otherwise lazy language. But just how does Haskell differ from the lazy lambda calculus? We answer this question by introducing a calculational semantics for Haskell that exposes the interaction of its strict features with its default laziness. In the semantics, features perturbing Haskell's standard lazy evaluation order are specified computationally (i.e., monadically) rather than as pure values (i.e., functions, scalars, etc.)."
 }
 
@@ -490,7 +490,7 @@ pattern-matching in Haskell and the reduction order that it entails.",
   series =       "Lecture Notes in Computer Science",
   year =         "2001",
   hconf = "yes",
-  pdf = "https://harrisonwl.github.io/assets/papers/saig01.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/saig01.pdf",
   abstract = "Profile-driven compiler optimizations take advantage of information gathered at runtime to re-compile programs into more efficient code. Such optimizations appear to be more easily incorporated within a semantics-directed compiler structure than within traditional compiler structure. We present a case study in which a metacomputation-based reference compiler for a small imperative language converts easily into a compiler which performs a particular profile-driven optimization: local register allocation. Our reference compiler is implemented in the staged, functional language MetaML and takes full advantage of the synergy between metacomputation-style language definitions and the staging constructs of MetaML. We believe that the approach to implementing profile-driven optimizations presented here suggests a useful, formal model for dynamically adaptable software.",
 }
 
@@ -500,7 +500,7 @@ pattern-matching in Haskell and the reduction order that it entails.",
   year =         "2001",
   school =       "University of Illinois at Urbana-Champaign",
   hthesis = "yes",
-  pdf = "https://harrisonwl.github.io/assets/papers/dissertation.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/dissertation.pdf",
   abstract = "This thesis explores the construction and correctness of modular compilers. Modular compilation is a compiler construction technique allowing the construction of compilers for high-level programming languages from reusable compiler building blocks. Modular compilers are defined in terms of denotational semantics based on monads, monad transformers, and a new model of staged computation called metacomputations. A novel form of denotational specification called observational program specification and related proof techniques are developed to assist in modular compiler verification. It will be demonstrated that the modular compilation framework provides both a level of modularity in compiler proofs as well as a useful organizing principle for such proofs.",
 }
 
@@ -520,7 +520,7 @@ pattern-matching in Haskell and the reduction order that it entails.",
   pages =        "213--229",
   series =       "Lecture Notes in Computer Science",
   hconf = "yes",
-  pdf = "https://harrisonwl.github.io/assets/papers/mpc00.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/mpc00.pdf",
   abstract = "This paper presents a modular and extensible style of language specification based on metacomputations. This style uses two monads to factor the static and dynamic parts of the specification, thereby staging the specification and achieving strong binding-time separation. Because metacomputations are defined in terms of monads, they can be constructed modularly and extensibly using monad transformers. Consequently, metacomputation-style specifications are modular and extensible. A number of language constructs are specified: expressions, control-flow, imperative features, block structure, and higher-order functions and recursive bindings. Because of the strong binding-time separation, metacomputation-style specification lends itself to semantics-directed compilation, which we demonstrate by creating a modular compiler for a block-structured imperative, while language.",
 }
 
@@ -535,7 +535,7 @@ pattern-matching in Haskell and the reduction order that it entails.",
   ISBN =         "0-780-35005-7, 0-8186-8454-2, 0-8186-8456-9",
   pages =        "122--131",
   hconf = "yes",
-  pdf = "https://harrisonwl.github.io/assets/papers/iccl98.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/iccl98.pdf",
   abstract =     "The monadic style of language specification has the
                  advantages of modularity and extensibility: it is
                  simple to add or change features in an interpreter to
@@ -561,7 +561,7 @@ pattern-matching in Haskell and the reduction order that it entails.",
   year =         "1992",
   school =       "University of California, Davis",
   hthesis = "yes",
-  pdf = "https://harrisonwl.github.io/assets/papers/masters-thesis.pdf",
+   url_Paper = "https://harrisonwl.github.io/assets/papers/masters-thesis.pdf",
   abstract = "This thesis presents the axiomatic semantics for a simple distributed language and its mechanization in HOL. The constructs of this language include asynchronous send and synchronous receive statements as well as those basic to a sequential programming language. The language has the appearance of a system programming language that supports sequential execution extended with message-passing, and would be a suitable basis for coding distributed operating systems. Included in the mechanization are functions which generate the goals associated with the verification of simple statements in the language.",
 }
 
