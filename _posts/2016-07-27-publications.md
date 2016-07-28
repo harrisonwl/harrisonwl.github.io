@@ -7,17 +7,6 @@ order: 1
 ---
 
 
-<head>
-<title>harrison</title>
-</head>
-
-<body>
-
-<!-- This document was automatically generated with bibtex2html 1.98
-     (see http://www.lri.fr/~filliatr/bibtex2html/),
-     with the following command:
-     bibtex2html -s plain -nobibsource harrison.bib  -->
-
 
 <table>
 
