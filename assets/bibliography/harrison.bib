@@ -56,6 +56,34 @@ url="http://dx.doi.org/10.1007/978-3-319-29300-4_16"
    url_Paper = "https://harrisonwl.github.io/assets/papers/recosoc16.pdf",
    url_Slides = "https://harrisonwl.github.io/assets/papers/slides-recosoc16.pdf",
   }
+
+
+@article{CheapThreads,
+  author =       "William L. Harrison and Adam Procter",
+  title =        "Cheap (But Functional) Threads",
+  journal =      "Higher Order and Symbolic Computation (accepted for publication)",
+  note = "45 pages. Available by request.",
+  hdraft = "yes",
+  note = {Draft version},
+  year = 2015,                  
+  abstract = "This article demonstrates how a powerful and expressive abstraction 
+from concurrency theory plays a dual role as a programming tool 
+for concurrent applications and as a foundation for their verification.
+This abstraction---monads of resumptions expressed using monad 
+transformers---is \emph{cheap}: it is easy to understand, easy to 
+implement, and easy to reason about.
+We illustrate the expressiveness of the resumption monad with the 
+construction of an exemplary multitasking operating system kernel 
+with process forking, preemption, message passing, and 
+synchronization constructs in the pure functional programming 
+language Haskell.
+Because resumption computations are stream-like structures, reasoning 
+about this kernel may be posed as reasoning about streams, a problem 
+which is well-understood. And, as an example, this article 
+illustrates how a liveness property---fairness---is proven and 
+especially how the resumption-monadic structure promotes such 
+verifications.",
+}
   
 @inproceedings{graves15a,
   author = {Graves, Ian and Procter, Adam M. and Harrison, William L. and Allwein, Gerard},
@@ -343,33 +371,6 @@ interrupt-driven computation as well.",
        url_Paper = "https://harrisonwl.github.io/assets/papers/haskell08.pdf",
   abstract = "Monads as an organizing principle for programming and semantics are notoriously difficult to grasp, yet they are a central and powerful abstraction in Haskell. This paper introduces a domain-specific language, MonadLab, that simplifies the construction of monads, and describes its implementation in Template Haskell. MonadLab makes monad construction truly first class, meaning that arcane theoretical issues with respect to monad transformers are completely hidden from the programmer. The motivation behind the design of MonadLab is to make monadic programming in Haskell simpler while providing a tool for non-Haskell experts that will assist them in understanding this powerful abstraction.",
 } 
-
-
-@article{CheapThreads,
-  author =       "William L. Harrison",
-  title =        "Cheap (But Functional) Threads",
-  journal =      "Higher Order and Symbolic Computation (accepted for publication)",
-  note = "45 pages. Available by request.",
-  hdraft = "yes",
-  note = {Draft version},
-  abstract = "This article demonstrates how a powerful and expressive abstraction 
-from concurrency theory plays a dual role as a programming tool 
-for concurrent applications and as a foundation for their verification.
-This abstraction---monads of resumptions expressed using monad 
-transformers---is \emph{cheap}: it is easy to understand, easy to 
-implement, and easy to reason about.
-We illustrate the expressiveness of the resumption monad with the 
-construction of an exemplary multitasking operating system kernel 
-with process forking, preemption, message passing, and 
-synchronization constructs in the pure functional programming 
-language Haskell.
-Because resumption computations are stream-like structures, reasoning 
-about this kernel may be posed as reasoning about streams, a problem 
-which is well-understood. And, as an example, this article 
-illustrates how a liveness property---fairness---is proven and 
-especially how the resumption-monadic structure promotes such 
-verifications.",
-}
 
 @InProceedings{APLAS06,
   author =       "William Harrison",
