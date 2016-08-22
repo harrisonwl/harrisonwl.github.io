@@ -57,8 +57,6 @@ Language-based methods in computer security, all aspects of programming language
 A Case Study in Regular Expression Compilation_, Ian Graves, Adam Procter, William Harrison, Michela Becchi, and Gerard Allwein. ARC 2015 [pdf]({{ site.baseurl }}/assets/papers/arc15.pdf).
 
 
-<script src="http://bibbase.org/show?bib=http://harrisonwl.github.io/assets/bibliography/harrison.bib&jsonp=1"></script>
-
 
 {% comment %}
 ### Get Started
