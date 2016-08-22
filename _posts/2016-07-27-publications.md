@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Publications"
-category: doc
+category: etc
 date: 2016-07-27 15:32:00
 order: 1
 ---

@@ -24,6 +24,7 @@ codeurl: 'https://github.com/mu-chaco/ReWire'
 
 # Default categories (in order) to appear in the navigation
 sections: [
+    ['etc', ''],
     ['doc', 'Teaching'],
     ['tut', 'Tutorial'],
     ['ref', 'Reference'],
