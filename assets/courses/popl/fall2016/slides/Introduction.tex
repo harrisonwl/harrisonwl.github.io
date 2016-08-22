@@ -40,6 +40,7 @@
 \item Programming language Design
 \pause
 \item Data abstraction, Language Classes, Types
+\item Explore these ideas by writing interpreters in Haskell
 \end{itemize}
 \pause
 
@@ -52,7 +53,8 @@
 
 \item Course Webpage
 \begin{itemize}
-\item 
+\item \url{https://harrisonwl.github.io/doc/cs4450.html}
+\item All announcements and scores will be handled by blackboard site (not created yet).
 \end{itemize}
 
 \end{itemize}
@@ -66,7 +68,7 @@
     \frametitle{Grading}
     
 \begin{itemize}
-\item Midterm (9/21): 25\%
+\item Midterm (9/28): 25\%
 
 \item Written Homeworks + Programming: 40\%
 
@@ -80,69 +82,7 @@ receiving graded HW/test. There will be absolutely no exceptions.
 \end{remark}
 }
 
-\begin{frame}[fragile]
 
-Professor,
-
-While you were away, I attempted to inquire about my grade via email and your auto email responded saying you were out of the country. I was inquiring about my grade because as a Senior slated to graduate in the fall {\color{blue}{I was hoping to earn an A- in your class after we had taken the final. I needed the A- for gpa purposes for job applications}} that I had to begun to fill out for when I graduate in the fall. {\color{brown}{I work in Dr. Kazic's Lab and she always speaks highly of you}} so I was hopeful that there may have either been a miscalculation on my final or class attendance points or a way for me to earn a few more points so that I may raise my grade and graduate in the fall.
-
-{\color{red}{Is there any way for me to raise my grade a degree?}}
-
-Gratitude,
-    ...
-\end{frame}
-
-\begin{frame}[fragile]
-
-{\small
-%\begin{Verbatim}[commandchars=\\\{\}]
-\begin{alltt}
-I have more than three days left.  
-The final isn't till next Thursday. 
-I'm not asking for pity, I'm asking 
-that you do help me with specific material 
-and not throw me to your TA's.  I talked 
-to you about this before Thanksgiving, but 
-was out of town all last week for an interview 
-with Amazon.  I wasn't able to come in then 
-so there was no point in talking to you about 
-it.  I've really been trying to keep up, but 
-I just haven't been able to.  
-
-I'll come in multiple times, and only ask 
-specific questions.  I'm not just going to 
-come in and say "teach me".  
-\end{alltt}}
-
-\end{frame}
-
-\begin{frame}[fragile]
-
-{\small
-\begin{alltt}
-Quite frankly, I'm disappointed that this is 
-the response I get when I ask for help.  You 
-still haven't given me potential times to come 
-in, and I assume that by including your TA's I'm 
-going to get the typical response of "go talk to 
-your TA's".  I don't pay this University though 
-to talk to TA's.  I pay to get help from a professor. 
-
-Also, you are the third professor that has been stubborn 
-to work with me with traveling this semester. I'm not 
-taking vacations, I'm trying to get a job at some of 
-the biggest tech companies in the US (Google, Amazon, 
-and Microsoft).  This University is supposed to enable 
-me to succeed, not impede me.  
-
-So, I'll ask again. When can I come talk to you about 
-the material in class so I can pass this class, and 
-more importantly, understand the material?  
-\end{alltt}
-%%\end{Verbatim}
-}
-
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -154,60 +94,74 @@ more importantly, understand the material?
 \begin{itemize}
 \item Instructor: Professor William L. Harrison\\
 %\item 
-Office: 318 EBN
-\pause
+Office: 318 EBN\\
+Office hours: \emph{By appointment; email me first}\\
 
 
-\item Teaching Assistant: Chris Hathhorn\\
-%\item 
-Office: 317 EBN
+
+\item Teaching Assistant: \emph{TBD}
 \end{itemize}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}%{fragile}
-    \frametitle{On the Web...}
-    
-\begin{itemize}
-\item Blackboard...
-\item All announcements, homeworks, syllabus...
-%\end{itemize}
-
-\pause
-\item A Github repository TBD...
-\begin{itemize}
-
-\item Slides, class notes,...
-\end{itemize}
-\end{itemize}
-
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}%{fragile}
     \frametitle{Textbooks}
-
-{\bf Required:} \emph{Thinking Functionally with Haskell}, Richard Bird, Cambridge University Press.
-
-{\bf Recommended:} The following are good but not required.    
+    
+Both texts are online:    
 \begin{itemize}
-\item  \emph{Programming in Haskell} by Graham Hutton\\
-
 \item \emph{Learn You a Haskell for Good} by Miran Lipovaca\\
 Highly amusing and informative; available online.
 
-\item Course notes by me \\
-I will post these occasionally for certain subjects.
+\item \emph{Anatomy of Programming Languages} by William Cook.
 
-\item Slides
+
+\item Slides, of course.
+
+\end{itemize}
+
+The following are good but not required.    
+\begin{itemize}
+\item  \emph{Programming in Haskell} by Graham Hutton\\
+
+\item \emph{Thinking Functionally with Haskell}, Richard Bird, Cambridge University Press.
 
 \end{itemize}
 
 \end{frame}
 
+
+
+\begin{frame}[fragile]
+\frametitle{What is this course about?}
+
+Why would you study interpreters and compilers? 
+\pause
+\begin{itemize}
+\item Writing interpreters/compilers involves a lot of technical skills that you need to use together. 
+\begin{itemize}
+\item Writing interpreter/compiler helps improve those skills to become a better software developer in general. 
+\end{itemize}
+\pause
+
+\item You really want to know how computers work. 
+\begin{itemize}
+
+\item Often interpreters and compilers look like magic. And you shouldn?t be comfortable with that magic. 
+
+\item You want to demystify the process of building an interpreter and a compiler, understand how they work, and get in control of things.
+\end{itemize}
+\pause
+
+\item You want to create your own programming language or domain specific language. 
+\begin{itemize}
+\item If you create one, you will also need to create either an interpreter or a compiler for it. 
+\item Recently, there has been a resurgence of interest in new  languages: Elixir, Go, Rust just to name a few.
+\end{itemize}
+\end{itemize}
+
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -240,7 +194,129 @@ I will post these occasionally for certain subjects.
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \frametitle{Email Use \& Abuse}
 
+\begin{itemize}
+
+\item I will only answer emails from 9am-5pm Monday-Friday  
+\begin{itemize}
+\item ...actual emergencies excepted. 
+\end{itemize}
+\pause
+
+\item It is completely at my discretion whether I answer your email.
+
+\pause
+\item Rude, snarky, obnoxious, and/or threatening emails will not be answered and, if appropriate, will be forwarded on to my department chairman and/or provost.
+
+\end{itemize}
+    
+\end{frame}
+
+\section{Advice}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \frametitle{How to get an A in CS4450/7450}
+
+\begin{itemize}
+
+\item When assigned reading, read it carefully.
+\begin{itemize}
+\item Don't skim, \emph{read}!
+\end{itemize}
+\pause
+
+\item When given a programming assignment, start early.
+\begin{itemize}
+\item Last minute, start-the-night-before may work in other classes, but it's a prescription for disaster in CS4450.
+\end{itemize}
+\pause 
+
+\item Realize that you alone are responsible for your performance, be disciplined.
+
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{How not to get an A in CS4450}
+\framesubtitle{Case Study 1}
+
+Professor,
+
+While you were away, I attempted to inquire about my grade via email and your auto email responded saying you were out of the country. I was inquiring about my grade because as a Senior slated to graduate in the fall {\color{blue}{I was hoping to earn an A- in your class after we had taken the final. I needed the A- for gpa purposes for job applications}} that I had to begun to fill out for when I graduate in the fall. {\color{brown}{I work in Dr. Kazic's Lab and she always speaks highly of you}} so I was hopeful that there may have either been a miscalculation on my final or class attendance points or a way for me to earn a few more points so that I may raise my grade and graduate in the fall.
+
+{\color{red}{Is there any way for me to raise my grade a degree?}}
+
+Gratitude,
+    ...
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{How not to get an A in CS4450}
+\framesubtitle{Case Study 2}
+
+{\small
+%\begin{Verbatim}[commandchars=\\\{\}]
+\begin{alltt}
+{\color{red}{I have more than three days left.  
+The final isn't till next Thursday. }}
+I'm not asking for pity, I'm asking 
+that you do help me with specific material 
+and not throw me to your TA's.  I talked 
+to you about this before Thanksgiving, but 
+was out of town all last week for an interview 
+with Amazon.  I wasn't able to come in then 
+so there was no point in talking to you about 
+it.  I've really been trying to keep up, but 
+I just haven't been able to.  
+
+I'll come in multiple times, and only ask 
+specific questions.  I'm not just going to 
+come in and say "teach me".  
+\end{alltt}}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{How not to get an A in CS4450}
+\framesubtitle{Case Study 2, cont'd}
+
+{\small
+\begin{alltt}
+Quite frankly, I'm disappointed that this is 
+the response I get when I ask for help.  You 
+still haven't given me potential times to come 
+in, and I assume that by including your TA's I'm 
+going to get the typical response of "go talk to 
+your TA's".  {\color{red}{I don't pay this University though 
+to talk to TA's.  I pay to get help from a professor. }}
+
+Also, you are the third professor that has been stubborn 
+to work with me with traveling this semester. I'm not 
+taking vacations, I'm trying to get a job at some of 
+the biggest tech companies in the US (Google, Amazon, 
+and Microsoft).  {\color{blue}{This University is supposed to enable 
+me to succeed, not impede me.  }}
+
+So, I'll ask again. {\color{green}{When can I come talk to you about 
+the material in class so I can pass this class, and 
+more importantly, understand the material?}}  
+\end{alltt}
+%%\end{Verbatim}
+}
+
+\end{frame}
+
+\section{First Example}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -312,232 +388,6 @@ What does this have to do with that?
 \end{verbatim}
 
 \end{frame}
-
-
-\section{Sets}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame
-{
-    \frametitle{Preliminaries}
-    
-
-A Quick Review of the Sets: 
-\begin{itemize}
-\item Relations on sets:  $\in ~ \subseteq$
-\item Operations on sets: $\cup~ \cap~ \times ~ +$ 
-\item Functions as sets
-\item Relations as sets
-\end{itemize}
-
-}
-
-\subsection{Relations}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame
-{
-    \frametitle{Relations on sets: $\in ~ \subseteq$}
-
-\begin{itemize}    
-\item Membership: 
-\(
-x \in S
-\)
-\\
-\[ 
-\begin{array}{lcl}
-1 \in \{1,2,3\}
-\\
-\pause
-4 \not\in \{1,2,3\}
-\end{array}
-\]
-\pause
-\item Empty set: written $\emptyset$ or $\{\}$. For any object $x$, $x \not\in \{\}$.
-
-\pause
-
-\item Extensionality: two sets are equal if, and only if, they have the same elements. For sets $S$ and $T$, $S = T$ is defined by:
-\[
-\mbox{for all }x, ~x\in S \mbox{ iff } x \in T
-\]
-\end{itemize}
-}
-
-\frame{
-\frametitle{What do you think \& why?}
-\begin{remark}[True or False:]
-\pause
-\begin{enumerate}
-\item $\emptyset = \{ 0 \}$
-\pause
-\item $x \in \{x\}$
-\pause
-\item $\emptyset = \{\emptyset \}$
-\pause
-\item $\emptyset \in \{ \emptyset \}$
-\pause
-\item $\{0,\emptyset\} = \{ 0 \}$
-\end{enumerate}
-\end{remark}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame
-{
-    \frametitle{Relations on sets: $\subseteq$}
-
-\begin{itemize}    
-\item Subset: $S \subseteq T$ means  every element of $S$ is an element of $T$: 
-\[
-\mbox{for all } x, \mbox{ if } x \in S, \mbox{ then } x \in T
-\]
-\pause
-\\
-\item Examples
-\[ 
-\begin{array}{lcl}
-\{1\} \subseteq \{1,2,3\}
-\\
-\pause
-\{1,2,3\} \subseteq \{1,2,3\}
-\\
-\pause
-\{1,2,3,4\} \not\subseteq \{1,2,3\}
-\\
-\pause
-\{1,2,3,4\} \not\subseteq \{\}
-\\
-\pause
-\{\} \subseteq \{1,2,3\}
-\\
-\pause
-\{\} \subseteq \{\}
-\end{array}
-\]
-\pause
-\item Proper subset  $S \subset T$: means  $S \subseteq T$ and $S \not= T$.
-
-\pause
-
-\item Q: if $S \subseteq T$ and $T \subseteq S$, then $S = T$?
-
-\end{itemize}
-
-}
-
-\subsection{Ordered Pairs}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame{
-\frametitle{Ordered pairs}
-
-\begin{remark}[Ordered Pair]
-\begin{itemize}
-\item An {\bf{order pair}} of two objects $x$ and $y$ is written $(x,y)$. 
-\item $x$ and $y$ are the {\bf{first and second components}}, resp.
-\item $(x,y) = (u,v)$ iff $x=u$ and $y = v$.
-\end{itemize}
-\end{remark}
-
-}
-
-\section{Set Operations}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame
-{
-    \frametitle{Operations on sets: $\cup~ \cap~ \times$}
-
-    
-\begin{itemize}
-\item Union of sets: $A \cup B$. For two sets, $A$ and $B$, 
-\[
-x \in (A \cup B) \mbox{ iff } x \in A \mbox{ or } x \in B
-\]
-\pause
-\item Intersection of sets: $A \cap B$. For two sets, $A$ and $B$, 
-\[
-x \in (A \cap B) \mbox{ iff } x \in A \mbox{ and } x \in B
-\]
-\pause
-\item Product of sets: $A \times B$. For two sets, $A$ and $B$, 
-\[
-(x,y) \in (A \times B) \mbox{ iff } x \in A \mbox{ and } y \in B
-\]
-\pause
-\end{itemize}
-
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame
-{
-    \frametitle{Representing Relations as Sets}
-    
-\begin{itemize}
-\item A typical relation is less-than on integers $Z = \{\ldots,-1,0,1,\ldots\}$; e.g., $x < y$.
-\pause
-
-\item We can represent such relations as particular sets. 
-\[
-R_< = \{ (0,1), (-99,1001), \ldots \}
-\]
-In fact, any two-place relation on integers is a subset of $Z \times Z$.
-\pause
-
-\item For $i,j \in Z$ and relation $R \subseteq Z \times Z$, 
-\[
- R \,i \,j ~\mbox{holds} \mbox{ iff } (i,j) \in R
-\]
-\end{itemize}
-
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frame
-{
-    \frametitle{Functions as Sets}
-    
-\begin{itemize}
-\item The same treatment holds for functions
-\pause
-
-\item Factorial on $N = \{0,1,\ldots\}$ can be represented as the following subset of $N \times N$:
-\[
-fac = \{ (0,1), (1,1), (2,2), (3,6), (4,24), \ldots \}
-\]
-\pause
-
-\item We say that $fac~ n = m$ iff $(n,m) \in fac$
-\pause
-
-\item Function Property: a relation $R \subseteq N \times N$ is a function, iff
-\[
-\mbox{for all }n \in N, \mbox{ if } (n,p) \in R \mbox{ and } (n,q) \in R \mbox{ then } p=q
-\]
-\pause 
-
-\item Function $f \subseteq N \times N$ is {\bf total} iff for all $n\in N$, there is an $m\in N$ such that $(n,m) \in f$
-
-\end{itemize}
-
-
-}
 
 
 \end{document}
