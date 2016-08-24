@@ -8,7 +8,7 @@
 
 \usepackage{listings}
 \usepackage{beamerthemesplit}
-
+\setbeamertemplate{navigation symbols}{}
 \lstnewenvironment{newcode}{\lstset{language=Haskell,basicstyle=\scriptsize,escapechar=\@}}{}
 \newcommand{\ttcode}[1]{{\color{red}{\tt{#1}}}}
 
@@ -189,9 +189,12 @@ len2 = \ x -> if (null x) then 0 else 1 + (len2 (tail x))
     \end{newcode}
     }
 }
-\begin{remark}[Currying relies on the following isomorphism:]
-\(A \rightarrow B \rightarrow C  \cong (A \times B) \rightarrow C \)
-\end{remark}
+\pause
+Different Function:
+\begin{newcode}
+add' :: (Int,Int) -> Int
+add' (i,j) = i+j
+\end{newcode}
 
 \end{frame}
 
@@ -211,13 +214,14 @@ x = add 1 2
 \item a fresh variable \ttcode{x} is bound to the value of \ttcode{add 1 2},
 \item the value of \ttcode{add 1 2} is not computed until the value of \ttcode{x} is required (\emph{lazy evaluation}), 
 \item \ttcode{x} stays bound to \ttcode{add 1 2}  within the scope of definition. 
+\item Not an assignment!
 \end{itemize}
 
 \pause
 \item \(\therefore\) Haskell functions are pure "mathematical" functions 
 \begin{itemize}
 \item Makes reasoning about programs feasible 
-N.b., side-effects are necessary for realistic programming (for 
+\item N.b., side-effects are necessary for realistic programming (for 
 IO, efficiency, ...). 
 
 \item Haskell type system encapsulates all effects inside 
@@ -461,7 +465,7 @@ $\ldots$ is comparable to extending interfaces in
 Java 
 
 \item
-Accomplished with conditional class deﬁnitions. 
+Accomplished with conditional class definitions. 
 
 \item
 The same syntax Eq a for expressing the context is used. 
