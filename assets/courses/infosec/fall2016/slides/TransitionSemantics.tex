@@ -1,0 +1,389 @@
+\documentclass{beamer}
+
+%\usetheme{Malmoe}
+\usetheme{Szeged}
+\usecolortheme{crane}
+
+\newtheorem{remark}{}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{listings}
+\include{globals}
+
+\usepackage{tthaskell,proof}
+\usepackage{beamerthemesplit}
+\newcommand{\ttcode}[1]{{\color{red}{\tt{#1}}}}
+
+\newcommand{\forget}[1]{}
+\title{CS8440: State Transition Semantics}
+\author{Bill Harrison}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+    \frametitle{State Machines \& Security Models}
+    
+\begin{itemize}
+\item Many security models define \emph{``is secure''} in terms of state machines; intuition:
+\begin{itemize}
+\item partition state space into secure and insecure states
+\item $\ldots$ system is secure iff only secure states are reachable from secure states
+\end{itemize}
+
+\pause
+\item Today: review state machine idea in the form of \emph{transition semantics} for a programming language
+
+\pause
+\item Transition Semantics: 
+\begin{itemize}
+\item Define the meaning of a language with transition rules. Execute input program \<p\> in state \<m_0\>:
+\item  \<(p,m_0) \ra (p_1,m_1) \ra \ldots \ra (p_n,m_n) \ra \ldots\>
+\item The example we consider is described in: Gunter, ``Semantics of Programming Languages: Structures and Techniques", pages 14-17.
+\end{itemize}
+\end{itemize}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+    \frametitle{The Simple Imperative Language with Loops}
+
+\begin{remark}[Abstract Syntax of While]
+\begin{haskell}
+I &\in&\relax Identifier
+\\
+%%%%%%%%%%%%%%%%
+N &\in&\relax Numeral
+\\
+%%%%%%%%%%%%%%%%
+B &::=&\relax~ \hskwd{true} ~|~ \hskwd{false} ~|~ B\, \hskwd{and}\, B ~|~ B\, \hskwd{or}\, B ~|~ \hskwd{not}\, B ~|~ E\, \hskwd{<}\, E ~|~ E \,\hskwd{=}\, E
+\\
+%%%%%%%%%%%%%%%%
+E &::=&\relax~ N ~|~ I ~|~ E \,+\, E ~|~ E \,*\, E ~|~ E\, -\, E ~|~ - E
+\\
+%%%%%%%%%%%%%%%%
+C &::=&\relax~ \hskwd{skip} ~|~ C\, ; C ~|~ I \hskwd{:=} E ~|~ 
+\\
+&&\relax~ \hskwd{if}\, B \,\hskwd{then}\, C\, \hskwd{else}\, C \,\hskwd{fi} ~|~ \hskwd{while}\, B\, \hskwd{do}\, C\, \hskwd{od}
+\end{haskell}
+\end{remark}
+
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+    \frametitle{The Memory}
+
+\begin{remark}[Memory maps I to \(Z\)]
+\begin{haskell}
+lookup ~m~ i &=&\relax~ \hsinf{current value of i}
+\\
+m[i {\mapsto} v] &=&\relax~ \hsinf{new memory s.t. i is bound to v}
+\end{haskell}
+\end{remark}
+
+\begin{haskell}
+lookup ~m[i {\mapsto} v]~j &=&\relax~ 
+\left\{
+\begin{array}{lcl}
+v && i \mbox{ is } j
+\\
+lookup~ m ~ j && \mbox{otherwise}
+\end{array}
+\right.
+\end{haskell}
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+    \frametitle{E and B semantics}
+    
+\begin{haskell}
+ev_E~ n~ m &=&\relax~ n
+\\
+ev_E~ i~ m &=&\relax~ lookup~ i ~m
+\\
+ev_E~ {-}e~ m &=&\relax~ - (ev_E ~e~ m)
+\\
+\lefteqn{~~~~~\ldots}
+\\
+ev_B~ \hskwd{true}~ m &=&\relax~ true
+\\
+ev_B~ (e_1 = e_2)~ m &=&\relax~ (ev_E~e_1~m~ =_Z ~ev_E~e_2~m)
+\\
+\lefteqn{~~~~~\ldots}
+\end{haskell}
+
+\pause
+Question: what are the types of \<ev_E\> and \<ev_B\>?
+
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+    \frametitle{Transition Semantics of While}
+
+\begin{minipage}{1in}
+\begin{haskell}
+(i := e, m) \ra m[i\mapsto ev_E ~e ~m]
+\end{haskell}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{haskell}
+(\hskwd{skip},m) \ra m
+\end{haskell}
+\end{minipage}
+
+\begin{minipage}{1in}
+\begin{haskell}
+\infer[]{(c_1 ; c_2, m) \ra (c_1' ; c_2,m')}{(c_1,m) \ra (c_1',m')}
+\end{haskell}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{haskell}
+\infer[]{(c_1 ; c_2, m) \ra (c_2,m')}{(c_1,m) \ra m'}
+\end{haskell}
+\end{minipage}
+
+\begin{center}
+\begin{minipage}{1in}
+\begin{haskell}
+\infer[]{(\hskwd{if}~ b ~\hskwd{then}~ c_1~ \hskwd{else}~ c_2 ~\hskwd{fi},m) \ra (c_1,m)}{ev_B ~b ~m = true}
+\end{haskell}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{haskell}
+\infer[]{(\hskwd{if}~ b ~\hskwd{then}~ c_1~ \hskwd{else}~ c_2 ~\hskwd{fi},m) \ra (c_2,m)}{ev_B ~b ~m = false}
+\end{haskell}
+\end{minipage}
+\end{center}
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+    \frametitle{Transition Semantics of While (cont'd)}
+
+\begin{center}
+\begin{haskell}
+\infer[]{(\hskwd{while}~ b ~\hskwd{do}~ c~ \hskwd{od},m) \ra (c ; \hskwd{while}~ b ~\hskwd{do}~ c~ \hskwd{od},m)}{ev_B ~b ~m = true}
+\end{haskell}
+\end{center}
+
+\begin{center}
+\begin{haskell}
+\infer[]{(\hskwd{while}~ b ~\hskwd{do}~ c~ \hskwd{od},m) \ra m}{ev_B ~b ~m = false}
+\end{haskell}
+\end{center}
+
+}
+
+\frame
+{
+\frametitle{In Class Exercise}
+
+Formulate the transition semantics for While in Haskell.
+
+\begin{enumerate}
+
+\item Define each of E, B, and C as \<\hskwd{data}\> declarations;
+
+\item Define the Memory data type next;
+
+\item Define \<ev_E\> and \<ev_B\> as Haskell functions;
+
+\item Finally, define the transitions for C as a function of type: \<(C,Memory) \ra Memory\>.
+
+\end{enumerate}
+
+}
+
+\begin{frame}[fragile]
+\frametitle{1. Define each of E, B, and C as \<\hskwd{data}\> declarations}
+
+\begin{smallcode}
+type Ident  = String
+type Number = Int%\pause%
+
+data E = %\pause%N Number
+       | I Ident
+       | Add E E | Mult E E | Subt E E | Inv E
+
+data B = %\pause%T | F | Conj B B 
+       | Disj B B | Negt B | LTC E E | EQL E E
+
+data C = %\pause%Skip
+       | Asn Ident E
+       | Seq C C
+       | IfElse B C C | While B C
+\end{smallcode}
+
+\end{frame}
+
+
+%%%%
+%%%%
+\begin{frame}[fragile]
+\frametitle{2. Define the Memory data type.}
+
+\begin{smallcode}
+type Memory = [(Ident, Number)]
+
+--
+-- memory look-up
+--
+lkup :: Memory -> Ident -> Number
+lkup ((x, n):ms) x' = if x == x' then n else lkup ms x'
+lkup [ ] _          = error "oh snap, you did something bad!"
+
+\end{smallcode}
+
+\end{frame}
+
+%%%%
+%%%%
+\begin{frame}[fragile]
+\frametitle{3. Define \<ev_E\> and \<ev_B\> as Haskell functions}
+
+\begin{smallcode}
+--
+-- evaluate a Boolean expression:
+--
+evB :: %\pause%Memory -> B -> Bool%\pause%
+evB _  T           = True%\pause%
+evB _  F           = False%\pause%
+evB m (Conj b1 b2) = (evB m b1) && (evB m b2)%\pause%
+evB m (Disj b1 b2) = (evB m b1) || (evB m b2)
+evB m (Negt b)     = not (evB m b)
+evB m (LTC e1 e2)  = (evE m e1) < (evE m e2)
+evB m (EQL e1 e2)  = (evE m e1) == (evE m e2)
+--
+-- evaluate an arithmetic expression:
+--
+evE ::%\pause% Memory -> E -> Number%\pause%
+evE _ (N n)        = n%\pause%
+evE m (I x)        = lkup m x%\pause%
+evE m (Add n1 n2)  = (evE m n1) + (evE m n2)%\pause%
+evE m (Mult n1 n2) = (evE m n1) * (evE m n2)
+evE m (Subt n1 n2) = (evE m n1) - (evE m n2)
+evE m (Inv n)      = -(evE m n)
+\end{smallcode}
+
+\end{frame}
+
+%%%%
+%%%%
+\begin{frame}[fragile]
+\frametitle{4. Define C transitions as a function of type: \<(C,Memory) \ra Memory\>}
+
+\begin{smallcode}
+type Trans  = (C, Memory) -> Memory
+
+exec :: Trans
+exec (Skip,m)            = ...
+exec (Asn i e,m)        = ...
+exec (Seq c1 c2,m)      = ...
+exec (IfElse b c1 c2,m) = ...
+exec (While b c,m)      = ...
+\end{smallcode}
+
+{\tiny
+\begin{minipage}{1in}
+\begin{haskell}
+(i := e, m) \ra m[i\mapsto ev_E ~e ~m]
+\end{haskell}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{haskell}
+(\hskwd{skip},m) \ra m
+\end{haskell}
+\end{minipage}
+
+\begin{minipage}{1in}
+\begin{haskell}
+\infer[]{(c_1 ; c_2, m) \ra (c_1' ; c_2,m')}{(c_1,m) \ra (c_1',m')}
+\end{haskell}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{haskell}
+\infer[]{(c_1 ; c_2, m) \ra (c_2,m')}{(c_1,m) \ra m'}
+\end{haskell}
+\end{minipage}
+\begin{center}
+\begin{minipage}{1in}
+\begin{haskell}
+\infer[]{(\hskwd{if}~ b ~\hskwd{then}~ c_1~ \hskwd{else}~ c_2 ~\hskwd{fi},m) \ra (c_1,m)}{ev_B ~b ~m = true}
+\end{haskell}
+\end{minipage}
+\begin{minipage}{1in}
+\begin{haskell}
+\infer[]{(\hskwd{if}~ b ~\hskwd{then}~ c_1~ \hskwd{else}~ c_2 ~\hskwd{fi},m) \ra (c_2,m)}{ev_B ~b ~m = false}
+\end{haskell}
+\end{minipage}
+\end{center}
+}
+\end{frame}
+
+    
+%%%%
+%%%%
+\begin{frame}[fragile]
+\frametitle{4. Define C transitions as a function of type: \<(C,Memory) \ra Memory\>}
+
+\begin{smallcode}
+type Trans  = (C, Memory) -> Memory
+
+exec :: Trans
+exec (Skip,m)           = m
+exec (Asn i e,m)        = (i,evE m e) : m
+exec (Seq c1 c2,m)      = exec (c2,exec (c1,m))
+exec (IfElse b c1 c2,m) = if evB m b 
+                            then exec (c1,m) 
+                            else exec (c2,m)
+exec (While b c,m)      = if evB m b 
+                            then exec (While b c,exec (c,m))
+                            else m
+\end{smallcode}
+
+\end{frame}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
