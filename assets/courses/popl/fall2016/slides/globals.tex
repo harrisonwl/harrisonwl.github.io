@@ -1,0 +1,181 @@
+\renewcommand{\ttdefault}{pcr}
+\definecolor{gray_ulisses}{gray}{0.55}
+\definecolor{castanho_ulisses}{rgb}{0.71,0.33,0.14}
+\definecolor{preto_ulisses}{rgb}{0.41,0.20,0.04}
+\definecolor{green_ulises}{rgb}{0.2,0.75,0}
+\lstdefinelanguage{HaskellUlisses} {
+        basicstyle=\itfamily\small,
+        sensitive=true,
+        morecomment=[l][\ttfamily\tiny]{--},
+        morecomment=[s][\ttfamily\tiny]{\{-}{-\}},
+%       morecomment=[l][\color{gray_ulisses}\ttfamily]{--},
+%       morecomment=[s][\color{gray_ulisses}\ttfamily]{\{-}{-\}},
+%       morecomment=[l][\color{gray_ulisses}\ttfamily\tiny]{--},
+%       morecomment=[s][\color{gray_ulisses}\ttfamily\tiny]{\{-}{-\}},
+        morestring=[b]",
+        %stringstyle=\color{red},
+        showstringspaces=false,
+        numberstyle=\tiny,
+        numberblanklines=true,
+        showspaces=false,
+        breaklines=true,
+        showtabs=false,
+        emph=
+        {[1]
+                        FilePath,IOError,abs,acos,acosh,all,and,any,appendFile,approxRational,asTypeOf,asin,
+                asinh,atan,atan2,atanh,basicIORun,break,catch,ceiling,chr,compare,concat,concatMap,
+                const,cos,cosh,curry,cycle,decodeFloat,denominator,digitToInt,div,divMod,drop,
+                dropWhile,either,elem,encodeFloat,enumFrom,enumFromThen,enumFromThenTo,enumFromTo,
+                error,even,exp,exponent,fail,filter,flip,floatDigits,floatRadix,floatRange,floor,
+                fmap,foldl,foldl1,foldr,foldr1,fromDouble,fromEnum,fromInt,fromInteger,fromIntegral,
+                fromRational,fst,gcd,getChar,getContents,getLine,head,id,inRange,index,init,intToDigit,
+                interact,ioError,isAlpha,isAlphaNum,isAscii,isControl,isDenormalized,isDigit,isHexDigit,
+                isIEEE,isInfinite,isLower,isNaN,isNegativeZero,isOctDigit,isPrint,isSpace,isUpper,iterate,iter,iterS,
+                last,lcm,length,lex,lexDigits,lexLitChar,lines,log,logBase,lookup,map,mapM,mapM_,max,
+                maxBound,maximum,maybe,min,minBound,minimum,mod,negate,not,notElem,null,numerator,odd,
+                or,ord,pi,pred,primExitWith,print,product,properFraction,putChar,putStr,putStrLn,quot,
+                quotRem,range,rangeSize,read,readDec,readFile,readFloat,readHex,readIO,readInt,readList,readLitChar,
+                readLn,readOct,readParen,readSigned,reads,readsPrec,realToFrac,recip,refold,rem,replicate,
+                reverse,round,scaleFloat,scanl,scanl1,scanr,scanr1,seq,sequence,sequence_,show,showChar,showInt,
+                showList,showLitChar,showParen,showSigned,showString,shows,showsPrec,significand,signum,sin,
+                sinh,snd,span,splitAt,sqrt,subtract,succ,sum,tail,take,takeWhile,tan,tanh,threadToIOResult,toEnum,
+                toInt,toInteger,toLower,toRational,toUpper,truncate,uncurry,unlines,until,unwords,unzip,
+                unzip3,userError,words,writeFile,zip,zip3,zipWith,zipWith3,listArray,doParse,lift,signal,get,put,extrude,return
+        },
+        emphstyle={[1]\textbf},
+        emph=
+        {[2]
+                Char,Double,Either,Float,IO,Integer,Int,Maybe,Ordering,Rational,Ratio,ReadS,ShowS,String,
+                Word8,InPacket,ReT,StT,I
+        },
+        emphstyle={[2]\textbf},
+        emph=
+        {[3]
+                case,class,deriving,do,else,if,import,in,infixl,infixr,instance,let,
+                module,of,primitive,then,type,vhdl,newtype
+        },
+        emphstyle={[3]\textbf},
+        emph=
+        {[4]
+                quot,rem,div,mod,elem,notElem,seq
+        },
+%        emphstyle={[4]\color{castanho_ulisses}\textbf},
+        emphstyle={[4]\textbf},
+        emph=
+        {[5]
+                EQ,False,GT,Just,LT,Left,Nothing,Right,True,Show,Eq,Ord,Num
+        },
+%        emphstyle={[5]\color{preto_ulisses}\textbf}
+        emphstyle={[5]\textbf}
+}
+
+\lstnewenvironment{footcode}
+{%\textbf{Haskell Code} \hspace{1cm} \hrulefill
+ \lstset{language=HaskellUlisses,    basicstyle=\ttfamily\footnotesize,escapechar=\%}}
+{}
+%{\hrulesmallskip} not sure what this is.
+
+%\lstnewenvironment{hcode}
+%{%\textbf{Haskell Code} \hspace{1cm} \hrulefill
+% \lstset{language=HaskellUlisses,    basicstyle=\ttfamily\small,escapechar=\%}}
+%{}
+
+\lstnewenvironment{hcode}
+{%\textbf{Haskell Code} \hspace{1cm} \hrulefill
+ \lstset{language=HaskellUlisses,    basicstyle=\ttfamily\footnotesize,escapechar=\%}}
+{}
+
+\lstnewenvironment{smallcode}
+{%\hspace{1cm}
+ \lstset{language=HaskellUlisses,       basicstyle=\ttfamily\small,escapechar=\%
+}}
+{}
+%{\hrulesmallskip} not sure what this is.
+
+\lstnewenvironment{tinycode}
+{%\hspace{1cm}
+ \lstset{language=HaskellUlisses,       basicstyle=\ttfamily\scriptsize,escapechar=\%
+}}
+{}
+
+\lstnewenvironment{teenycode}
+{%\hspace{1cm}
+ \lstset{language=HaskellUlisses,       basicstyle=\ttfamily\tiny,escapechar=\%
+}}
+{}
+
+
+\lstnewenvironment{newcode}{\lstset{language=Haskell,basicstyle=\scriptsize,identifierstyle=\itshape,stringstyle=\itshape,escapechar=\%}}{}
+
+\lstnewenvironment{normalcode}{\lstset{language=Haskell,
+                                       basicstyle=\normalsize\ttfamily,
+                                       keywordstyle=\bfseries,
+                                       %identifierstyle=\itshape,
+                                       %stringstyle=\itshape,
+                                       escapechar=\%}}{}
+
+\lstnewenvironment{vhdl}
+{\lstset{language=VHDL,basicstyle=\ttfamily\small,escapechar=\%}}{}
+
+\lstdefinelanguage{PreHDL} {
+        basicstyle=\ttfamily\small,
+        sensitive=true,
+        morecomment=[l][\ttfamily\tiny]{//},
+%        morecomment=[s][\ttfamily\tiny]{\{-}{-\}},
+%       morecomment=[l][\color{gray_ulisses}\ttfamily]{--},
+%       morecomment=[s][\color{gray_ulisses}\ttfamily]{\{-}{-\}},
+%       morecomment=[l][\color{gray_ulisses}\ttfamily\tiny]{--},
+%       morecomment=[s][\color{gray_ulisses}\ttfamily\tiny]{\{-}{-\}},
+        morestring=[b]",
+        %stringstyle=\color{red},
+        showstringspaces=false,
+        numberstyle=\tiny,
+        numberblanklines=true,
+        showspaces=false,
+        breaklines=true,
+        showtabs=false,
+        emph=
+        {[1]
+                input,output,vhdl,label,if,else,yield,goto,boolean,bits,true,false,function,return,concat
+        },
+        emphstyle={[1]\textbf}
+}
+
+\lstnewenvironment{prehdl}
+{\lstset{language=PreHDL,basicstyle=\ttfamily\small,escapechar=\%}}{}
+
+\newcommand{\ra}{\ensuremath{\rightarrow}}
+\newcommand{\edit}[1]{\marginpar{\raggedright\tiny\it{#1}}}
+
+\newcommand{\incode}[1]{{\footnotesize{\tt{#1}}}}
+
+
+\newcommand{\modal}[2]{\ensuremath{\mathsf{#1}_{#2}}}
+\newcommand{\kripke}[1]{\ensuremath{\sim_{#1}}}
+\renewcommand{\implies}{\ensuremath{\supset}}
+\newcommand{\hbind}[1]{\ensuremath{\mbox{{\footnotesize{\texttt{{>}{>}{=}}}}}_{\mbox{\tiny {\it #1}}}}}
+\newcommand{\hbindnull}[1]{\ensuremath{\footnotesize{\texttt{{>}{>}}}_{\mbox{\tiny {\it #1}}}}}
+\newcommand{\hreturn}[1]{\ensuremath{\mathtt{return}_{\mbox{\tiny {\it #1}}}}}
+%\renewcommand{\code}[1]{\ensuremath{\mathtt{#1}}}
+\newcommand{\tyjudgment}[3]{\ensuremath{#1 \triangleright #2 : #3 }}
+\newcommand{\nil}{\ensuremath{\mathtt{()}}}
+\newcommand{\hmodels}{\tiny{\ddtstile{}{}}}
+\newcommand*\widebar[1]{%
+  \hbox{%
+    \vbox{%
+      \hrule height 0.5pt % The actual bar
+      \kern0.1ex%         % Distance between bar and symbol
+      \hbox{%
+        \kern-0.1em%      % Shortening on the left side
+        \ensuremath{#1}%
+        \kern-0.1em%      % Shortening on the right side
+      }%
+    }%
+  }%
+} 
+
+\newcommand{\parS}{\ensuremath{{{.}{\mathtt{\&}}{.}}}}
+\newcommand{\parA}{\ensuremath{{{.}{\ast}{.}}}}
+%\newcommand{\pardev}{\ensuremath{{{\mathtt{<}}{\mathtt{\&}}{\mathtt{>}}}}}
+\newcommand{\pardev}{\ensuremath{\mbox{{\texttt{<\&>}}}}}
+

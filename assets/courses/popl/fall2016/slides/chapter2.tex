@@ -1,5 +1,8 @@
 \documentclass{beamer}
 
+\usepackage{listings,color}
+
+\input{globals}
 %\usetheme{Singapore}
 %\useoutertheme{myinfolines}
 \usecolortheme{rose}
@@ -38,7 +41,8 @@
 %\end{figure}
 %\end{frame}
 
-\title[CS4450]{CS4450/7450\\Principles of Programming Languages\\Data Types}
+\title[CS4450]{CS4450/7450\\Chapter 2: Starting Out}
+\subtitle{Principles of Programming Languages}
 \author[Bill Harrison]{Dr. William Harrison}
 \institute{University of Missouri}
 %\date{August 31, 2011}
@@ -48,34 +52,127 @@
 \frame{\titlepage}
 
 \begin{frame}[fragile]
-\frametitle{Data + Algorithms = Programs}
-\begin{itemize}
+\frametitle{GHCi is basically a fancy calculator}
 
-\item Any program is a combination of {\color{red}{data structures}} and {\color{blue}{code}} that  {\color{green}{manipulates}} that data
-
-\pause
-\item Simple arithmetic interpreter
-	\begin{itemize}
-    \item {\color{red}{data structure}}: \verb+data Exp = Const Int | Neg Exp | Add Exp Exp+
-    \item {\color{blue}{code}}:
-    \begin{verbatim}
-    interp :: Exp -> Int
-    interp (Const i)   = i
-    interp (Neg e)     = - (interp e)
-    interp (Add e1 e2) = interp e1 + interp e2
-    \end{verbatim}
-	\end{itemize}
-\pause
-
-\item {\color{green}{Manipulation}}: How do Haskell programs use data?
-\begin{itemize}
-\item Patterns break data apart to access: \\``{\small{\tt interp {\color{red}{(Neg e)}} =$\ldots$}}''
-\item Functions recombine into new data: \\``{\small{\tt interp e1 {\bf{\color{red}{+}}} interp e2}}''
-\end{itemize}
-
-\end{itemize}
+\begin{codeblock}
+\begin{hcode}
+$ ghci
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+Prelude> 4 + 2
+6
+Prelude> not (True && True)
+False
+Prelude> max 5 4
+5
+\end{hcode}
+\end{codeblock}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Type errors are your friends}
+\begin{codeblock}
+\begin{hcode}
+Prelude> 99 + "Hey"
+<interactive>:5:4:
+    No instance for (Num [Char]) arising from a use of `+`
+    In the expression: 99 + "Hey"
+    In an equation for `it`: it = 99 + "Hey"
+Prelude> 
+\end{hcode}
+\end{codeblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{GHCi Commands}
+\framesubtitle{Some Pragmatics}
+\begin{itemize}
+\item \verb+:l+ or \verb+:load+ --- load a file or module
+
+\item \verb+:t:+ or \verb+:type+ --- give the type of an expression
+
+\item \verb+:i+ or \verb+:info+ --- produce information about a definition
+
+\item \verb+:q+ or \verb+:quit+ --- quit, derp.
+
+\end{itemize}
+
+\pause
+\begin{codeblock}
+\begin{hcode}
+Prelude> :t not
+not :: Bool -> Bool
+Prelude> :i not
+not :: Bool -> Bool 	-- Defined in ?GHC.Classes?
+Prelude> 
+\end{hcode}
+\end{codeblock}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{``Baby's First Program''}
+
+Entered in a file \verb+Chap2.hs+:
+\begin{codeblock}
+\begin{hcode}
+module Chap2 where
+
+doubleMe x = x + x  
+\end{hcode}
+\end{codeblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{``Baby's First Program'', cont'd}
+\begin{codeblock}
+\begin{hcode}
+$ ghci
+GHCi, version 7.10.3: http://www.haskell.org/ghc/  :? for help
+Prelude> :l Chap2.hs
+[1 of 1] Compiling Chap2            ( Chap2.hs, interpreted )
+Ok, modules loaded: Chap2.
+*Chap2> doubleMe 9
+18
+*Chap2> doubleMe 3.14
+6.28
+*Chap2> :t doubleMe
+\end{hcode}
+\end{codeblock}
+\pause
+\begin{codeblock}
+\begin{hcode}
+doubleMe :: Num a => a -> a
+*Chap2> 
+\end{hcode}
+\end{codeblock}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Lists, an Introduction to}
+\begin{codeblock}
+\begin{hcode}
+Prelude> let lostNumbers = [4,8,15,16,23,42] 
+Prelude> lostNumbers
+[4,8,15,16,23,42]
+
+Prelude> 99 : lostNumbers
+[99,4,8,15,16,23,42]
+
+Prelude> [1,2,3,4] ++ [9,10,11,12]
+[1,2,3,4,9,10,11,12]
+
+Prelude> "hello" ++ " " ++ "world"
+"hello world"
+
+Prelude> ['w','0'] ++ ['0','t']
+"w00t"
+\end{hcode}
+\end{codeblock}
+\end{frame}
 
 \begin{frame}[fragile]
 \Large
