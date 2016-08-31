@@ -103,7 +103,8 @@ Prelude>
 Prelude> :t not
 not :: Bool -> Bool
 Prelude> :i not
-not :: Bool -> Bool 	-- Defined in ?GHC.Classes?
+not :: Bool -> Bool 	
+        -- Defined in `GHC.Classes`
 Prelude> 
 \end{hcode}
 \end{codeblock}
@@ -174,584 +175,96 @@ Prelude> ['w','0'] ++ ['0','t']
 \end{codeblock}
 \end{frame}
 
-\begin{frame}[fragile]
-\Large
-
-\frametitle{Type Declarations}
-
-In Haskell, a new name for an existing type can be 
-defined using a \underline{type declaration}. 
-
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-type String = [Char] 
-\end{verbatim}
-\end{codeblock}
-
-\slideskip
-
-{\tt String} is a synonym for the type \verb+[Char]+.
-\end{frame}
-
 
 \begin{frame}[fragile]
-\Large
+\frametitle{Some Facts about Lists}
 
-%\frametitle{Type Declarations}
-
-Type declarations can be used to make other types 
-easier to read.  
-For example, given 
-
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-type Pos = (Int,Int)
-\end{verbatim}
-\end{codeblock}
-
-\slideskip
-we can define
-\slideskip
-\begin{codeblock}
-\begin{verbatim}
-origin    :: Pos 
-origin     = (0,0) 
-
-left      :: Pos -> Pos 
-left (x,y) = (x-1,y) 
-\end{verbatim}
-\end{codeblock}
-
-\end{frame}
-
-\begin{frame}[fragile]
-\Large
-
-Like function definitions, type declarations can also 
-have \underline{parameters}. 
-For example, given 
-
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-type Pair a = (a,a) 
-\end{verbatim}
-\end{codeblock}
-
-\slideskip
-we can define
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-mult      :: Pair Int -> Int 
-mult (m,n) = m*n
-
-copy      :: a -> Pair a 
-copy x     = (x,x)
-\end{verbatim}
-\end{codeblock}
-
-\end{frame}
-
-\begin{frame}[fragile]
-\Large
-
-Type declarations can be nested:
-
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-type Pos   = (Int,Int)    -- GOOD
-
-type Trans = Pos -> Pos   -- GOOD
-\end{verbatim}
-\end{codeblock}
-
-\slideskip
-However, they cannot be recursive:
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-type Tree = (Int,[Tree])  -- BAD
-\end{verbatim}
-\end{codeblock}
-
-\end{frame}
-
-\begin{frame}[fragile]
-\LARGE
-
-\frametitle{Data Declarations}
-
-A completely new type can be defined by specifying 
-its values using a \underline{data declaration}. 
-
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-data Bool = False | True
-\end{verbatim}
-\end{codeblock}
-
-\slideskip
-{\tt Bool} is a new type, with two 
-new values {\tt False} and {\tt True}.
-
-\end{frame}
-
-\begin{frame}[fragile]
-\LARGE
-
-Note: 
 \begin{itemize}
-\item The two values False and True are called the 
-constructors for the type Bool. 
-\item Type and constructor names must begin with 
-an upper-case letter. 
-\item Data declarations are similar to context free 
-grammars.  The former specifies the values of 
-a type, the latter the sentences of a language.
-\end{itemize}
-\end{frame}
+
+\item \verb+[]+, \verb+[[]]+ and \verb+[[],[],[]]+ are all different things. What are their types? Can check that with GHCi.
+
+\pause
+
+\item Lists are \emph{uniform} in Haskell. E.g., \verb+[1,2,3]+ is legal and \verb+[1,2,'c']+ is not.
+
+\pause 
+
+\item The \verb+data+ declaration for lists in Haskell is:
+\begin{hcode}
+data [a] = [] | a : [a]
+\end{hcode}
 
 
-\begin{frame}[fragile]
-\large
-
-Values of new types can be used in the same ways 
-as those of built in types.  For example, given
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-data Answer = Yes | No | Unknown 
-\end{verbatim}
-\end{codeblock}
-
-\slideskip
-we can define:
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-answers     :: [Answer] 
-answers      = [Yes,No,Unknown] 
-
-flip        :: Answer -> Answer 
-flip Yes     = No 
-flip No      = Yes 
-flip Unknown = Unknown 
-\end{verbatim}
-\end{codeblock}
-
-\end{frame}
-
-\begin{frame}[fragile]
-\large
-
-The constructors in a data declaration can also have 
-parameters.  For example, given 
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-data Shape = Circle Float 
-           | Rect Float Float 
-\end{verbatim}
-\end{codeblock}
-
-\slideskip
-we can define:
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-square         :: Float -> Shape 
-square n        = Rect n n 
-area           :: Shape -> Float 
-area (Circle r) = pi * r^2 
-area (Rect x y) = x * y 
-\end{verbatim}
-\end{codeblock}
-
-\end{frame}
-
-\begin{frame}[fragile]
-\LARGE
-
-Note: 
-\begin{itemize}
-\item {\tt Shape} has values of the form {\tt Circle r} where {\tt r} is 
-a float, and {\tt Rect x y} where {\tt x} and {\tt y} are floats. 
-\item {\tt Circle} and {\tt Rect} {\bf are} functions that 
-construct values of type {\tt Shape}: 
 \end{itemize}
 
 
-\begin{execblock}[1.0]
-\begin{verbatim}
--- Not a definition
-Circle :: Float -> Shape 
-Rect   :: Float -> Float -> Shape
-\end{verbatim}
-\end{execblock}
-
-
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-\large
-
-Not surprisingly, data declarations themselves can 
-also have parameters.  For example, given 
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-data Maybe a = Nothing | Just a 
-\end{verbatim}
-\end{codeblock}
-
-\slideskip
-we can define:
-\slideskip
-
-\begin{codeblock}
-\begin{verbatim}
-safediv    :: Int -> Int -> Maybe Int 
-safediv _ 0 = Nothing 
-safediv m n = Just (m `div` n) 
-
-safehead   :: [a] -> Maybe a 
-safehead [] = Nothing 
-safehead xs = Just (head xs) 
-\end{verbatim}
-\end{codeblock}
-
 \end{frame}
 
 \begin{frame}[fragile]
-\Large
+\frametitle{Basic Function on Lists}
 
-\frametitle{Recursive Types}
-
-In Haskell, new types can be declared in terms of 
-themselves.  That is, types can be \underline{recursive}. 
-
-\slideskip
-
+\verb+head+ takes a list and returns its head. The head of a list is  its first element (if it exists).
 \begin{codeblock}
-\begin{verbatim}
-data Nat = Zero | Succ Nat
-\end{verbatim}
+\begin{hcode}
+ghci> head [5,4,3,2,1]  
+5
+\end{hcode}
 \end{codeblock}
 
-\slideskip
-Nat is a new type, with constructors 
-{\tt Zero :: Nat} and {\tt Succ :: Nat -> Nat}.
-
-\end{frame}
-
-\begin{frame}[fragile]
-\LARGE
-
-Note: 
 \begin{itemize}
-\item A value of type {\tt Nat} is either {\tt Zero}, or of the form 
-{\tt Succ n} where {n :: Nat}.  That is, {\tt Nat} contains the 
-following infinite sequence of values: 
-\end{itemize}
 
-\begin{execblock}
-\begin{verbatim}
-Zero
-\end{verbatim}
-\end{execblock}
-\begin{execblock}
-\begin{verbatim}
-Succ Zero
-\end{verbatim}
-\end{execblock}
-\begin{execblock}
-\begin{verbatim}
-Succ (Succ Zero)
-\end{verbatim}
-\end{execblock}
+\item What is the type of \verb+head+?
 
-\hskip 1in {\Huge$\vdots$}
-
-\end{frame}
-
-
-\begin{frame}[fragile]
-\LARGE
-
-Note: 
-\begin{itemize}
-\item We can think of values of type Nat as natural 
-numbers, where {\tt Zero} represents {\tt 0}, and {\tt Succ} 
-represents the successor function {\tt 1+}. 
-\item For example, the value
-\begin{execblock}
-\begin{verbatim}
-Succ (Succ (Succ Zero))
-\end{verbatim}
-\end{execblock}
-
-represents the natural number
-\begin{execblock}
-\begin{verbatim}
-1 + (1 + (1 + 0))
-\end{verbatim}
-\end{execblock}
+\item How do we write \verb+head+ in Haskell?
 
 \end{itemize}
 
 \end{frame}
 
-
-
 \begin{frame}[fragile]
+\frametitle{Basic Function on Lists}
 
-\large
-Using recursion, it is easy to define functions that 
-convert between values of type Nat and Int: 
-
-\frameskip
+\verb+tail+ takes a list and returns its tail. In other words, it chops off a list's head.
 
 \begin{codeblock}
-\begin{verbatim}
-nat2int         :: Nat -> Int 
-nat2int Zero     = 0 
-nat2int (Succ n) = 1 + nat2int n 
-
-int2nat         :: Int -> Nat 
-int2nat 0        = Zero 
-int2nat n        = Succ (int2nat (n - 1))
-\end{verbatim}
+\begin{hcode}
+ghci> tail [5,4,3,2,1]  
+[4,3,2,1]  
+\end{hcode}
 \end{codeblock}
 
-\end{frame}
-
-\begin{frame}[fragile]
-
-\large
-Two naturals can be added by converting them to 
-integers, adding, and then converting back: 
-
-\frameskip
-
-\begin{codeblock}
-\begin{verbatim}
-add    :: Nat -> Nat -> Nat 
-add m n = int2nat (nat2int m + nat2int n) 
-\end{verbatim}
-\end{codeblock}
-\frameskip
-However, using recursion the function add can be 
-defined without the need for conversions: 
-\frameskip
-\begin{codeblock}
-\begin{verbatim}
-add Zero     n = n 
-add (Succ m) n = Succ (add m n) 
-\end{verbatim}
-\end{codeblock}
-\frameskip
-The recursive definition for add corresponds to 
-the laws 
-$$0+n = n$$ and $$(1+m)+n = 1+(m+n)$$
-\end{frame}
-
-\begin{frame}[fragile]
-
-\Large
-Using recursion, an expression tree can be defined using:
-
-\frameskip
-
-\begin{codeblock}
-\begin{verbatim}
-data Expr = Val Int 
-          | Add Expr Expr 
-          | Mul Expr Expr 
-\end{verbatim}
-\end{codeblock}
-\frameskip
-
-One example of such a tree written in Haskell is
-\frameskip
-\begin{execblock}
-\begin{verbatim}
-Add (Val 1) (Mul (Val 2) (Val 3))
-\end{verbatim}
-\end{execblock}
-\frameskip
-
-
-\end{frame}
-
-
-\begin{frame}[fragile]
-
-\Large
-Using recursion, it is now easy to define functions 
-that process expressions.  For example: 
-
-\frameskip
-
-\begin{codeblock}
-\begin{verbatim}
-size          :: Expr -> Int 
-size (Val n)   = 1 
-size (Add x y) = size x + size y 
-size (Mul x y) = size x + size y 
-
-eval          :: Expr -> Int 
-eval (Val n)   = n 
-eval (Add x y) = eval x + eval y 
-eval (Mul x y) = eval x * eval y
-\end{verbatim}
-\end{codeblock}
-
-
-\end{frame}
-
-\begin{frame}[fragile]
-\LARGE
-
-Note: 
 \begin{itemize}
-\item 
-The three constructors have types: 
 
-\begin{execblock}[1.0]
-\begin{verbatim}
--- Not a definition
-Val :: Int -> Expr 
-Add :: Expr -> Expr -> Expr 
-Mul :: Expr -> Expr -> Expr 
-\end{verbatim}
-\end{execblock}
+\item What is the type of \verb+tail+?
+
+\item How do we write \verb+tail+ in Haskell?
 
 \end{itemize}
 
 \end{frame}
 
-
 \begin{frame}[fragile]
+\frametitle{Basic Function on Lists}
 
-\Large
-Using recursion, a binary tree can be defined using:
-
-\frameskip
+If you want to get an element out of a list by index, use \verb+!!+. The indices start at 0.
 
 \begin{codeblock}
-\begin{verbatim}
-data Tree = Leaf Int 
-          | Node Tree Int Tree 
-\end{verbatim}
+\begin{hcode}
+ghci> "Steve Buscemi" !! 6  
+'B'  
+ghci> [9.4,33.2,96.2,11.2,23.25] !! 1  
+33.2  
+\end{hcode}
 \end{codeblock}
-\frameskip
 
-One example of such a tree written in Haskell is
-\frameskip
-\begin{execblock}
-\begin{verbatim}
-Node (Node (Leaf 1) 3 (Leaf 4)) 
-     5 
-     (Node (Leaf 6) 7 (Leaf 9))
-\end{verbatim}
-\end{execblock}
-\frameskip
-\end{frame}
+\begin{itemize}
 
+\item What is the type of \verb+!!+?
 
-\begin{frame}[fragile]
-\large
+\item How do we write \verb+!!+ in Haskell?
 
-We can now define a function that decides if a given 
-integer occurs in a binary tree: 
+\end{itemize}
 
-\frameskip
-
-\begin{execblock}[1.0]
-\begin{verbatim}
-occurs               :: Int -> Tree -> Bool 
-occurs m (Leaf n)     = m==n 
-occurs m (Node l n r) = m==n 
-                        || occurs m l 
-                        || occurs m r 
-\end{verbatim}
-\end{execblock}
-
-\frameskip
-
-In the worst case, when the integer does not 
-occur, this function traverses the entire tree.
-
-\end{frame}
-
-\begin{frame}[fragile]
-\large
-
-Search trees have the important property that when 
-trying to find a value in a tree we can always decide 
-which of the two sub-trees it may occur in: 
-
-\frameskip
-
-\begin{execblock}[1.0]
-\begin{verbatim}
-occurs               :: Int -> Tree -> Bool 
-occurs m (Leaf n)            = m==n 
-occurs m (Node l n r) | m==n = True 
-                      | m<n  = occurs m l 
-                      | m>n  = occurs m r
-                      \end{verbatim}
-\end{execblock}
-
-\frameskip
-
-This new definition is more \underline{efficient}, because it only 
-traverses one path down the tree. 
-
-What is the precondition for {\tt Node}?
-
-\end{frame}
-\begin{frame}[fragile]
-\large
-
-Finally consider the function {\tt flatten} that returns the 
-list of all the integers contained in a tree: 
-
-\frameskip
-
-\begin{execblock}
-\begin{verbatim}
-flatten             :: Tree -> [Int] 
-flatten (Leaf n)     = [n] 
-flatten (Node l n r) = flatten l 
-                       ++ [n] 
-                       ++ flatten r 
-\end{verbatim}
-\end{execblock}
-
-\frameskip
-\frameskip
-
-A tree is a \underline{search tree} if it flattens to a list that is ordered.
 \end{frame}
 
 
