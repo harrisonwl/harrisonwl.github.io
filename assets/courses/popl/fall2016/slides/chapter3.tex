@@ -80,13 +80,26 @@ ghci> foo "A Connecticut Yankee in King Arthur's Court"
 %%%%%%%%%
 %%%%%%%%%
 \begin{frame}[fragile]
-\frametitle{}
+\frametitle{Type Systems}
+\framesubtitle{Haskell has ``static types with inference''}
 
-\begin{codeblock}
+\begin{itemize}
+\item {\bf Type Checking:} given an expression $e$ and a type $t$, check whether $e :: t$. E.g., 
 \begin{hcode}
-
+("hey", True) :: (String,Bool) -- Yes!
+("hey", True) :: (String,Char) -- No!
 \end{hcode}
-\end{codeblock}
+
+\pause
+\item {\bf{Type Inference:}} given an expression $e$, compute its type $t$ (if it exists). E.g., 
+\begin{hcode}
+("hey",True)   %$\leadsto$%  (String,Bool)
+"hey" + 99     %$\leadsto$%  error!
+\end{hcode}
+
+\pause 
+\item {\bf Static Types.} a type system for which the types of expressions are known at \emph{compile-time}. I.e., the type of every expression is known by inspecting its code---and not by running it.
+\end{itemize}
 
 \end{frame}
 %%%%%%%%%
@@ -96,13 +109,16 @@ ghci> foo "A Connecticut Yankee in King Arthur's Court"
 %%%%%%%%%
 %%%%%%%%%
 \begin{frame}[fragile]
-\frametitle{}
+\frametitle{Type Variables}
+\framesubtitle{Reintroducing what we called ``parametric polymorphism}
 
-\begin{codeblock}
+The following type means that, for all types \verb+a+ and \verb+b+, the function \verb+fst+ can be applied.
+%\begin{codeblock}
 \begin{hcode}
-
+ghci> :t fst  
+fst :: (a, b) -> a 
 \end{hcode}
-\end{codeblock}
+%\end{codeblock}
 
 \end{frame}
 %%%%%%%%%
@@ -112,61 +128,19 @@ ghci> foo "A Connecticut Yankee in King Arthur's Court"
 %%%%%%%%%
 %%%%%%%%%
 \begin{frame}[fragile]
-\frametitle{}
+\frametitle{Type Classes}
 
-\begin{codeblock}
+The {\color{red}{following}} is a \emph{type constraint}:
 \begin{hcode}
-
+ghci> :t (==)  
+(==) :: %\color{red}{(Eq a) =>}% a -> a -> Bool 
 \end{hcode}
-\end{codeblock}
 
-\end{frame}
-%%%%%%%%%
-%%%%%%%%%
+\vfill
+It means that \verb+(==)+ can be applied only at types in the \verb+Eq+ class.
 
-
-%%%%%%%%%
-%%%%%%%%%
-\begin{frame}[fragile]
-\frametitle{}
-
-\begin{codeblock}
-\begin{hcode}
-
-\end{hcode}
-\end{codeblock}
-
-\end{frame}
-%%%%%%%%%
-%%%%%%%%%
-
-
-%%%%%%%%%
-%%%%%%%%%
-\begin{frame}[fragile]
-\frametitle{}
-
-\begin{codeblock}
-\begin{hcode}
-
-\end{hcode}
-\end{codeblock}
-
-\end{frame}
-%%%%%%%%%
-%%%%%%%%%
-
-
-%%%%%%%%%
-%%%%%%%%%
-\begin{frame}[fragile]
-\frametitle{}
-
-\begin{codeblock}
-\begin{hcode}
-
-\end{hcode}
-\end{codeblock}
+\vfill There are many predefined classes in Haskell, including
+\verb+Ord+, \verb+Show+, \verb+Enum+, \verb+Num+, etc.
 
 \end{frame}
 %%%%%%%%%
