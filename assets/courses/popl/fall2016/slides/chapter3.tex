@@ -56,6 +56,15 @@
 \begin{frame}[fragile]
 \frametitle{Let the type be your guide}
 
+What is the type of \verb+foo+?
+\begin{codeblock}
+\begin{hcode}
+foo st = [ c | c <- st, c `elem` ['A'..'Z']] 
+\end{hcode}
+\end{codeblock}
+
+\vfill
+\pause
 What does \verb+foo+ do?
 \begin{codeblock}
 \begin{hcode}
@@ -110,7 +119,7 @@ ghci> foo "A Connecticut Yankee in King Arthur's Court"
 %%%%%%%%%
 \begin{frame}[fragile]
 \frametitle{Type Variables}
-\framesubtitle{Reintroducing what we called ``parametric polymorphism}
+\framesubtitle{Reintroducing what we called ``parametric polymorphism''}
 
 The following type means that, for all types \verb+a+ and \verb+b+, the function \verb+fst+ can be applied.
 %\begin{codeblock}
@@ -119,6 +128,35 @@ ghci> :t fst
 fst :: (a, b) -> a 
 \end{hcode}
 %\end{codeblock}
+
+\end{frame}
+%%%%%%%%%
+%%%%%%%%%
+
+%%%%%%%%%
+%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Type Instances}
+
+Given:
+%\begin{codeblock}
+\begin{hcode}
+ghci> :t fst  
+fst :: (a, b) -> a 
+\end{hcode}
+%\end{codeblock}
+
+``Instances'' of \verb+(a,b) -> a+ determine how \verb+fst+ can be applied:
+\begin{hcode}
+  (Int,Char) -> Int                -- %\color{red}{fst}% (99,'A')
+  ([Char],Float) -> [Char]         -- %\color{blue}{fst}% ("Hey",3.14)
+  (Int -> Int,Bool) -> Int -> Int  -- %\color{green}{fst}% (id,True)
+                  %$\vdots$%
+\end{hcode}
+
+{\tt{\color{red}{fst}}}, 
+{\tt{\color{blue}{fst}}}, 
+{\tt{\color{green}{fst}}} all refer to {\bf the same code}.
 
 \end{frame}
 %%%%%%%%%
