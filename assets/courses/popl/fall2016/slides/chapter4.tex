@@ -195,6 +195,33 @@ tell (x:y:_)  = "This list is long. The first two elements are: " ++ show x ++ "
 %%%%%%%%%
 %%%%%%%%%
 
+
+%%%%%%%%%
+%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{As Patterns}
+
+Here, ``as'' is \verb+@+
+\begin{codeblock}
+\begin{hcode}
+capital :: String -> String  
+capital "" = "Empty string, whoops!"  
+capital all@(x:xs) = "The first letter of " ++ all ++ " is " ++ [x] 
+\end{hcode}
+\end{codeblock}
+
+\begin{codeblock}
+\begin{hcode}
+ghci> capital "Dracula"  
+"The first letter of Dracula is D" 
+\end{hcode}
+\end{codeblock}
+
+\end{frame}
+%%%%%%%%%
+%%%%%%%%%
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Guards in Patterns}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -202,17 +229,72 @@ tell (x:y:_)  = "This list is long. The first two elements are: " ++ show x ++ "
 %%%%%%%%%
 %%%%%%%%%
 \begin{frame}[fragile]
-\frametitle{}
+\frametitle{Guards}
 
+It's easy enough to write the maximum function using 
+\verb+if-then-else+:
 \begin{codeblock}
 \begin{hcode}
-
+max :: Float -> Float -> Float
+max a b = if a<b then b else a
 \end{hcode}
 \end{codeblock}
+\vfill
+
+\pause
+Another way to define the identical function is with \emph{guards}:
+\begin{codeblock}
+\begin{hcode}
+max :: Float -> Float -> Float
+max a b | a<b       = b
+        | otherwise = a
+\end{hcode}
+\end{codeblock}
+
 
 \end{frame}
 %%%%%%%%%
 %%%%%%%%%
+
+%%%%%%%%%
+%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Why use guards: Readability.}
+
+This is much more readable:
+%\begin{codeblock}
+\begin{hcode}
+bmiTell :: (RealFloat a) => a -> String  
+bmiTell bmi  
+    | bmi <= 18.5 = "underweight"  
+    | bmi <= 25.0 = "normal"  
+    | bmi <= 30.0 = "overweight"  
+    | otherwise   = "obese"
+\end{hcode}
+%\end{codeblock}
+\vfill
+\pause
+...than this:
+%\begin{codeblock}
+\begin{hcode}
+bmiTell :: (RealFloat a) => a -> String  
+bmiTell bmi = if bmi <= 18.5
+               then "underweight"
+                else if bmi <= 25.0
+                      then "normal"  
+                else if bmi <= 30.0
+                      then "overweight"
+                else
+                      "obese"  
+\end{hcode}
+%\end{codeblock}
+
+
+
+\end{frame}
+%%%%%%%%%
+%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Where Clauses}
@@ -222,13 +304,30 @@ tell (x:y:_)  = "This list is long. The first two elements are: " ++ show x ++ "
 %%%%%%%%%
 %%%%%%%%%
 \begin{frame}[fragile]
-\frametitle{}
+\frametitle{Where clauses}
+\framesubtitle{let you define local variables}
 
-\begin{codeblock}
 \begin{hcode}
-
+bmiTell :: (RealFloat a) => a -> a -> String  
+bmiTell weight height  
+    | weight / height ^ 2 <= 18.5 = "underweight"  
+    | weight / height ^ 2 <= 25.0 = "normal"  
+    | weight / height ^ 2 <= 30.0 = "overweight"  
+    | otherwise                   = "obese"
 \end{hcode}
-\end{codeblock}
+\pause
+
+\begin{hcode}
+bmiTell :: (RealFloat a) => a -> a -> String  
+bmiTell weight height  
+    | bmi <= 18.5 = "underweight"  
+    | bmi <= 25.0 = "normal"  
+    | bmi <= 30.0 = "overweight"  
+    | otherwise   = "obese"
+  where
+     bmi = weight / height ^ 2
+     -- calculate bmi once, use value repeatedly
+\end{hcode}
 
 \end{frame}
 %%%%%%%%%
@@ -243,13 +342,23 @@ tell (x:y:_)  = "This list is long. The first two elements are: " ++ show x ++ "
 %%%%%%%%%
 %%%%%%%%%
 \begin{frame}[fragile]
-\frametitle{}
+\frametitle{Let definitions}
+\framesubtitle{...are just like where clauses}
 
-\begin{codeblock}
 \begin{hcode}
-
+cylinder :: (RealFloat a) => a -> a -> a  
+cylinder r h = 
+    let 
+        sideArea = 2 * pi * r * h  
+        topArea  = pi * r ^2  
+    in  
+        sideArea + 2 * topArea 
 \end{hcode}
-\end{codeblock}
+
+\begin{itemize}
+\item Variables defined in a \verb+let+ or \verb+where+ clauses are local
+\item E.g., \verb+sideArea+ and \verb+topArea+ can be used only in the body of the \verb+let/where+.
+\end{itemize}
 
 \end{frame}
 %%%%%%%%%
@@ -260,6 +369,39 @@ tell (x:y:_)  = "This list is long. The first two elements are: " ++ show x ++ "
 \section{Case Expressions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%%%%%%%
+%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Case Expressions}
+
+General form of a case expression:
+\begin{hcode}
+case expression of pattern -> result  
+                   pattern -> result  
+                   pattern -> result  
+                   ...  
+\end{hcode}
+\pause\vfill
+\begin{hcode}
+head :: [a] -> a  
+head []    = error "empty list"  
+head (x:_) = x 
+\end{hcode}
+
+\pause\vfill
+A way to define the identical function:
+\begin{hcode}
+head :: [a] -> a  
+head xs = case xs of 
+               []    -> error "empty list"  
+               (x:_) -> x  
+\end{hcode}
+
+
+\end{frame}
+%%%%%%%%%
+%%%%%%%%%
 
 %%%%%%%%%
 %%%%%%%%%
@@ -275,5 +417,4 @@ tell (x:y:_)  = "This list is long. The first two elements are: " ++ show x ++ "
 \end{frame}
 %%%%%%%%%
 %%%%%%%%%
-
 \end{document}
