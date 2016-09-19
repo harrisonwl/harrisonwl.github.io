@@ -58,7 +58,13 @@ Prelude> prob2 ['a'..'z']
 -- 3. Find the K'th element of a list. 
 --
 
-prob3 = undefined
+prob3 :: [a] -> Int -> a
+prob3 [] _          = error "Acck!"
+prob3 (x:xs) k
+        | k==1      = x
+        | k>1       = prob3 xs (k-1)
+        | otherwise = error "Acckk!!!"
+
 {-
 Prelude> prob3 [1,2,3] 2
 2
@@ -70,7 +76,10 @@ Prelude> prob3 "haskell" 5
 -- 4. Find the number of elements of a list.
 --
 
-prob4 = undefined
+prob4 :: [a] -> Int
+prob4 []     = 0
+prob4 (_:xs) = 1 + prob4 xs
+
 {-
 Prelude> prob4 [123, 456, 789]
 3
@@ -82,7 +91,21 @@ Prelude> prob4 "Hello, world!"
 -- 5. Reverse a list.
 --
 
-prob5 = undefined
+
+prob5 :: [a] -> [a]
+prob5 xs = prob5' [] xs
+   where
+     prob5' :: [a] -> [a] -> [a]
+     prob5' acc []     = acc
+     prob5' acc (x:xs) = prob5' (x:acc) xs
+
+
+{-
+prob5 :: [a] -> [a]
+prob5 []     = []
+prob5 (x:xs) = prob5 xs ++ [x]
+-}
+
 {-
 Prelude> prob5 "A man, a plan, a canal, panama!"
 "!amanap ,lanac a ,nalp a ,nam A"
