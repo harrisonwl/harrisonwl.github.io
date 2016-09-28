@@ -1,0 +1,236 @@
+\documentclass{beamer}
+
+%\usetheme{Singapore}
+%\usetheme{Hannover}
+%\usetheme{Szeged}
+\usetheme{Montpellier}
+\usecolortheme{dove}
+%\usecolortheme{lily}
+%\usecolortheme{rose}
+
+\useinnertheme[shadow]{rounded} 
+
+
+\newtheorem{remark}{Remark}
+
+\usepackage{listings}
+\usepackage{haskell,proof}
+\usepackage{fancyvrb,alltt}
+\usepackage{amsmath}
+%\usepackage{beamerthemesplit}
+\input{globals}
+
+%\newcommand{\tyjudgment}[3]{\ensuremath{#1 \triangleright #2 : #3 }}
+\newcommand{\judgment}[3]{\ensuremath{#1 \vdash #2 : #3}}
+%\lstnewenvironment{newcode}{\lstset{language=Haskell,basicstyle=\scriptsize,escapechar=\@}}{}
+\newcommand{\ttcode}[1]{{\color{red}{\tt{#1}}}}
+\newcommand{\lang}[1]{\ensuremath{\mathcal{L}(#1)}}
+
+\newcommand{\forget}[1]{}
+\title{A Type-based Approach to Program Security}
+\subtitle{Dennis Volpano \& Geoffrey Smith, TAPSOFT 1997}
+\author{Professor William L. Harrison\\CS8440 Fall 2015}
+\date{\today}
+
+\begin{document}
+
+
+\frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Overview}
+
+
+\begin{itemize}
+\item Retrofits noninterference to programming languages
+\pause
+\item Ex: Consider the following procedure: 
+\begin{haskell}
+proc P(inout x : low, inout y : high)
+\end{haskell}
+\pause
+\item Suppose \<P(u:low, v:high)\> and \<P(u:low,w:high)\> terminate
+      with values \<u\>, \<v\> and \<w\>.
+\pause
+\item The final values for \<v\> and \<w\> may differ, 
+ {\bf but}, if \<P\> is noninterfering, then the final values for \<u\> must be identical.
+\pause
+\item Smith \& Volpano's type system enforces noninterference---\<P\> is well-typed means it's noninterfering.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Typing Information Flows}
+
+\begin{frame}[fragile]
+\frametitle{Explicit Flows}
+
+\begin{itemize}
+\item For \<l : low var\> and \<h : high var\>,
+      an explicit flow \<l := h\> must be rejected.
+\pause
+\item In Denning \& Denning, this was performed by the certification mechanism.
+\pause
+\item In Smith and Volpano, this is accomplished via a typing rule:
+\begin{haskell}
+\infer[]{\gamma \vdash e := e' : \tau cmd}{\gamma \vdash e : \tau acc & \gamma \vdash e' : \tau}
+\end{haskell} 
+\pause 
+\item This rule insists that \<h\> and \<l\> be typed on the same level. How?
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\frametitle{Running Example}
+
+\begin{center}
+\begin{normalcode}
+            while h > 0 do
+               l := l + 1;
+               h := h - 1
+            od 
+\end{normalcode}
+\end{center}
+\pause
+\begin{itemize}
+\item Q: What kind of flows exist in this program?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Running Example}
+
+\begin{center}
+\begin{normalcode}
+            while h > 0 do
+               l := l + 1;
+               h := h - 1
+            od 
+\end{normalcode}
+\end{center}
+\pause
+\begin{itemize}
+\item The typing rule for \<while\> insists that the test and body of the loop be typed at the same level:
+\begin{haskell}
+\infer[]{\gamma \vdash while e do c : \tau cmd}{\gamma \vdash e : \tau & \gamma \vdash c : \tau cmd}
+\end{haskell}
+\end{itemize}
+
+\end{frame}
+
+\section{Introduction to the Type System}
+
+\begin{frame}[fragile]
+\frametitle{Programming Language Syntax}
+
+\begin{center}
+\includegraphics[scale=1.0]{figures/languagesyntax}
+\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Type Syntax}
+
+\begin{center}
+\includegraphics[scale=1.5]{figures/typesyntax}
+\end{center}
+
+N.b., $s$ is a \emph{security level}. It is assumed that all security levels form a lattice ordered by $\leq$.
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Type Judgments}
+{\Large
+\[
+\judgment{\lambda ; \gamma}{e}{\rho}
+\]
+}
+
+\pause
+\begin{itemize}
+\item $e$ is a program phrase (i.e., expression, command, etc.).
+\pause
+\item $\rho$ is a type.
+\pause
+\item $\gamma$ is the \emph{identifier typing environment}.\\~~~~N.b., ``$\gamma(i) = \rho$'' means $i$ has type $\rho$ in $\gamma$.
+\pause
+\item $\lambda$ is the \emph{location typing environment}.
+\begin{itemize}
+\item Locations are used for input-output in the semantics.
+\item Locations are, in effect, global.
+\item $\lambda$ largely irrelevant to the type system; only occurs in one rule (VARLOC).
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Formal Treatment of Type System}
+
+
+\begin{frame}[fragile]
+\begin{center}
+\includegraphics[scale=1.2]{figures/typesys1}
+\end{center}
+\end{frame}
+
+    
+\begin{frame}[fragile]
+\begin{center}
+\includegraphics[scale=1.2]{figures/typesys2}
+\end{center}
+\end{frame}
+    
+\begin{frame}[fragile]
+\begin{center}
+\includegraphics[scale=1.2]{figures/typesys3}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Next time}
+\begin{itemize}
+\item Natural semantics for language
+\item Noninterference as Type soundness argument:
+\begin{itemize}
+\item Argue that well-typed programs do not interfere.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\end{document}
+    
+
+
+
+
+
+
+
+
+
+
+
