@@ -123,7 +123,7 @@ prob4 :: (Integer,Integer) -> Integer -> Integer
 prob4 (n1,n2) n = undefined
 
 {-
-Your solution should behave like the following. Part of the challenge of this problem is to
+Your solution should behave like the transcript below. Part of the challenge of this problem is to
 determine what the initial values of n1 and n2 should be. Here, I've written them below as ?1 and ?2,
 which should be constants of type Integer.
 

@@ -8,6 +8,9 @@
 %\usecolortheme{lily}
 %\usecolortheme{rose}
 
+\setbeamertemplate{navigation symbols}{}
+
+
 \useinnertheme[shadow]{rounded} 
 
 
@@ -29,7 +32,7 @@
 \newcommand{\forget}[1]{}
 \title{A Type-based Approach to Program Security}
 \subtitle{Dennis Volpano \& Geoffrey Smith, TAPSOFT 1997}
-\author{Professor William L. Harrison\\CS8440 Fall 2015}
+\author{Professor William L. Harrison\\CS8440 Fall 2016}
 \date{\today}
 
 \begin{document}
@@ -114,7 +117,7 @@ proc P(inout x : low, inout y : high)
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Running Example}
+\frametitle{Example}
 
 \begin{center}
 \begin{normalcode}
@@ -220,6 +223,129 @@ N.b., $s$ is a \emph{security level}. It is assumed that all security levels for
 \end{itemize}
 \end{itemize}
 \end{frame}
+
+\section{Review}
+
+\begin{frame}[fragile]
+\frametitle{}
+\begin{center}
+\includegraphics[scale=0.5]{figures/goals.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{}
+\begin{center}
+\includegraphics[scale=0.5]{figures/corelanguage.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Type Assertions}
+\begin{center}
+\includegraphics[scale=0.45]{figures/typeassertions.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{}
+\begin{center}
+\includegraphics[scale=0.4]{figures/example.pdf}
+\end{center}
+\end{frame}
+
+\section{The Role of Subtyping in Smith-Volpano}
+
+\begin{frame}
+\frametitle{Subtypes}
+
+\begin{itemize}
+\item A type ${\it {S}}$ is a subtype of a type ${\it {T}}$ (written ${\it {S
+{\rm \ \subseteq \ }T}}$) if an expression of type ${\it {S}}$ can be used in any context that expects an element of type ${\it {T}}$. 
+\begin{itemize}
+\item Another way of putting this is that any expression of type ${\it {S}}$ can masquerade as an expression of type ${\it {T}}$. 
+\end{itemize}
+\pause
+
+\item Function subtyping is a bit non-intuitive at first:
+\begin{center}
+\includegraphics[scale=0.5]{figures/FunctionSubtyping}
+\end{center}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Subtyping Rules}
+\begin{center}
+\includegraphics[scale=1]{figures/subtyping.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Typing Rules with Subtyping}
+\begin{center}
+\includegraphics[scale=1]{figures/typingrules_subtyping.pdf}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Another Example}
+
+\begin{center}
+\begin{normalcode}
+   %\textbf{proc}% (in x, %\textbf{out}% y)
+      let var a := x in
+      let var b := y in
+            %\textbf{while}% a > 0 do
+               b := b + 1;
+               a := a - 1;
+            %\textbf{od}%
+            y := b
+\end{normalcode}
+\end{center}
+\pause
+\begin{itemize}
+\item Has type: \<\beta \mathbf{proc}(\alpha, \beta \mathbf{acc})\> where $\alpha$ and $\beta$ are the security levels for \texttt{a} and \texttt{b}, resp., and \(\alpha \leq \beta\).
+\end{itemize}
+
+
+\end{frame}
+
+\section{Natural Semantics}
+
+\begin{frame}[fragile]
+\frametitle{}
+\begin{center}
+\includegraphics[scale=0.4]{figures/naturalsemantics.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Evaluation Rules}
+\begin{center}
+\includegraphics[scale=1]{figures/evaluationrules1.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Evaluation Rules (cont'd)}
+\begin{center}
+\includegraphics[scale=1]{figures/evaluationrules2.pdf}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+%\frametitle{Noninterference Theorem}
+\begin{center}
+\includegraphics[scale=0.4]{figures/noninterference.png}
+\end{center}
+\end{frame}
+
+
 
 \end{document}
     
