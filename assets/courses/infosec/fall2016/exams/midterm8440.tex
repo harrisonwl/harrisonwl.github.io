@@ -1,0 +1,174 @@
+\documentclass[12pt]{article}
+\usepackage{graphics,color}
+\usepackage{graphicx,color}    % on a mac
+\usepackage{boxedminipage}
+\usepackage{haskell}
+\setlength{\topmargin}{-0.5in}
+
+
+%{\hrulesmallskip} not sure what this is.
+
+\setlength{\textheight}{9.0in}
+\setlength{\textwidth}{7.5in}
+\setlength{\oddsidemargin}{-0.5in}
+%\setlength{\evensidemargin}{-0.1in}
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{0.1in}
+
+\newcommand{\forget}[1]{}
+% new itemize environment with itemsep parameter
+\newenvironment{myitemize}[1][0]
+  { \begin{itemize}
+    % set spacing between items
+    \addtolength{\itemsep}{#1\baselineskip}
+    % set spacing between lines
+    \addtolength{\baselineskip}{#1\baselineskip} }
+  { \end{itemize} }
+
+\newenvironment{myenumerate}[1][0]
+  { \begin{enumerate}
+    % set spacing between items
+    \addtolength{\itemsep}{#1\baselineskip}
+    % set spacing between lines
+    \addtolength{\baselineskip}{#1\baselineskip} }
+  { \end{enumerate} }
+  
+    
+\pagestyle{empty}
+%\pagenumbering{nopagenumbering}
+
+%\thispagestyle{empty}
+\begin{document}
+
+\title{\noindent {\bf Name:}\underline{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+\\
+\vspace{20ex}{\bf CS8440 Midterm Examination}\\{\bf Fall 2015}
+}
+\date{Monday, October 5th}
+
+\maketitle
+\thispagestyle{empty}
+
+{\large
+\begin{center}
+\begin{minipage}{4.5in}
+\begin{itemize}
+\item This is a closed book, closed note exam. 
+\item You may not use a calculator or similar device.
+\item Write all work on the exam itself. 
+\item The total points are 100.
+\item The point value of each question is marked by the question.
+\end{itemize}
+\end{minipage}
+\end{center}
+}                         
+%\begin{center}
+%\begin{tabular}{|c|c|c|}
+%\hline
+%Problem & Value & Score
+%\\\hline
+%1 &4 & 4
+%\\\hline
+%2
+%\\\hline
+%\end{tabular}
+%\end{center}
+
+
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{enumerate}
+\section{Covert Timing Channels}
+\item[] {\bf Directions.} For the next three questions, you will design a covert timing channel using the particular mechanism described at the beginning of each question. 
+\begin{itemize}
+\item Use the terminology from class to describe covert channels---especially, the \emph{trojan} and the \emph{spy}. 
+\item Your answer must provide sufficient detail to convince me that you know what you're talking about, although you need not write pseudocode. What constitutes a 0 bit being transmitted? What constitutes a 1 bit? Describe what the trojan and spy must do to construct your covert timing channel.
+\item Note that there may be more than one possible timing channel---you need only describe one.
+\end{itemize}
+
+\item {\textbf{[15pts] The UNIX {\tt top} command.}} Here's Wikipedia's description:
+``\emph{{\tt top} is a task manager program found in many Unix-like operating systems. It produces an ordered list of running processes selected by user-specified criteria, and updates it periodically. Default ordering by CPU usage, and only the top CPU consumers shown (hence the name). {\tt top} shows how much processing power and memory are being used, as well as other information about the running processes. Some versions of {\tt top} allow extensive customization of the display, such as choice of columns or sorting method.}''
+
+\newpage
+\section*{Covert Timing Channels (cont.)}
+\item {\textbf{[15pts] Network packet transmission.}} Assume that the trojan possesses a command, {\tt send(}{\textit{payload}{\texttt{)}}} that sends a packet from the trojan's node to the spy's node. Furthermore, assume that {\tt send} encrypts its payload and that it is impossible for the spy to decrypt it. The spy has a command, {\tt recv(}{\textit{msg}}{\texttt{)}}, it can use to read the encrypted payload. 
+
+\newpage
+\section*{Covert Timing Channels (cont.)}
+\item {\textbf{[15pts] Password authentication.}} Suppose that the authentication of passwords is performed by the following code:
+\begin{verbatim}
+     proc validate_password(actual_pw, typed_pw) {
+        if len(actual_pw) <> len(typed_pw) { return InvalidPassword }
+        for i in len(actual_pw):
+           if actual_pw[i] <> typed_pw[i]:
+              return InvalidPassword
+        return ValidPassword
+        }
+\end{verbatim}
+When the password manager receives the password typed in by a user, \verb+typed_pw+, it compares it against the actual password, \verb+actual_pw+.
+
+\newpage
+\section{Noninterference}
+\item[] Goguen and Meseguer introduced a relation symbol, \verb+:|+, for specifying information flow policies. Recall that \verb+u1 :| u2+ requires that \verb+u1+ not interfere with \verb+u2+. 
+\begin{center}
+\includegraphics[scale=0.25]{cryptosystem}
+\end{center}
+Plaintext messages arrive at Red. Their bodies are sent through the encryption device (Crypto) and their headers, which must remain in plaintext so that network switches can interpret them, are sent through Bypass. Headers and encrypted bodies are reassembled in the Black side and sent out onto the network. The security policy you are to specify here requires that the only channels for information flow from Red to Black must be those through the Crypto and the Bypass.
+\begin{enumerate}
+\item {\bf [15pts]} Write a security policy for the crypto-system above using \verb+:|+. 
+
+\item {\bf [15pts]} Can ``\verb+:|+'' be transitive or not? Does it matter? Justify your answer. Recall that ``\verb+:|+ is transitive'' means that: (\verb+u1:|u2+ and \verb+u2:|u3+) implies \verb+u1:|u3+ for all users \verb+u1+, \verb+u2+, and \verb+u3+.
+\end{enumerate}
+
+\newpage
+\section*{Noninterference (cont.)}
+\item[] Use this space for your answer if you wish.
+
+\newpage
+\section{Certification of Security Flows}
+\item[]
+\begin{verbatim}
+p :   begin
+      i: integer security class L; 
+      e: Boolean security class L;
+      f: file security class L;
+      x, sum: integer security class H;
+      begin
+         x := 1;
+         sum := 0; 
+         i := 0;
+         e := true; 
+         while e do
+         begin
+            sum := sum + x ; 
+            i := i+1;
+            output i to f
+         end 
+       end
+     end
+\end{verbatim}
+\begin{enumerate}
+\item {\bf [10pts]} Describe informally (i.e., without using Denning and Denning's actual rules) why this code is certified as secure by Denning and Denning's certification mechanism. 
+\item {\bf [15pts]} An arithmetic overflow exception occurs in some systems if the result of performing an arithmetic operation is too large to store; program execution terminates at the point in the program causing the exception. If there is an arithmetic overflow exception in the implementation of this code, this code ceases to be secure. Describe why.
+\end{enumerate}
+\newpage
+\section*{Certification of Security Flows (cont.)}
+\item[] Use this space for your answer if you wish.
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
