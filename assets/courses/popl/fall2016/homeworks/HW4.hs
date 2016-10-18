@@ -69,7 +69,7 @@ Hint: to represent a stack of Int, you can simply use [Int].
 -}
 
 {-
-Problem 1.
+Problem 1. (12 points).
 
 Write a function called, rpnParse, that parses a String and returns a PExp.  Input
 strings for this function are tokens that are either numbers or operators separated
@@ -88,7 +88,7 @@ to see how it works. Here is an example of how rpnParse should work:
 rpnParse = undefined
 
 {-
-Problem 2.
+Problem 2. 12 points.
 
 Write an evaluator for RPN called eval.  This function should be typed as PExp -> Int.
 Cases of bad input and evaluation should result in a call to the Haskell error function.
@@ -101,7 +101,7 @@ eval :: PExp -> Int
 eval = undefined
 
 {-
-Problem 3. Refactoring the evaluator.
+Problem 3. 12 points. Refactoring the evaluator.
 
 The evaluator crashes in cases where there are bad inputs and division by zero.
 This isn't particularly useful for recovery purposes.  We can refactor the evaluator
@@ -137,7 +137,7 @@ evalSafe :: PExp -> RPNResult
 evalSafe = undefined
 
 {-
-Problem 4. Translating to infix.
+Problem 4. 14 points. Translating to infix.
 
 Lastly, implement a function rpnTrans that takes PExp and (given correct input) returns
 a String of an equivalent arithmetic expression in infix notation, with the correct
@@ -159,13 +159,3 @@ is left to the student.
 -}
 
 rpnTrans = undefined
-
-{-
-Problem 5. Full circle.
-
-Using your previous work, implement a function, fullTrans, that translates an input
-String in prefix notation to an output string in the same kind of Either formulation
-you used in Problem 4.
--}
-
-fullTrans = undefined
