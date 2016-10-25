@@ -13,7 +13,7 @@ Graham Hutton, Cambridge University Press, 2007.
 The monad of parsers
 --------------------
 
-> newtype Parser a              =  P (String -> [(a,String)])
+> data Parser a              =  P (String -> [(a,String)])
 > 
 > instance Functor Parser where
 >   fmap f (P x) = P (\ inp -> let l = x inp in map (\ (v,s) -> (f v, s)) l)

@@ -4,6 +4,7 @@ import Data.Char
 import Parsing
 import ArithAST
 
+parseOp :: Parser Op
 parseOp = do
             isym <- symbol "+" +++ symbol "-" +++ symbol "*" +++ symbol "/"
             return (tr isym)
@@ -13,10 +14,12 @@ parseOp = do
                   tr "*" = Times
                   tr "/" = Div
 
+parseConst :: Parser Exp
 parseConst = do 
                i <- integer
                return (Const i)
 
+parseAexp :: Parser Exp
 parseAexp = do
               symbol "("
               op <- parseOp
@@ -27,7 +30,17 @@ parseAexp = do
               symbol ")"
               return (Aexp op e1 e2)
        
+parseExp :: Parser Exp
 parseExp = parseConst +++ parseAexp      
-deP (P x) = x
 
-parser inp = fst (head ((deP parseExp) inp))
+--
+-- This is the thing we're trying to define.
+--
+parser :: String -> Exp
+parser inp = case parse parseExp inp of
+                  [(e,_)] -> e
+                  _       -> error "syntax error"
+
+--
+-- data Parser a =  P (String -> [(a,String)])
+--
