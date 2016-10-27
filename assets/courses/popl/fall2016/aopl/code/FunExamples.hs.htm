@@ -1,0 +1,140 @@
+<pre>
+{-# OPTIONS -XRankNTypes #-}
+import <a href=Value.hs.htm>Value</a>
+import <a href=IntBool.hs.htm>IntBool</a>
+import <a href=FunctionalEnvironment.hs.htm>FunctionalEnvironment</a>
+
+compose f g = \x -> f(g x)
+
+compose :: (b -> c) -> (a -> b) -> (a -> c)
+
+square n = n * n
+mulPi m = pi * m
+
+areaR = compose mulPi square
+
+areaD = compose areaR (\x -> x / 2)
+
+testM1 = map negate [1, 3, -7, 0, 12]   
+-- returns [-1, -3, 7, 0, -12]
+
+testM2 = [ negate n | n <- [1, 3, -7, 0, 12] ]   
+-- returns [-1, -3, 7, 0, -12]
+
+
+type EnvL = [(String, Value)]
+envL1 = [("x", IntV 3), ("y", IntV 4), ("size", IntV 10)]
+
+envF1 "x"    = Just (IntV 3)
+envF1 "y"    = Just (IntV 4)
+envF1 "size" = Just (IntV 10)
+envF1 _      = Nothing
+
+x1 = lookup "x" envL1
+x2 = envF1 "x"
+
+
+
+
+bindL :: String -> Value -> EnvL -> EnvL
+bindL var val env = (var, val) : env
+
+
+envL2 = bindL "z" (IntV 5) envL1
+   -- [("z", IntV 5), ("x", IntV 3), ("y", IntV 4), ("size", IntV 10)]
+envL3 = bindL "x" (IntV 9) envL1
+   -- [("x", IntV 9), ("x", IntV 3), ("y", IntV 4), ("size", IntV 10)]
+
+-- version A
+envF2 = bindF "z" (IntV 5) envF1
+
+-- version B
+envF2'1 = \testVar -> if testVar == "z"
+                    then Just (IntV 5)
+                    else envF1 testVar
+
+-- version C
+envF2'2 "z" = Just (IntV 5)
+envF2'2 testVar = envF1 testVar
+
+emptyEnvL :: EnvL
+emptyEnvL = []
+
+add a b = b + a
+
+add'1 a = \b -> b + a
+
+add'2 = \a -> \b -> b + a
+
+add'3 = \a -> (\b -> b + a)
+
+
+inc = add 1      -- \b. b + 1
+dec = add (-1)   -- \b. b + (-1)
+
+
+eleven = inc 10
+nine   = dec 10
+
+inc'1 = (\a -> (\b -> b + a)) 1
+
+inc'2 = \b -> b + 1
+
+
+inc'3 b = b + 1
+
+testinc = inc 5 + inc 10 + dec 20 + dec 100
+
+bindF'1 var val env testVar = if testVar == var
+                            then Just val
+                            else env testVar
+
+true  x y = x
+false x y = y
+
+type BooleanF = forall a. a -> a -> a
+true :: BooleanF
+false :: BooleanF
+
+notF :: BooleanF -> BooleanF
+notF b = b false true
+
+orF :: BooleanF -> BooleanF -> BooleanF
+orF a b  = a true b
+
+andF :: BooleanF -> BooleanF -> BooleanF
+andF a b = a b false
+
+testb1 = if not True then 1 else 2
+
+testb2 = (notF true) 1 2
+
+zero = \f -> \x -> x
+one = \f -> \x -> f x
+two = \f -> \x -> f (f x)
+three = \f -> \x -> f (f (f x))
+
+succ = \n -> (\f -> \x -> f (n f x))
+
+
+type ChurchN = forall a. (a -> a) -> a -> a
+
+church :: Integer -> ChurchN
+church 0 = \f -> \x -> x
+church n = \f -> \x -> f (church (n-1) f x)
+
+unchurch :: ChurchN -> Integer
+unchurch n = n (+1) 0
+-- 5 == (unchurch (church 5)) -- this evaluates to True
+
+
+plus :: ChurchN -> ChurchN -> ChurchN
+plus n m = \f -> \x -> n f (m f x)
+mul :: ChurchN -> ChurchN -> ChurchN
+mul n m = \f -> n (m f)
+
+main = do
+  print testM1
+  print testM2
+  
+</pre>
