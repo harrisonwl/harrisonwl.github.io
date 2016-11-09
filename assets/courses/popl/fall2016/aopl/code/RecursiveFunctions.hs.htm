@@ -8,7 +8,7 @@ import <a href=Operators.hs.htm>Operators</a>
 
 data Value = IntV  Int
            | BoolV Bool
-           | ClosureV String Exp Env  -- new
+           | ClosureV String Exp Env 
   deriving (Eq, Show)
 
 data Exp = Literal    Value
@@ -40,12 +40,15 @@ evaluate (If a b c) env =
 
 evaluate (Variable x) env = fromJust (lookup x env)
 
+evaluate (RecDeclare x exp body) env = evaluate body newEnv
+  where newEnv = (x, evaluate exp newEnv) : env
+
 evaluate (Declare x exp body) env = evaluate body newEnv
   where newEnv = (x, evaluate exp env) : env
 
-evaluate (Function x body) env = ClosureV x body env     -- new
+evaluate (Function x body) env = ClosureV x body env   
 
-evaluate (Call fun arg) env = evaluate body newEnv    -- changed
+evaluate (Call fun arg) env = evaluate body newEnv   
   where ClosureV x body closeEnv = evaluate fun env
         newEnv = (x, evaluate arg env) : closeEnv
 
