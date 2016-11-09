@@ -5,6 +5,8 @@ import TopLevelFunctionsParse
 
 p1 = parseExp "function power(n, m) { if (m == 0) 1 else n*power(n, m-1) } power(3, 4)"
 
+fac = parseExp "function fac(n) { if (n == 0) 1 else n*fac(n-1) } fac(5)"
+
 {-
 
 Program

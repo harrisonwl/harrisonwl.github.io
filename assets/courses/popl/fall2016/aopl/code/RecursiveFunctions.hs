@@ -1,4 +1,4 @@
-module FirstClassFunctions where
+module RecursiveFunctions where
 
 import Prelude hiding (LT, GT, EQ, id)
 import Data.Maybe
@@ -10,14 +10,15 @@ data Value = IntV  Int
            | ClosureV String Exp Env
   deriving (Eq, Show)
 
-data Exp = Literal   Value
-         | Unary     UnaryOp Exp
-         | Binary    BinaryOp Exp Exp
-         | If        Exp Exp Exp
-         | Variable  String
-         | Declare   String Exp Exp
-         | Function  String Exp     
-         | Call      Exp Exp        
+data Exp = Literal    Value
+         | Unary      UnaryOp Exp
+         | Binary     BinaryOp Exp Exp
+         | If         Exp Exp Exp
+         | Variable   String
+         | Declare    String Exp Exp
+         | RecDeclare String Exp Exp
+         | Function   String Exp     
+         | Call       Exp Exp        
   deriving (Eq, Show)
   
 type Env = [(String, Value)]
@@ -42,6 +43,9 @@ evaluate (Function x body) env = ClosureV x body env
 
 evaluate (Declare x exp body) env = evaluate body newEnv
   where newEnv = (x, evaluate exp env) : env
+
+evaluate (RecDeclare x exp body) env = evaluate body newEnv
+  where newEnv = (x, evaluate exp newEnv) : env
 
 evaluate (Call fun arg) env = evaluate body newEnv
   where ClosureV x body closeEnv = evaluate fun env

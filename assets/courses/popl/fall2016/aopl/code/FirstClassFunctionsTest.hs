@@ -3,6 +3,13 @@ import Prelude hiding (LT, GT, EQ)
 import FirstClassFunctions
 import FirstClassFunctionsParse
 
+
+fac = parseExp ("var fac = function(n) { if (n==0) 1 else n * fac(n-1) };" ++
+                "fac(5)")
+
+p0 = parseExp ("var foo = function(x) { 99 };" ++
+               "foo(1 / 0)")
+
 p1 = parseExp ("var T = function(a) { function(b) { a } };"++
                "var F = function(a) { function(b) { b } };"++
                "var not = function(b) { b(F)(T) };"++
@@ -34,10 +41,10 @@ p5 = parseExp (
      
 main = do
   tagged "FirstClassT1" (do
-  	test "execute" execute p1
-  	test "execute" execute p2
-  	test "execute" execute p3
-  	test "execute" execute p4
-  	test "execute" execute p5
+                            test "execute" execute p1
+                            test "execute" execute p2
+                            test "execute" execute p3
+                            test "execute" execute p4
+                            test "execute" execute p5
    )
   	
