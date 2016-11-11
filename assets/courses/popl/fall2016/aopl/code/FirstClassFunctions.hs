@@ -36,7 +36,10 @@ evaluate (If a b c) env =
     if test then evaluate b env
             else evaluate c env
 
-evaluate (Variable x) env = fromJust (lookup x env)
+evaluate (Variable x) env = fromJust x (lookup x env)
+   where
+     fromJust x (Just v) = v
+     fromJust x Nothing  = error ("unbound variable: " ++ x)
 
 evaluate (Function x body) env = ClosureV x body env
 
