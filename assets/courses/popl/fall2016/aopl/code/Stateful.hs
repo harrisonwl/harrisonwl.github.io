@@ -33,7 +33,7 @@ data Exp = Literal   Value
          | Seq       Exp Exp
          | Mutable   Exp         -- new
          | Access    Exp         -- new
-         | Assign    Exp Exp   -- new
+         | Assign    Exp Exp     -- new
   deriving (Eq, Show)
   
 type Env = [(String, Value)]
