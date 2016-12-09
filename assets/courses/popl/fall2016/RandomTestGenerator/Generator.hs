@@ -1,6 +1,7 @@
 module Generator where
 
 import System.IO
+import System.Process
 import System.Random
 import Data.List
 import Preamble
@@ -38,6 +39,9 @@ shuffleTest (q:qs) = do
       ms  <- shuffle matches
       qs' <- shuffleTest qs
       return $ Match dir questions ms : qs' 
+    Plain s -> do
+      qs' <- shuffleTest qs
+      return $ Plain s : qs' 
 
 
 generate :: String -> Test -> IO ()
@@ -54,11 +58,21 @@ generateTests tname test n = do
   generate (tname ++ "_" ++ show n ++ ".tex") test
   generateTests tname test (n-1)
 
+genTests tname test last 0 = return ()
+genTests tname test last n = do
+  let testname = tname ++ "_" ++ show n ++ ".tex"
+  test' <- shuffle test
+  generate testname (test'++last)
+  system $ "/Library/TeX/texbin/pdflatex " ++ "TestDir/" ++ testname
+  system $ "/usr/bin/lpr -o sides=two-sided-long-edge " ++ tname ++ "_" ++ show n ++ ".pdf"
+  genTests tname test' last (n-1)
+
 
 type Test = [QuestionGroup]
 data QuestionGroup = TF String [String]
                    | Mult String [Quest]
                    | Match String [String] [String]
+                   | Plain String
 data Quest         = MultChoice String [String]
                    | ShortAnswer String Int
 
@@ -80,7 +94,7 @@ instance Show QuestionGroup where
       "\\item [] {\\bf Directions.} " ++ dir ++ "\n" ++
       (foldr (++) "" $ map (\ q -> "\\item {\\bf True} or {\\bf False}: " ++ q) qs) ++
       "\\newpage"
-  show (Match d qs ms) = "\\item [] " ++ d ++ "\n" ++
+  show (Match d qs ms) = "\\item []  {\\bf Directions.} " ++ d ++ "\n" ++
                          "\\begin{minipage}{2.5in}"   ++
                          (foldr (++) "" $ map (\ q -> "\\item " ++ q) qs) ++
                          "\\end{minipage}\\hspace{1.2in}\n" ++
@@ -94,55 +108,5 @@ instance Show QuestionGroup where
       "\\item [] " ++ stmt ++
       (foldr (\ q qs -> q ++ "\n\n" ++ qs) [] $ (map show qs)) ++ 
       "\\newpage"
-
-{-
-type Test     = [Question]    
-data Question = TrueFalse String [String]
-              | Multiple String String [String]
-              | MultOne  String [String]
-              | Directions String
-              | Matching String [String] [String]
--}
-
-{-
-instance Show Question where
-  show (TrueFalse dir qs) =
-      "\\item [] {\\bf Directions.} " ++ dir ++ "\n" ++
---      "\\begin{enumerate}\n" ++
-      (foldr (++) "" $ map (\ q -> "\\item {\\bf True} or {\\bf False}: " ++ q) qs) ++
-      "\\newpage"
---      "\\end{enumerate}"
-  show (Multiple dir q qs) =
-      "\\item [] " ++ dir ++ "\\item \n" ++ q ++ "\n" ++      
-      "\\begin{enumerate}[(a)]\n" ++
-      (foldr (++) "" $ map (\ q -> "\\item " ++ q) qs) ++
-      "\\end{enumerate}\\newpage"
-  show (Directions d) = "\\item [] {\\bf Directions.} " ++ d ++ "\n"
-  show (MultOne dir qs) =
-      "\\item [] " ++ dir ++ "\n" ++
-      (foldr (++) "" $ map (\ q -> "\\item " ++ q) qs) ++
-      "\\newpage"
-  show (Matching d qs ms) = "\\item [] " ++ d ++ "\n" ++
-                            "\\begin{minipage}{2.5in}"   ++
-                            (foldr (++) "" $ map (\ q -> "\\item " ++ q) qs) ++
-                            "\\end{minipage}\\hspace{1.2in}\n" ++
-                            "\\begin{minipage}{2.75in}\n"
-                            ++ "\\begin{enumerate}[(a)]\n"
-                            ++ (foldr (++) "" $ map (\ q -> "\\item " ++ q) ms) 
-                            ++ "\\end{enumerate}\n"
-                            ++ "\\end{minipage}\n" ++
-                            "\\newpage"
--}
-
-
-
-
-{-
-    Directions d -> do
-      qs' <- shuffleTest qs
-      return $ Directions d : qs'
-    MultOne dir questions  -> do
-      sq  <- shuffle questions
-      qs' <- shuffleTest qs
-      return $ MultOne dir sq : qs' 
--}
+  show (Plain stmt) =
+      "\\item [] " ++ stmt ++ "\\newpage"
