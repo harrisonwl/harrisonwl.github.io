@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}
+\usepackage{url}
+\usepackage{hyperref}
+
+\title{CS4430/7430: Introduction to Compiler Construction\\Spring 2017}
+\author{Professor William L. Harrison}
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Instructors \& Contact Info}
+
+\begin{itemize}
+
+\item  \href{mailto:harrisonwl@missouri.edu}{William Harrison}. Office: 318 EBN. Office Hours: By appointment {\bf only}.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Overview}
+The compiler is the programmer's most important tool. It gives the programmer the freedom to write practical programs in a high-level programming language while still achieving good execution times and efficient use of space. In this course, we study the principles underlying the design of most compilers, and we will actually write several simple compilers. 
+
+
+The course topics will span formal foundations to modular software development. Compilers are fundamentally translators from a human-readable language into a machine-readable language. The principles and programming techniques that are required for implementing this translation process involve ideas from symbolic computation, data structures and algorithms, automata theory, and formal semantics.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Textbooks \& Course Materials}
+
+There are two {\bf{required}} textbooks for this class. They are:
+\begin{itemize}
+\item {\it Compiler Design: Syntactic and Semantic Analysis}, 2013 edition, by Reinhard Wilhelm, Helmut Seidl, and Sebastian Hack. This is part of a series, so make sure you get the right one.
+
+\item {\it Learn You a Haskell for Great Good!} by Miran Lipova\v{c}a. This is available in  paperback and also as an e-book. Furthermore,  there is an online version of the text at \url{http://learnyouahaskell.com/chapters}. {\bf All} programming assignments will be done in Haskell. You need not know the Haskell language now. We will spend the first two weeks bringing you up to speed on the language.
+
+\item {\it Slides.} I will make my slides available on the course website: \url{https://harrisonwl.github.io/doc/cs4430.html}. Many of the slides were graciously provided by Helmut Seidl of the Technische \"{U}niversit\"{a}t M\"{u}nchen. I will extend these slides as needed.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Examinations}
+%
+%\begin{itemize}
+%\item {\it Midterm 1.} Wednesday, February 20$^{th}$.
+%\item {\it Midterm 2.} Wednesday, April 3$^{rd}$.
+%\item {\it Final Exam.} Thursday, May 16$^{th}$,
+%12:30-2:30 p.m.
+%\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Grading}
+
+We will have two midterm examinations, a final exam and a number of programming \& written assignments; these are worth:
+\begin{itemize}
+\item Final Exam: 30\%
+\item Midterm 1: 15\%
+\item Midterm 2: 15\%
+\item Programming and Written Assignments: 40\%
+\end{itemize}
+The dates for these exams will be announced shortly.
+
+It says in the ``final exam policies and schedules'' page that a student with two or more final exams scheduled on one day may:
+\begin{quote}
+{\it [c]onsult with the instructors giving the final examinations to determine if any make-up examination(s) is or can be scheduled, preferably during one of the make-up examination times available in the schedule.}
+\end{quote}
+There will be {\bf no} make-up examinations for CS4430/7430 this semester. The final examination will only be given at the aforementioned time.
+
+
+\subsection*{Grading Scale for Undergraduates}
+\[
+\begin{array}{lcl}
+> 97\%	&&A+ \\
+92-97\%	&&A \\
+90-91\%	&&A- \\
+88-89\%	&&B+ \\
+82-87\%	&&B \\
+80-81\%	&&B- \\
+78-79\%	&&C+ \\
+72-77\%	&&C \\
+70-71\%	&&C- \\
+68-69\%	&&D+ \\
+62-67\%	&&D \\
+60-61\%	&&D- \\
+< 59\%	&&F
+\end{array}
+\]
+
+\subsection*{Grading Scale for Graduate Students} 
+
+\[
+\begin{array}{lcl}
+90-100\%	&&A\\
+80-89\%	&&B\\
+70-79\%	&&C\\
+< 69\%	&&F
+\end{array}
+\]
+
+Graduate students will be required to perform an additional assignment.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Academic Honesty	}
+
+Academic honesty is fundamental to the activities and principles of a university. All members of the academic community must be confident that each person's work has been responsibly and honorably acquired, developed, and presented. Any effort to gain an advantage not given to all students is dishonest whether or not the effort is successful. The academic community regards academic dishonesty as an extremely serious matter, with serious consequences that range from probation to expulsion. When in doubt about plagiarism, paraphrasing, quoting, or collaboration, consult the course instructor. 
+	
+	Students are encouraged to discuss course material in general and to help one another understand it. Using another's code or writing code for someone else is cheating and a violation of the University's Honor System. This includes consulting on solutions to assignments from previous years or tests from previous years. 
+\begin{itemize}
+\item Your work must be your own. 
+\item Discussion with classmates is fine (and encouraged!)---``discussion'' means speaking with your mouth or writing on a chalkboard.
+\item Students are reminded that I have heard of google, too. I regularly scour the internet looking at related courses at other universities.
+\end{itemize}
+
+The consequences of academic dishonesty are:
+\begin{itemize}
+\item[] {\bf 1$^{st}$ offense:} Student will receive a zero on that assignment or test.
+\item[] {\bf 2$^{nd}$ offense:} Student will receive an automatic “F” grade in the class and I will forward the evidence to the Provost.
+\end{itemize}
+There will be absolutely no exceptions.
+
+Continued enrollment in this class implies your consent to these rules.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Students with Disabilities}
+
+If you anticipate barriers related to the format or requirements of this course, if you have emergency medical information to share with me, or if you need to make arrangements in case the building must be evacuated, please let me know as soon as possible.
+
+If disability related accommodations are necessary (for example, a note taker, extended time on exams, captioning), please register with the Office of Disability Services (\url{http://disabilityservices.missouri.edu}), S5 Memorial Union, 573- 882-4696, and then notify me of your eligibility for reasonable accommodations.  For other MU resources for students with disabilities, click on "Disability Resources" on the MU homepage.
+
+\end{document}
