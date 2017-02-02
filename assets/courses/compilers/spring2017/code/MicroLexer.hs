@@ -27,6 +27,39 @@ data Token = BEGIN | END | READ | WRITE | ID String
 
 test = "begin\n x:=7+y;\n read(y,z);\n end"
 
-scanName = identifier
-
 deP (P x) = x
+run (P x) inp = x inp
+
+--microlex :: String -> Maybe [Token]
+microlex inp = case run (many lexer) inp of
+--                    [(toks,"")] -> Just (map recognize toks ++ [Just SCANEOF])
+                    [(toks,"")] -> mapM recognize toks -- ++ [Just SCANEOF])  
+                    _           -> Nothing
+
+lexer :: Parser String
+lexer = identifier
+          +++ many1 digit
+          +++ symbol ":="
+          +++ symbol ";"
+          +++ symbol "("
+          +++ symbol ")"
+          +++ symbol ","
+          +++ symbol "+"
+
+--
+-- define which strings constitute tokens
+--
+
+-- Recall Maybe type:
+--   data Maybe a = Just a | Nothing
+
+recognize str = case str of
+  "begin" -> Just BEGIN
+  "end"   -> Just END
+  "read"  -> Just READ
+  "write" -> Just WRITE
+  "("     -> Just LPAREN
+  ")"     -> Just RPAREN
+  ";"     -> Just SEMICOLON
+  ":="    -> Just ASSIGNOP
+  "+"     -> Just PLUSOP
