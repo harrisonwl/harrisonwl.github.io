@@ -56,7 +56,7 @@ lexer = identifier
 
 microlex :: String -> Maybe [Token]
 microlex inp = case run (many lexer) inp of
-                    [(toks,"")] -> Just $ map recognize toks ++ [SCANEOF]
+                    [(toks,"")] -> Just (map recognize toks ++ [SCANEOF])
                     _           -> Nothing
 
   
