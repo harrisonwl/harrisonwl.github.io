@@ -28,15 +28,33 @@ data Token = BEGIN | END | READ | WRITE | ID String
            deriving Show
 
 --
+-- define which strings constitute tokens
+--
+
+keyword :: String -> Token
+keyword str = case str of
+  "begin" -> BEGIN
+  "end"   -> END
+  "read"  -> READ
+  "write" -> WRITE
+  _       -> ID str
+
+--
 -- a test case
 --
 
 test = "begin\n x:=7+y;\n read(y,z);\n end"
 
-scanName :: String -> String -> (String,String)
-scanName s [] = (s,[])
+-- Want something like this:
+-- ghci> scanName "" "heypal ..."
+-- (ID "heypal"," ...")
+-- ghci> scanName "" "begin ..."
+-- (BEGIN," ...")
+
+scanName :: String -> String -> (Token,String)
+scanName s [] = (keyword s,[])
 scanName s (c:cs) | isAlpha c = scanName (s ++ [c]) cs
-                  | otherwise = (s,c:cs)
+                  | otherwise = (keyword s,c:cs)
 
 -- Want something like this:
 --   ghci> scanInt 0 "1965heypal"
@@ -49,28 +67,32 @@ scanInt n []     = (n,[])
 scanInt n (c:cs) | isDigit c = scanInt (n * 10 + digitToInt c) cs
                  | otherwise = (n,c:cs)
 
+-- Want something like:
+-- ghci> scan test
+-- [BEGIN,ID "x",ASSIGNOP,INTLITERAL 7,PLUSOP,ID "y",SEMICOLON,READ,LPAREN,ID "y",COMMA,ID "z",RPAREN,SEMICOLON,END,SCANEOF]
+--
+
+scan :: String -> [Token]
 scan str = case str of
---  []                 -> Just SCANEOF
-  (c:cs) | isAlpha c -> Just 
-           where (s,str') = scanName "" str
+  []                 -> [SCANEOF]
+  (c:cs) | isAlpha c -> let
+                           (tok,str') = scanName "c" cs
+                        in
+                           tok : scan str'
+         | isSpace c -> scan cs
+         | isDigit c -> let
+                           (i,str') = scanInt 0 str
+                        in
+                           INTLITERAL i : scan str'
+         | c==','    -> COMMA : scan cs
+         | c=='('    -> LPAREN : scan cs
+         | c==')'    -> RPAREN : scan cs
+         | c=='-'    -> MINUSOP : scan cs
+         | c=='+'    -> PLUSOP : scan cs
+         | c==';'    -> SEMICOLON : scan cs
+         | c==':'    -> case cs of
+                             ('=':cs') -> ASSIGNOP : scan cs'
+                             _         -> error "Lexical Error"
+                        
 
-                 
-
---
--- define which strings constitute tokens
---
-
--- Recall Maybe type:
---   data Maybe a = Just a | Nothing
-
-recognize str = case str of
-  "begin" -> Just BEGIN
-  "end"   -> Just END
-  "read"  -> Just READ
-  "write" -> Just WRITE
-  "("     -> Just LPAREN
-  ")"     -> Just RPAREN
-  ";"     -> Just SEMICOLON
-  ":="    -> Just ASSIGNOP
-  "+"     -> Just PLUSOP
   
