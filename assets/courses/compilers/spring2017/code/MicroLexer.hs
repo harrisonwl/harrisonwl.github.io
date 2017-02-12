@@ -12,7 +12,7 @@ import Parsing
 -- define what a token is
 --
 data Token = BEGIN | END | READ | WRITE | ID String
-           | INTLITERAL Int | LPAREN | RPAREN
+           | INTLITERAL String | LPAREN | RPAREN
            | SEMICOLON | COMMA | ASSIGNOP | PLUSOP
            | MINUSOP | SCANEOF
            deriving Show
@@ -26,11 +26,6 @@ recognize str = case str of
   "end"   -> END
   "read"  -> READ
   "write" -> WRITE
-  "("     -> LPAREN
-  ")"     -> RPAREN
-  ";"     -> SEMICOLON
-  ":="    -> ASSIGNOP
-  "+"     -> PLUSOP
   _       -> ID str
 
 --
@@ -41,22 +36,62 @@ test = "begin\n x:=7+y;\n read(y,z);\n end"
 
 run (P x) inp = x inp
 
-lexer :: Parser String
-lexer = identifier
-          +++ many1 digit
-          +++ symbol ":="
-          +++ symbol ";"
-          +++ symbol "("
-          +++ symbol ")"
-          +++ symbol ","
-          +++ symbol "+"
+identORkeyword :: Parser Token
+identORkeyword = do
+  i <- identifier
+  return (recognize i)
+
+number :: Parser Token
+number = do
+  n <- many1 digit
+  return (INTLITERAL n)
+
+assign :: Parser Token
+assign = do
+  symbol ":="
+  return ASSIGNOP
+
+semicolon :: Parser Token
+semicolon = do
+  symbol ";"
+  return SEMICOLON
+
+lparen :: Parser Token
+lparen = do
+  symbol "("
+  return LPAREN
+
+rparen :: Parser Token
+rparen = do
+  symbol ")"
+  return RPAREN
+
+comma :: Parser Token
+comma = do
+  symbol ","
+  return COMMA
+
+plusop :: Parser Token
+plusop = do
+  symbol "+"
+  return PLUSOP
+
+lexer :: Parser Token
+lexer = identORkeyword
+          +++ number
+          +++ assign
+          +++ semicolon
+          +++ lparen
+          +++ rparen
+          +++ comma
+          +++ plusop
 
 -- Recall Maybe type:
 --   data Maybe a = Just a | Nothing
 
 microlex :: String -> Maybe [Token]
 microlex inp = case run (many lexer) inp of
-                    [(toks,"")] -> Just (map recognize toks ++ [SCANEOF])
+                    [(toks,"")] -> Just (toks ++ [SCANEOF])
                     _           -> Nothing
 
   
