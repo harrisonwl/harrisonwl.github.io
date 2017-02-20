@@ -43,7 +43,9 @@ identORkeyword = do
 
 number :: Parser Token
 number = do
+  space
   n <- many1 digit
+  space
   return (INTLITERAL n)
 
 assign :: Parser Token
