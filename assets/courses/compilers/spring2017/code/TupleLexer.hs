@@ -123,9 +123,20 @@ bp = do
 
 register :: Parser Token
 register = do
-  symbol "R"
+  char 'R'
   num <- many1 digit
   return (R num)
+
+{-
+Notice what this solves and what it doesn't solve.
+λ> run register "R123"
+[(R "123","")]
+λ> run register "R 123"
+[]
+λ> run register "R0123"
+[(R "0123","")]
+λ> 
+-}
 
 lexer :: Parser Token
 lexer = number
