@@ -66,6 +66,13 @@ expr inp = case parse exprparser "" inp of
              ; Right ans -> print ans
              }
 
+cmdParser = whiteSpace >> command
+
+--command :: Parser Cmd
+--command   =  parens command <|> sequenceOfCmd
+
+sequenceOfCmd = undefined
+
 {-
 
 exprparser :: Parser Exp

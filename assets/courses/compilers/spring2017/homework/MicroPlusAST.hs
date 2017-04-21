@@ -60,8 +60,8 @@ parentheses s = "(" ++ s ++ ")"
 instance Show Exp where
   show (Var x)          = x
   show (UnaryOp op e)     = show op ++ parentheses (show e)
-  show (BinOp op e1 e2) = parentheses $ show e1 ++ " " ++ show op ++ " " ++ show e2
-  show (FunCall f args) = f ++ (parentheses $ showseq "," args)
+  show (BinOp op e1 e2) = show e1 ++ " " ++ show op ++ " " ++ show e2
+  show (FunCall f args) = "(call " ++ f ++ (parentheses $ showseq "," args) ++ ")"
   show (ICon i)         = show i
   show (FCon x)         = show x
   show (BCon b)         = show b

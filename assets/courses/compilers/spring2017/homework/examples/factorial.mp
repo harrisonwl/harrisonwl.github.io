@@ -1,5 +1,5 @@
-int fac (i : int) { if i==0 then return 1 else return (i * (fac (i-1))) }
-int main () { return (fac(5)) }
+int fac (i : int) { if i==0 then return 1 else return (i * (call fac (i-1))) }
+int main () { return (call fac(5)) }
 
 /*
 ex1 = Program fds
