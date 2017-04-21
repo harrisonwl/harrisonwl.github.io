@@ -79,9 +79,12 @@ instance Show Type where
   show BOOL  = "bool"
 
 instance Show FunDecl where
+  show (FunDecl rt fun args [] body) = 
+       show rt ++ " " ++ fun ++ "(" ++ showseq "," args ++ ")" 
+         ++ " { " ++ show body ++ " }"
   show (FunDecl rt fun args locals body) = 
        show rt ++ " " ++ fun ++ "(" ++ showseq "," args ++ ")" 
-         ++ " { " ++ showseq ";" locals 
+         ++ " { [" ++ showseq ";" locals ++ "]" ++ " ; " 
          ++ show body ++ " }"
          
 instance Show Program where

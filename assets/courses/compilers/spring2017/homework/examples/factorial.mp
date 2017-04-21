@@ -1,4 +1,4 @@
-
+int fac (i : int) { if i==0 then return 1 else return (i * (fac (i-1))) }
 int main () { return (fac(5)) }
 
 /*
