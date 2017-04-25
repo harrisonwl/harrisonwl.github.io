@@ -11,6 +11,7 @@ data Cmd = Assign Name Exp
          | IfThenElse Exp Cmd Cmd
          | Return Exp
          | Skip
+--         deriving Show
 
 data Exp = Var Name
          | UnaryOp Op Exp
@@ -19,17 +20,25 @@ data Exp = Var Name
          | ICon Integer
          | FCon Double
          | BCon Bool
+--         deriving Show
 
 data Op = Plus | Times | Sub | Div | Neg -- arithmetic
         | GT | LT | EQ | Not | And | Or  -- boolean
 
-data Type = FLOAT | INT | BOOL
+data Type = FLOAT | INT | BOOL -- deriving Show
 
-data Decl = Decl Name Type
+data Decl = Decl Name Type -- deriving Show
 
-data FunDecl = FunDecl Type Name [Decl] [Decl] Cmd
+data FunDecl = FunDecl Type Name [Decl] [Decl] Cmd -- deriving Show
 
-newtype Program = Program [FunDecl]
+
+newtype Program = Program [FunDecl] -- deriving Show
+
+parentheses s = "(" ++ s ++ ")"
+
+showseq sep = foldr f ""
+  where f d [] = show d
+        f d ds = show d ++ sep ++ ds
 
 instance Show Op where
   show Plus  = "+"
@@ -40,8 +49,6 @@ instance Show Op where
   show LT    = "<"
   show EQ    = "=="
   show Not   = "not"
-
-
 
 instance Show Cmd where
   show (Assign x e)         = x ++ " := " ++ show e
@@ -55,7 +62,7 @@ instance Show Cmd where
   show (Return e)           = "return " ++ show e
   show Skip                 = "skip"
 
-parentheses s = "(" ++ s ++ ")"
+
 
 instance Show Exp where
   show (Var x)          = x
@@ -68,10 +75,6 @@ instance Show Exp where
 
 instance Show Decl where
   show (Decl x t) = x ++ " : " ++ show t
-
-showseq sep = foldr f ""
-  where f d [] = show d
-        f d ds = show d ++ sep ++ ds
 
 instance Show Type where
   show FLOAT = "float"
