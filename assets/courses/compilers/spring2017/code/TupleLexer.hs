@@ -14,6 +14,9 @@ data Token = ASSIGN | WRITEI | READI | ADDI | SUBI |
              SCANEOF
            deriving Show
 
+data LHS   = LHSReg String | LHSFReg String | LHSMemRef String Int
+data RHS   = Register String | FloatReg String | MemRef RHS
+data Tuple = Assign LHS RHS
 
 --
 -- a test case
