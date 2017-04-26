@@ -1,0 +1,3 @@
+(NEG,R0,M[FP+1])
+(NEG,R1,R0)
+(EXIT)

@@ -3,7 +3,7 @@ module FrontEndTuple where
 import System.IO
 import Data.Char
 
-data Tuple    = Asn RegArg Arg
+data Tuple    = Mov RegArg Arg
               | Add RegArg Arg Arg
               | Sub RegArg Arg Arg
               | Div RegArg Arg Arg
@@ -32,7 +32,7 @@ instance Show RegArg where
     show (RegIndOff r o) = "M[" ++ show r ++ "+" ++ show o ++ "]"
 
 instance Show Tuple where
-    show (Asn ra a)     = "(ASSIGN,"++show ra++","++show a++")"
+    show (Mov ra a)     = "(ASSIGN,"++show ra++","++show a++")"
     show (Add ra a1 a2) = "(ADD,"++show ra++","++show a1++","++show a2++")"
     show (Sub ra a1 a2) = "(SUB,"++show ra++","++show a1++","++show a2++")"
     show (Div ra a1 a2) = "(DIV,"++show ra++","++show a1++","++show a2++")"
@@ -59,7 +59,7 @@ getit h = hIsEOF h >>= \ eof ->
               return (l ++ rest)
 
 data Token = LPAR | RPAR | COMMA | ASSIGN
-           | ADDI | SUBI | JUMP | JUMPNZ | LIT Integer
+           | ADDI | SUBI | NEG | JUMP | JUMPNZ | LIT Integer
            | READI | WRITEI | EXIT | REG Integer | LABEL
            | FPtok | SPtok | BPtok
            | LBRACK | RBRACK | PLUS | M
@@ -72,6 +72,7 @@ lexAlpha cs = let (as,rest) = span isAlpha cs in
  case as of
       "ADDI"   -> ADDI : lexer rest
       "SUBI"   -> SUBI : lexer rest
+      "NEG"    -> NEG : lexer rest
       "READI"  -> READI : lexer rest
       "WRITEI" -> WRITEI : lexer rest
       "ASSIGN" -> ASSIGN : lexer rest
@@ -146,7 +147,7 @@ parseTuple (ASSIGN:ts) = let ts0       = comma ts
                              ts2       = comma ts1
                              (arg,ts3) = parseArg ts2
                          in
-                             (Asn ra arg, rpar ts3)
+                             (Mov ra arg, rpar ts3)
 
 parseTuple (ADDI:ts)   = let ts0       = comma ts
                              (ra,ts1)  = parseRegArg ts0
@@ -164,6 +165,12 @@ parseTuple (SUBI:ts)   = let ts0       = comma ts
                              (arg2,ts5) = parseArg ts4
                          in
                              (Sub ra arg1 arg2, rpar ts5)
+parseTuple (NEG:ts)    = let ts0       = comma ts
+                             (ra,ts1)  = parseRegArg ts0
+                             ts2       = comma ts1
+                             (arg1,ts3) = parseArg ts2
+                         in
+                             (Negate ra arg1, rpar ts3)
 parseTuple (JUMP:ts)   = let ts0       = comma ts
                              (arg,ts1) = parseArg ts0
                          in
@@ -199,23 +206,6 @@ first 0 xs = []
 first n (x:xs) = x : (first (n-1) xs)
 
 twenty = first 20
-
-
-{-
-Tuple	 -> Asn | Add | Sub | Jmp | Label | Read | Write | Exit
-Asn	 -> (ASSIGN,RegArg,Arg)
-Add	 -> (ADDI,RegArg,Arg,Arg)
-Sub	 -> (SUBI,RegArg,Arg,Arg)
-Jmp	 -> (JUMP,Arg)
-Label	 -> (LABEL,Num) /* N.b., labels are Nums */
-Read	 -> (READI,RegArg)
-Write	 -> (WRITEI,Arg)
-Exit	 -> (EXIT)
-Arg	 -> RegArg | Num
-Register -> R Num | SP | FP | BP
-RegArg	 -> Register | M[Register] | M[Register + Num]
-Num	 -> Digit+
--}
 
 
 

@@ -99,7 +99,7 @@ store ra v = case ra of
   (RegIndOff r o) -> getreg r >>= \ loc -> modify (setloc (loc+o) v)
 
 tuple :: Tuple -> M ()
-tuple (Asn ra a) = do
+tuple (Mov ra a) = do
   i <- arg a
   case ra of
    RgArg r       -> modify (setreg (show r) i)
@@ -188,12 +188,14 @@ breakpoint is = let next = case is of
                 in
                 do fp <- getreg FP
                    sp <- getreg SP
+                   r0 <- getreg (Reg 0)
                    r1 <- getreg (Reg 1)
                    r2 <- getreg (Reg 2)
                    r3 <- getreg (Reg 3)
                    myputStr $ "BREAK: " ++
                               "[FP="++(show fp)++","++
                               "SP="++(show sp)++","++
+                              "R0="++(show r0)++","++
                               "R1="++(show r1)++","++
                               "R2="++(show r2)++","++
                               "R3="++(show r3)++","++
@@ -204,12 +206,9 @@ mytry phi = lift (lift (liftErr (try phi)))
 
 rw = (Read (RgArg SP)) : (Write (RA $ RgArg SP)) : rw
 
-{-
-test = run (mng 10 rw rw)
--}
 run :: M a -> IO a
 run phi = (deErrM (runStateT (runStateT phi sto0) lineNo0)) >>= (return . fst . fst . deOK)
-    where sto0 = (\ r -> 0, \ l -> 0)
+    where sto0 = (\ r -> 0, \ l -> 99)
           lineNo0 = 0
 
 
