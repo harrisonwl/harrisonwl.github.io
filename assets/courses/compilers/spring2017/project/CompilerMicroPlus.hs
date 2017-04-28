@@ -24,7 +24,7 @@ translate st p = undefined
 
 -- 1. To what should we compile Exp?
 
-type ExpTarget = (TupleProgram, RegArg)
+type ExpTarget = ([Tuple], RegArg)
 
 -- 2. In which monad do we compile Exp?
 
@@ -66,7 +66,7 @@ transExp st e = case e of
   Var x -> do
     case lookup x st of
       Just (_,o) -> return ([],RegIndOff FP o)
-      Nothing    -> lift Nothing
+      Nothing    -> err
   UnaryOp Neg e -> do
     (c_e,r) <- transExp st e
     rnew <- newReg
