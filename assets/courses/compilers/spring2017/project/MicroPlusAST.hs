@@ -18,14 +18,13 @@ data Exp = Var Name
          | BinOp Op Exp Exp
          | FunCall Name [Exp]
          | ICon Integer
-         | FCon Double
          | BCon Bool
 --         deriving Show
 
-data Op = Plus | Times | Sub | Div | Neg -- arithmetic
+data Op = Plus | Times | Minus | Div | Neg -- arithmetic
         | GT | LT | EQ | Not | And | Or  -- boolean
 
-data Type = FLOAT | INT | BOOL -- deriving Show
+data Type = INT | BOOL -- deriving Show
 
 data Decl = Decl Name Type -- deriving Show
 
@@ -43,7 +42,7 @@ showseq sep = foldr f ""
 instance Show Op where
   show Plus  = "+"
   show Times = "*"
-  show Sub   = "-"
+  show Minus = "-"
   show Neg   = "-"
   show GT    = ">"
   show LT    = "<"
@@ -70,14 +69,12 @@ instance Show Exp where
   show (BinOp op e1 e2) = show e1 ++ " " ++ show op ++ " " ++ show e2
   show (FunCall f args) = "(call " ++ f ++ (parentheses $ showseq "," args) ++ ")"
   show (ICon i)         = show i
-  show (FCon x)         = show x
   show (BCon b)         = show b
 
 instance Show Decl where
   show (Decl x t) = x ++ " : " ++ show t
 
 instance Show Type where
-  show FLOAT = "float"
   show INT   = "int"
   show BOOL  = "bool"
 

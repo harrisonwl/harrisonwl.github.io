@@ -7,6 +7,8 @@ import Control.Monad.State
 import Data.Char
 import Control.Applicative
 
+
+data StorVal = I Integer | B Bool | F Double
 type Loc    = Integer
 type Sto    = (String -> Integer, Loc -> Integer)
 type LineNo = Integer

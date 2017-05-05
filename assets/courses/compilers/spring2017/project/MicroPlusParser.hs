@@ -18,7 +18,7 @@ table = [ [Prefix (reservedOp "~" >> return (UnaryOp Not))]
         , [Infix (reservedOp "==" >> return (BinOp EQ)) AssocLeft]
         , [Infix (reservedOp "*" >> return (BinOp Times)) AssocLeft]
         , [Infix (reservedOp "+" >> return (BinOp Plus)) AssocLeft]
-        , [Infix (reservedOp "-" >> return (BinOp Sub)) AssocLeft]
+        , [Infix (reservedOp "-" >> return (BinOp Minus)) AssocLeft]
         , [Infix (reservedOp "/" >> return (BinOp Div)) AssocLeft]
         , [Infix (reservedOp ">" >> return (BinOp GT)) AssocLeft]
         , [Infix (reservedOp "<" >> return (BinOp LT)) AssocLeft]
@@ -28,7 +28,6 @@ term' = parens expression
        <|> funcall
        <|> fmap Var identifier
        <|> fmap ICon integer
-       <|> fmap FCon float
        <|> (reserved "true" >> return (BCon True))
        <|> (reserved "false" >> return (BCon False))
 
@@ -117,8 +116,7 @@ decl = do
   t <- typename
   return $ Decl x t
 
-typename =     (reserved "float" >> return FLOAT)
-           <|> (reserved "int" >> return INT)
+typename =     (reserved "int" >> return INT)
            <|> (reserved "bool" >> return BOOL)
 
 --
@@ -235,7 +233,6 @@ parens     = Token.parens     lexer -- parses surrounding parenthesis:
 --                                    takes care of the parenthesis and
 --                                    uses p to parse what's inside them
 integer    = Token.integer    lexer -- parses an integer
-float      = Token.float      lexer
 semi       = Token.semi       lexer -- parses a semicolon
 whiteSpace = Token.whiteSpace lexer -- parses whitespace
 symbol     = Token.symbol     lexer -- parses symbols

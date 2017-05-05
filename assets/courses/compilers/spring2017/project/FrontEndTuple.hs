@@ -14,6 +14,8 @@ data Tuple    = Mov RegArg Arg
               | Label Integer
               | Read RegArg
               | Write Arg
+              | Call Arg -- these two
+              | Ret   --   are new
               | Exit
 data Register     = Reg Integer | SP | FP | BP deriving Eq
 data RegArg       = RgArg Register | RegInd Register | RegIndOff Register Integer
@@ -42,6 +44,8 @@ instance Show Tuple where
     show (JmpNZ r a)    = "(JNZ,"++show r++","++show a++")"
     show (Label i)      = "(LABEL,"++show i++")"
     show (Read ra)      = "(READI,"++show ra++")"
+    show (Call a)       = "(CALL,"++show a++")"
+    show Ret           = "RETURN"
     show (Write a)      = "(WRITEI,"++show a++")"
     show Exit           = "EXIT"
 
@@ -63,6 +67,7 @@ data Token = LPAR | RPAR | COMMA | ASSIGN
            | READI | WRITEI | EXIT | REG Integer | LABEL
            | FPtok | SPtok | BPtok
            | LBRACK | RBRACK | PLUS | M
+           | CALL | RET
            deriving (Show,Eq)
 
 lexNum cs = LIT (read num) : lexer rest
@@ -83,6 +88,8 @@ lexAlpha cs = let (as,rest) = span isAlpha cs in
       "BP"     -> BPtok : lexer rest
       "JUMP"   -> JUMP : lexer rest
       "JNZ"    -> JUMPNZ : lexer rest
+      "CALL"   -> CALL : lexer rest
+      "RET"    -> RET : lexer rest
       "EXIT"   -> EXIT : lexer rest
       "R"      -> let (LIT i :rs) = lexNum rest in REG i : rs
 
@@ -175,6 +182,12 @@ parseTuple (JUMP:ts)   = let ts0       = comma ts
                              (arg,ts1) = parseArg ts0
                          in
                              (Jmp arg, rpar ts1)
+parseTuple (CALL:ts)   = let ts0       = comma ts
+                             (arg,ts1) = parseArg ts0
+                         in
+                             (Call arg, rpar ts1)
+parseTuple (RET:ts)    = 
+                             (Ret, rpar ts)
 parseTuple (JUMPNZ:ts) = let ts0       = comma ts
                              (reg,ts1) = parseRegArg ts0
                              ts2       = comma ts1

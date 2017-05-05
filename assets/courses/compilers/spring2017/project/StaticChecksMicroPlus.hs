@@ -2,8 +2,12 @@ module StaticChecksMicroPlus where
 
 import MicroPlusAST
 import Data.List
+import Control.Monad.Identity
+import Control.Monad.State
 
 type ErrorMessage = String
+type Offset       = Integer
+type CodeAddress  = Integer
 
 --
 -- Checking for unique main function declaration.
@@ -36,19 +40,39 @@ lkup ((y,t,o) : sts) x | x==y      = Just (t,o)
                        | otherwise = lkup sts x
 
 type SymbolTable = [STEntry]
+data STEntry     = Entry Name [Type] Type [(Name,Type,Offset)]
 
-mkst :: Program -> SymbolTable
-mkst (Program fds) = map mkstFD fds
+mkst :: Program -> (FunST,VarST)
+mkst p = (convFST st,convVST st)
+  where st = mkst' p
+
+mkst' :: Program -> SymbolTable
+mkst' (Program fds) = map mkstFD fds
 mkstFD (FunDecl t f args locs _) = Entry f argtys t vs
   where argtys = map (\ (Decl _ t) -> t) args
-        vs     = genVBS 0 (args ++ locs)
+        vs     = genVBS 3 (args ++ locs)
 
 genVBS o []                = []
 genVBS o (Decl x t : dcls) = (x,t,o) : genVBS (o+1) dcls
 
-type Offset  = Integer
+type VarST = [(Name,(Type,Offset))]
+type FunST = [(Name,([Type],Type,CodeAddress))]
 
-data STEntry = Entry Name [Type] Type [(Name,Type,Offset)]
+-- this is ugly, but it's how I did it.
+convVST :: SymbolTable -> VarST
+convVST st = concat $ map (\ (Entry _ _ _ vs) -> (map (\ (x,y,z) -> (x,(y,z))) vs)) st
+
+mkFST :: SymbolTable -> StateT Integer Identity FunST
+mkFST [] = return []
+mkFST (Entry f ts t _ : st) = do
+  l <- get
+  modify (\ l -> l+1)
+  fsts <- mkFST st
+  return $ (f, (ts,t,l)) : fsts
+
+-- again, ugly, but it works.
+convFST :: SymbolTable -> FunST
+convFST st = fst $ runIdentity $ runStateT (mkFST st) 0
 
 --
 -- No undefined program variables.
@@ -137,9 +161,7 @@ mangleExp f (UnaryOp op e)   = UnaryOp op $ mangleExp f e
 mangleExp f (BinOp op e1 e2) = BinOp op (mangleExp f e1) (mangleExp f e2)
 mangleExp f (FunCall g args) = FunCall g $ map (mangleExp f) args
 mangleExp f (ICon i)         = ICon i
-mangleExp f (FCon x)         = FCon x
 mangleExp f (BCon b)         = BCon b
-
 
 check :: Either p String -> IO ()
 check cond = case cond of
