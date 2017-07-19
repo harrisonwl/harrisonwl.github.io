@@ -39,6 +39,7 @@ Language-based methods in computer security, all aspects of programming language
 #### __Contact Information__
 * __Address:__ 318 Engineering Building North, University of Missouri, Columbia, MO 65209
 * __Email:__ harrisonwl@missouri.edu 
+* <a href = "https://harrisonwl.github.io/assets/cv/harrison-cv-2017.pdf">Curriculum Vitae</a>
 
 #### __External Links__
 * <a href="https://www.researchgate.net/profile/William_Harrison6">My ResearchGate profile</a>
