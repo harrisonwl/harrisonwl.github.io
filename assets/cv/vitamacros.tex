@@ -1,0 +1,50 @@
+%\raggedright
+\parindent 0in
+\parskip 10pt plus 1pt minus 10pt
+
+%\pagestyle{empty}
+
+% MARGINS:
+
+\oddsidemargin  0pt % was 38
+\evensidemargin 0pt % was 38
+\marginparwidth 0pt % was 68
+
+\topmargin  15pt   % was 27
+\headheight  0pt   % was 12
+\headsep     0pt   % was 25
+%\footheight  0pt   % was 12
+\footskip   30pt   % was 30
+
+\textwidth  466pt    % was 390pt
+\textheight 650pt  % was 536.5
+
+%\renewcommand{\ul}[1]{\underline{\vphantom{y}#1}}
+\makeatletter
+
+\def\entrieslabel#1{\hspace\labelsep#1:}
+\newenvironment{entries}
+  {\list{}{\labelwidth\z@
+      \leftmargin 40pt
+      \rightmargin 0pt
+      \listparindent -15pt
+      \itemindent-\leftmargin
+      \let\makelabel\entrieslabel}}{\endlist}
+\newcommand{\entry}[1]{\item[\sc #1]\mbox{}}
+\newcommand{\nullentry}[1]{\item\mbox{}}
+
+\makeatother
+
+\newlength{\hdlm}
+\newlength{\oldlm}
+
+\newcommand{\hditem}[1]{\protect\item[#1\hfill]}
+
+\newenvironment{hangingdesc}[1]{\begin{list}{}%
+{\setlength{\oldlm}{\leftmargin}
+\settowidth{\leftmargin}{#1}%
+%\addtolength{\hdlm}{\leftmargin}%
+%\setlength{\leftmargin}{\hdlm}%
+\settowidth{\labelwidth}{{\bf #1}\hspace*{0.1in}}}}%
+{\setlength{\leftmargin}{\oldlm}\end{list}}
+

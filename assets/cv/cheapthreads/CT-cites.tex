@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Brief Article}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\begin{itemize}
+\item Citations of Cheap Threads pre-print: 
+\cite{Abadi2014}, 
+\cite{Marlow:2014:NFA:2628136.2628144},
+\cite{Mehnert2014},
+\cite{Pallari2015},
+\cite{DBLP:journals/corr/abs-1202-2922},
+\cite{nott10779}
+
+
+
+%\item Citations of earlier, conference version: 
+%\cite{5970242},
+%\cite{6571559},
+%%\cite{DBLP:journals/corr/abs-1202-2922},
+%\cite{Swierstra:2007:BB:1291201.1291206},
+%\cite{Maier2012},
+%\cite{Kiselyov2012},
+%\cite{Goncharov2013204},
+%\cite{Thiry20091125},
+%\cite{Uustalu2013},
+%\cite{Pirag2014273},
+%\cite{Vasenin2013},
+%\cite{Lochbihler2014},
+
+
+\end{itemize}
+
+
+
+\bibliographystyle{plain}
+\bibliography{ct-cites}
+
+\end{document}  
