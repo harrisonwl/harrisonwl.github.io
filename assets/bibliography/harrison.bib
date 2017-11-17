@@ -1,3 +1,30 @@
+
+@article{CheapThreads,
+  author =       "William L. Harrison and Adam Procter",
+  title =        "Cheap (But Functional) Threads",
+  journal =      "Higher Order and Symbolic Computation (accepted for publication)",
+  note = {Draft version},
+  year = 2015,                  
+  abstract = "This article demonstrates how a powerful and expressive abstraction 
+from concurrency theory plays a dual role as a programming tool 
+for concurrent applications and as a foundation for their verification.
+This abstraction---monads of resumptions expressed using monad 
+transformers---is \emph{cheap}: it is easy to understand, easy to 
+implement, and easy to reason about.
+We illustrate the expressiveness of the resumption monad with the 
+construction of an exemplary multitasking operating system kernel 
+with process forking, preemption, message passing, and 
+synchronization constructs in the pure functional programming 
+language Haskell.
+Because resumption computations are stream-like structures, reasoning 
+about this kernel may be posed as reasoning about streams, a problem 
+which is well-understood. And, as an example, this article 
+illustrates how a liveness property---fairness---is proven and 
+especially how the resumption-monadic structure promotes such 
+verifications.",
+  url_Paper = "https://harrisonwl.github.io/assets/papers/hosc-cheapthreads.pdf",
+}
+
 @inproceedings{reynolds17,
   title = {A Core Calculus for Secure Hardware: Its Formal Semantics and Proof System},
   author = {Reynolds, Thomas N. and Procter, Adam and Harrison, William L. and Allwein, Gerard},
