@@ -1,0 +1,41 @@
+\begin{thebibliography}{1}
+
+\bibitem{Abadi2014}
+Pablo Buiras, Amit Levy, Deian Stefan, Alejandro Russo, and David Mazi√®res.
+\newblock A library for removing cache-based attacks in concurrent information
+  flow systems.
+\newblock In Mart\'{i}≠n Abadi and Alberto Lluch~Lafuente, editors, {\em
+  Trustworthy Global Computing}, volume 8358 of {\em Lecture Notes in Computer
+  Science}, pages 199--216. Springer International Publishing, 2014.
+
+\bibitem{Marlow:2014:NFA:2628136.2628144}
+Simon Marlow, Louis Brandy, Jonathan Coens, and Jon Purdy.
+\newblock There is no fork: An abstraction for efficient, concurrent, and
+  concise data access.
+\newblock In {\em Proceedings of the 19th ACM SIGPLAN International Conference
+  on Functional Programming}, ICFP '14, pages 325--337, New York, NY, USA,
+  2014. ACM.
+
+\bibitem{Mehnert2014}
+Hannes Mehnert and David~Kaloper Mer\v{s}inak.
+\newblock Transport layer security purely in ocaml.
+\newblock In {\em OCaml 2014}, 2014.
+
+\bibitem{Pallari2015}
+Jaakko Pallari.
+\newblock Multithread concurrency in a single thread environment.
+\newblock Master's thesis, University of Jyv\"{a}skyl\"{a}, 2015.
+
+\bibitem{DBLP:journals/corr/abs-1202-2922}
+Maciej Pir{\'{o}}g and Jeremy Gibbons.
+\newblock Tracing monadic computations and representing effects.
+\newblock In {\em Proceedings Fourth Workshop on Mathematically Structured
+  Functional Programming, {MSFP} 2012, Tallinn, Estonia, 25 March 2012.}, pages
+  90--111, 2012.
+
+\bibitem{nott10779}
+Wouter Swierstra.
+\newblock {\em A functional specification of effects}.
+\newblock PhD thesis, University of Nottingham, July 2009.
+
+\end{thebibliography}

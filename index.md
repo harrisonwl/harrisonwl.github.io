@@ -39,6 +39,7 @@ Language-based methods in computer security, all aspects of programming language
 #### __Contact Information__
 * __Address:__ 318 Engineering Building North, University of Missouri, Columbia, MO 65209
 * __Email:__ harrisonwl@missouri.edu 
+* <a href = "https://harrisonwl.github.io/assets/cv/harrison-cv-2017.pdf">Curriculum Vitae</a>
 
 #### __External Links__
 * <a href="https://www.researchgate.net/profile/William_Harrison6">My ResearchGate profile</a>
@@ -49,6 +50,7 @@ Language-based methods in computer security, all aspects of programming language
 
 #### __Recent Publications__
 
+* _A Core Calculus for Secure Hardware: Its Formal Semantics and Proof System._ Tom Reynolds, Adam Procter, Bill Harrison, and Gerard Allwein. To appear in 15th ACM-IEEE International Conference on Formal Methods and Models for System Design (MEMOCODE17). [pdf]({{ site.baseurl }}/assets/papers/memocode17.pdf)
 * _A Programming Model for Reconfigurable Computing Based in Functional Concurrency_, William L. Harrison, Adam Procter, Ian Graves, Michela Becchi, and Gerard Allwein. ReCoSoC 2016 [pdf]({{ site.baseurl }}/assets/papers/recosoc16.pdf) [slides]({{ site.baseurl }}/assets/papers/slides-recosoc16.pdf).
 * _Provably Correct Development of Reconfigurable Hardware Designs via Equational Reasoning_, Ian Graves, Adam Procter, William L. Harrison, and Gerard Allwein. FPT 2015 [pdf]({{ site.baseurl }}/assets/papers/fpt15.pdf) [slides]({{ site.baseurl }}/assets/papers/slides-fpt15.pdf).
 * _A Principled Approach to Secure Multi-Core Processor Design with ReWire_, Adam Procter, William Harrison, Ian Graves, Michela Becchi, and Gerard Allwein. ACM Transactions on Embedded Computing Systems (to appear) [pdf]({{ site.baseurl }}/assets/papers/tecs16.pdf).

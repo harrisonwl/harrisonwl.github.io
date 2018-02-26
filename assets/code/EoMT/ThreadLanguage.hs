@@ -29,16 +29,16 @@ instance Show Process where
 instance Show Exp where
     show (Address n)  = n
     show (Lit i)      = show i
-    show GetPID	      = "pid"
+    show GetPID       = "pid"
 
 instance Show Event where
-    show (Write l e)	= l ++ ":=" ++ show e
-    show (Print msg e)	= "print '" ++ msg ++ "' " ++ show e
-    show Psem		= "P"
-    show Vsem		= "V"
-    show Sleep		= "sleep"
-    show (Fork p)	= "fork(" ++ show p ++ ")"
+    show (Write l e)    = l ++ ":=" ++ show e
+    show (Print msg e)  = "print '" ++ msg ++ "' " ++ show e
+    show Psem           = "P"
+    show Vsem           = "V"
+    show Sleep          = "sleep"
+    show (Fork p)       = "fork(" ++ show p ++ ")"
     show (Broadcast e)  = "bcast(" ++ show e ++ ")"
-    show (Receive name)	= "recv(" ++ name ++ ")"
+    show (Receive name) = "recv(" ++ name ++ ")"
     show (Kill e)       = "kill(" ++ show e ++ ")"
     show (Inc l)        = "inc(" ++ l ++ ")"

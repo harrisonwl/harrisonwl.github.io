@@ -1,10 +1,61 @@
 
+@article{CheapThreads,
+  author =       "William L. Harrison and Adam Procter",
+  title =        "Cheap (But Functional) Threads",
+  journal =      "Higher Order and Symbolic Computation (accepted for publication)",
+  note = {Draft version},
+  year = 2015,                  
+  abstract = "This article demonstrates how a powerful and expressive abstraction 
+from concurrency theory plays a dual role as a programming tool 
+for concurrent applications and as a foundation for their verification.
+This abstraction---monads of resumptions expressed using monad 
+transformers---is \emph{cheap}: it is easy to understand, easy to 
+implement, and easy to reason about.
+We illustrate the expressiveness of the resumption monad with the 
+construction of an exemplary multitasking operating system kernel 
+with process forking, preemption, message passing, and 
+synchronization constructs in the pure functional programming 
+language Haskell.
+Because resumption computations are stream-like structures, reasoning 
+about this kernel may be posed as reasoning about streams, a problem 
+which is well-understood. And, as an example, this article 
+illustrates how a liveness property---fairness---is proven and 
+especially how the resumption-monadic structure promotes such 
+verifications.",
+  url_Paper = "https://harrisonwl.github.io/assets/papers/hosc-cheapthreads.pdf",
+}
+
+@inproceedings{reynolds17,
+  title = {A Core Calculus for Secure Hardware: Its Formal Semantics and Proof System},
+  author = {Reynolds, Thomas N. and Procter, Adam and Harrison, William L. and Allwein, Gerard},
+  booktitle = {Proceedings of the 15th ACM-IEEE International Conference on Formal Methods and Models for System Design (MEMOCODE17)},
+  year = {2017},
+  pages = {(to appear)},
+  abstract = {Constructing high assurance, secure hardware remains a challenge, because to do so relies on both a verifiable means of hardware description and implementation. However, production hardware description languages (HDL) lack the formal underpinnings required by formal methods in security. Still, there is no such thing as high assurance systems without high assurance hardware. We present a core calculus of secure hardware description with its formal semantics, security type system and mechanization in Coq. This calculus is the core of the functional HDL, ReWire, shown in previous work to have useful applications in reconfigurable computing. This work supports a full-fledged, formal methodology for producing high assurance hardware.},
+  url_Paper = "https://harrisonwl.github.io/assets/papers/memocode17.pdf",
+}
+                  
+@article{allwein17,
+	author = {Gerard Allwein and William L. Harrison and Thomas Reynolds},
+	title = {Distributed Relation Logic},
+	journal = {Logic and Logical Philosophy},
+	volume = {26},
+	number = {1},
+        pages = {19-61},          
+	year = {2017},
+	keywords = {relation algebra; multisorted algebra; distributed logic; Kripke frames; Kripke models},
+	abstract = {We extend the relational algebra of Chin and Tarski so that it is multisorted or, as we prefer, typed. Each type supports a local Boolean algebra outfitted with a converse operator. From Lyndon, we know that relation algebras cannot be represented as proper relation algebras where a proper relation algebra has binary relations as elements and the algebra is singly-typed. Here, the intensional conjunction, which was to represent relational composition in Chin and Tarski, spans three different local algebras, thus the term distributed in the title. Since we do not rely on proper relation algebras, we are free to re-express the algebras as typed. In doing so, we allow many different intensional conjunction operators.We construct a typed logic over these algebras, also known as heterogeneous algebras of Birkhoff and Lipson. The logic can be seen as a form of relevance logic with a classical negation connective where the Routley-Meyer star operator is reified as a converse connective in the logic. Relevance logic itself is not typed but our work shows how it can be made so. Some of the properties of classical relevance logic are weakened from Routley-Meyer’s version which is too strong for a logic over relation algebras.},
+	issn = {2300-9802},
+   url_Paper = "https://harrisonwl.github.io/assets/papers/llp17.pdf",
+
+}
+                  
 @inproceedings{harrison16a,
    title = {Model-driven Design \& Synthesis of the SHA-256 Cryptographic Hash Function in ReWire},
    author = {Harrison, William L. and Procter, Adam and Allwein, Gerard},
    booktitle = {Proceedings of the 27th International Symposium on Rapid System Prototyping (RSP)},
    year = {2016},
-   pages = {(to appear)},
+   pages = {1-7},
    abstract = {There are many algorithms whose implementations can benefit both from hardware acceleration and formal verification and we would like to develop high assurance implementations as rapidly as possible. Critical computing infrastructure like cryptographic algorithms are prime candidates both for such acceleration and for formal verification. We show how to derive a verifiable, hardware-accelerated implementation of the SHA-256 cryptographic hash in the ReWire functional hardware description language in which the partitioning of the implementation between hardware and software is reflected in the type system itself.
 },
    url_Paper = "https://harrisonwl.github.io/assets/papers/rsp16.pdf",
@@ -21,20 +72,6 @@ publisher = "Springer International Publishing",
 pages = "331--362",
 isbn = "978-3-319-29300-4",
 url="http://dx.doi.org/10.1007/978-3-319-29300-4_16"
-}
-                  
-@article{allwein16,
-	author = {Gerard Allwein and William L. Harrison and Thomas Reynolds},
-	title = {Distributed Relation Logic},
-	journal = {Logic and Logical Philosophy},
-	volume = {0},
-	number = {0},
-	year = {2016},
-	keywords = {relation algebra; multisorted algebra; distributed logic; Kripke frames; Kripke models},
-	abstract = {We extend the relational algebra of Chin and Tarski so that it is multisorted or, as we prefer, typed. Each type supports a local Boolean algebra outfitted with a converse operator. From Lyndon, we know that relation algebras cannot be represented as proper relation algebras where a proper relation algebra has binary relations as elements and the algebra is singly-typed. Here, the intensional conjunction, which was to represent relational composition in Chin and Tarski, spans three different local algebras, thus the term distributed in the title. Since we do not rely on proper relation algebras, we are free to re-express the algebras as typed. In doing so, we allow many different intensional conjunction operators.We construct a typed logic over these algebras, also known as heterogeneous algebras of Birkhoff and Lipson. The logic can be seen as a form of relevance logic with a classical negation connective where the Routley-Meyer star operator is reified as a converse connective in the logic. Relevance logic itself is not typed but our work shows how it can be made so. Some of the properties of classical relevance logic are weakened from Routley-Meyer’s version which is too strong for a logic over relation algebras.},
-	issn = {2300-9802},
-   url_Paper = "https://harrisonwl.github.io/assets/papers/llp16.pdf",
-
 }
 
 @article{procter16,                  
