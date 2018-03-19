@@ -3,9 +3,10 @@ module HW3 where
 import Prelude hiding (EQ,LT,GT)
 import Data.List
 
+-- Updated 3/19 @ 11:48am.
 --
 -- CS 4430/7430 Homework 3. Static Checks Homework.
--- Four Problems, each worth 25 points.
+-- Three Problems, each worth 25 points. 
 -- Due: March 22nd @ 11:59pm
 --
 --
@@ -233,25 +234,3 @@ varsCmd c = undefined
 -- This computes all the names used in an Exp. Note that it is interdefined with varsCmd:
 varsExp :: Exp -> [Name]
 varsExp e = undefined
-
-
--- Problem 4. Write a function called "alwaysReturn" that checks whether a program 
---  precisely one function called "main". In particular, the behavior of uniquemain
---  is given below:    
---      
-
-alwaysReturn :: Program -> Either Program ErrorMessage
-alwaysReturn (Program fds) = undefined
-
--- a. Create a list, bodies :: [Cmd], with all the bodies in the function declarations fds.
--- b. Write a function, noreturn :: Cmd -> Bool, so that
---      noreturn c == True if, and only if, c definitely returns.
--- c. Use filter, noreturn, and bodies to compute the list of all function bodies that definitely do no
---    return.
--- d. If the aforementioned list cs is empty, then alwaysReturn p == Left p; if cs is non-empty, then
---       alwaysReturn p == Right ("Following commands don't return:" ++ show cs)
-
--- Think carefully about noreturn, it should only return True if its argument *definitely* returns.
-
-noreturn :: Cmd -> Bool
-noreturn c = undefined
