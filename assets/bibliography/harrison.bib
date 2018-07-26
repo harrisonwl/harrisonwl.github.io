@@ -25,12 +25,21 @@ verifications.",
   url_Paper = "https://harrisonwl.github.io/assets/papers/hosc-cheapthreads.pdf",
 }
 
+@inproceedings{harrison18,
+  title = {Semantics-directed Prototyping of Hardware Runtime Monitors},
+  author = {Harrison, William L. and Allwein, Gerard},
+  booktitle = {Proceedings of the 29th International Symposium on Rapid System Prototyping (RSP)},
+  year = {2018},
+  pages = {(to appear)},
+  abstract = {Building memory protection mechanisms into embedded hardware is attractive because it has the potential to neutralize a host of software-based attacks with relatively small performance overhead. A hardware monitor, being at the lowest level of the system stack, is more difficult to bypass than a software monitor and hardware-based protections are also potentially more fine-grained than is possible in software: an individual instruction executing on a processor may entail multiple memory accesses, all of which may be tracked in hardware. Finally, hardware-based protection can be performed without the necessity of altering application binaries. This article presents a proof-of-concept codesign of a small embedded processor with a hardware monitor protecting against ROP-style code reuse attacks. While the case study is small, it indicates, we argue, an approach to rapid-prototyping runtime monitors in hardware that is quick, flexible, and extensible as well as being amenable to formal verification.},
+  url_Paper = "https://harrisonwl.github.io/assets/papers/rsp18.pdf",
+}
+
 @inproceedings{reynolds17,
   title = {A Core Calculus for Secure Hardware: Its Formal Semantics and Proof System},
   author = {Reynolds, Thomas N. and Procter, Adam and Harrison, William L. and Allwein, Gerard},
   booktitle = {Proceedings of the 15th ACM-IEEE International Conference on Formal Methods and Models for System Design (MEMOCODE17)},
   year = {2017},
-  pages = {(to appear)},
   abstract = {Constructing high assurance, secure hardware remains a challenge, because to do so relies on both a verifiable means of hardware description and implementation. However, production hardware description languages (HDL) lack the formal underpinnings required by formal methods in security. Still, there is no such thing as high assurance systems without high assurance hardware. We present a core calculus of secure hardware description with its formal semantics, security type system and mechanization in Coq. This calculus is the core of the functional HDL, ReWire, shown in previous work to have useful applications in reconfigurable computing. This work supports a full-fledged, formal methodology for producing high assurance hardware.},
   url_Paper = "https://harrisonwl.github.io/assets/papers/memocode17.pdf",
 }
