@@ -83,15 +83,44 @@ isbn = "978-3-319-29300-4",
 url="http://dx.doi.org/10.1007/978-3-319-29300-4_16"
 }
 
+@article{reynolds18,                  
+ author = {Reynolds, Thomas N. and Harrison, William L. and  Procter, Adam and Allwein, Gerard},
+ title = {The Mechanized Marriage of Effects and Monads with Applications to High Assurance Hardware},
+	journal = {ACM Transactions on Embedded Computing Systems (to appear)},
+	year = {2018},
+	abstract = {
+		Constructing high assurance, secure hardware remains a challenge, because to do so relies on both a verifiable means of hardware description and implementation. 
+	However, production hardware description languages (HDL) lack the formal underpinnings required by formal methods in security.
+	Still, there is no such thing as high assurance systems without high assurance hardware.
+	We present a core calculus of secure hardware description with its formal semantics, security type system and mechanization in Coq. 
+	This calculus is the core of the functional HDL, ReWire, shown in previous work to have useful applications in reconfigurable computing.
+	This work supports a full-fledged, formal methodology for producing high assurance hardware.
+},
+        url_Paper = "https://harrisonwl.github.io/assets/papers/tecs18.pdf",
+}
+
+
+ 
+
 @article{procter16,                  
  author = {Procter, Adam and Harrison, William L. and Graves, Ian and Becchi, Michela and Allwein, Gerard},
  title = {A Principled Approach to Secure Multi-Core Processor Design with ReWire},
-	journal = {ACM Transactions on Embedded Computing Systems (to appear)},
-	year = {2016},
+	journal = {ACM Transactions on Embedded Computing Systems},
+ issue_date = {April 2017},
+ volume = {16},
+ number = {2},
+ month = jan,
+ year = {2017},
+ issn = {1539-9087},
+ pages = {33:1--33:25},
+ articleno = {33},
+ numpages = {25},
 	abstract = {There is no such thing as high assurance without high assurance hardware. High assurance hardware is essential, because any and all high assurance systems ultimately depend on hardware that conforms to, and does not undermine, critical system properties and invariants. And yet, high assurance hardware development is stymied by the conceptual gap between formal methods and hardware description languages used by engineers. This paper advocates a {\em semantics-directed} approach to bridge this conceptual gap. We present a case study in the design of secure processors, which are formally derived via principled techniques grounded in functional programming and equational reasoning. The case study comprises the development of secure single- and dual-core variants of a single processor, both based on a common semantic specification of the ISA. We demonstrate via formal equational reasoning that the dual-core processor respects a ``no-write-down'' information flow policy. The semantics-directed approach enables a modular and extensible style of system design and verification. The secure processors require only a very small amount of additional code to specify and implement, and their security verification arguments are concise and readable. Our approach rests critically on ReWire, a functional programming language providing a suitable foundation for formal verification of hardware designs. This case study demonstrates both ReWire's expressiveness as a programming language and its power as a framework for formal, high-level reasoning about hardware systems.
 },
         url_Paper = "https://harrisonwl.github.io/assets/papers/tecs16.pdf",
 }
+
+
 
 @inproceedings{harrison16,
    title = {A Programming Model for Reconfigurable Computing Based in Functional Concurrency},
