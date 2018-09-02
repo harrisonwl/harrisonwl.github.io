@@ -50,6 +50,7 @@ Language-based methods in computer security, all aspects of programming language
 
 #### __Recent Publications__
 
+* _The Mechanized Marriage of Effects and Monads with Applications to High Assurance Hardware._ Tom Reynolds, Bill Harrison, Adam Procter, and Gerard Allwein. To appear in ACM Transactions on Embedded Computing Systems. [pdf]({{ site.baseurl }}/assets/papers/tecs18.pdf)
 * _Semantics-directed Prototyping of Hardware Runtime Monitors._ Bill Harrison and Gerard Allwein. To appear in Proceedings of the 29th International Symposium on Rapid System Prototyping (RSP). [pdf]({{ site.baseurl }}/assets/papers/rsp18.pdf)
 * _A Core Calculus for Secure Hardware: Its Formal Semantics and Proof System._ Tom Reynolds, Adam Procter, Bill Harrison, and Gerard Allwein. 15th ACM-IEEE International Conference on Formal Methods and Models for System Design (MEMOCODE17). [pdf]({{ site.baseurl }}/assets/papers/memocode17.pdf)
 * _A Programming Model for Reconfigurable Computing Based in Functional Concurrency_, William L. Harrison, Adam Procter, Ian Graves, Michela Becchi, and Gerard Allwein. ReCoSoC 2016 [pdf]({{ site.baseurl }}/assets/papers/recosoc16.pdf) [slides]({{ site.baseurl }}/assets/papers/slides-recosoc16.pdf).
