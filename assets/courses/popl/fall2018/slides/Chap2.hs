@@ -1,6 +1,6 @@
 module Chap2 where
 
-import Prelude hiding (head,tail,(!!),last,take,reverse)
+import Prelude hiding (head,tail,(!!),last,take,reverse,drop,maximum,repeat,zip,cycle)
 
 doubleMe x = x + x  
 
@@ -55,4 +55,26 @@ take' n l | n<=0 = [] -- N.b., defined also for n<0
                     []     -> []
                     (x:xs) -> x : take (n-1) xs
 
--- We'll add to this on Friday.
+drop :: Int -> [a] -> [a]
+drop 0 ls = ls
+drop n []     = []
+drop n (x:xs) = drop (n-1) xs
+
+maximum :: [Int] -> Int
+maximum []     = 0
+maximum (x:xs) = if x > maxxs then x else maxxs
+   where maxxs = maximum xs
+
+         
+repeat :: a -> [a]
+repeat x = x : repeat x
+
+fives = repeat 5
+
+cycle :: [a] -> [a]
+cycle l = l ++ cycle l
+
+zip :: [a] -> [b] -> [(a,b)]
+zip [] _          = []
+zip _ []          = []
+zip (a:as) (b:bs) = (a,b) : zip as bs
