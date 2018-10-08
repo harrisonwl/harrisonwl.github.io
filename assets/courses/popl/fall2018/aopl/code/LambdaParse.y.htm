@@ -1,0 +1,39 @@
+<pre>
+{
+module LambdaParse where
+import Data.Char
+import <a href=Lambda.hs.htm>Lambda</a>
+import <a href=Lexer.hs.htm>Lexer</a>
+}
+
+%name parser
+%tokentype { Token }
+
+%token 
+    id     { TokenIdent $$ }
+    '\\'   { Symbol "\\" }
+    '.'    { Symbol "." }
+    '('    { Symbol "(" }
+    ')'    { Symbol ")" }
+
+%%
+
+Exp  : Exp Prim       { App $1 $2 }
+     | Prim            { $1 }
+
+Prim : id               { Var $1 }
+     | '\\' id '.' Exp { Abs $2 $4 }
+     | '(' Exp ')'     { $2 }
+     
+{
+
+symbols = [".", "\\", "(", ")"]
+keywords = []
+parseExp str = parser (lexer symbols keywords str)
+
+parseInput = do
+  input <- getContents
+  print (parseExp input)
+
+}
+</pre>
