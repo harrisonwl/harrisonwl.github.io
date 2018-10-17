@@ -25,15 +25,27 @@ verifications.",
   url_Paper = "https://harrisonwl.github.io/assets/papers/hosc-cheapthreads.pdf",
 }
 
-@inproceedings{harrison18,
+@inproceedings{harrison18b,
+  title = {Language Abstractions for Hardware-based Control-Flow Integrity Monitoring},
+  author = {Harrison, William L. and Allwein, Gerard},
+  booktitle = {Proceedings of the 2018 International Conference on Reconfigurable Computing and FPGAs},
+  year = {2018},
+  pages = {(to appear)},
+  abstract = {Control-Flow Integrity (CFI) is a software protection mechanism that 
+detects a class of code reuse attacks by identifying anomalous control-flows within an executing program. Hardware-based CFI has the promise of the security benefits of CFI without the performance overhead and complexity of software-based CFI: generally speaking, hardware-based monitors are more difficult to bypass, offer lower performance overheads than software-based monitors, and, furthermore, hardware-based CFI can be performed without the necessity of altering application binaries or instrumenting language compilers. Although hardware-based CFI is an active area of research and there is a growing literature describing CFI strategies at a high-level, there is, to the authors' best knowledge, no work on languages specially tailored to the specification and implementation of CFI monitors. This article presents a proof-of-concept domain-specific language with built-in abstractions for expressing control-flow constraints along with a compiler that targets the functional hardware description language ReWire. While the case study is small, it indicates, we argue, an approach to rapid-prototyping hardware-based monitors enforcing CFI that is quick, flexible, and extensible as well as being amenable to formal verification.
+},
+  url_Paper = "https://harrisonwl.github.io/assets/papers/reconfig18.pdf",
+}
+
+@inproceedings{harrison18a,
   title = {Semantics-directed Prototyping of Hardware Runtime Monitors},
   author = {Harrison, William L. and Allwein, Gerard},
   booktitle = {Proceedings of the 29th International Symposium on Rapid System Prototyping (RSP)},
   year = {2018},
-  pages = {(to appear)},
   abstract = {Building memory protection mechanisms into embedded hardware is attractive because it has the potential to neutralize a host of software-based attacks with relatively small performance overhead. A hardware monitor, being at the lowest level of the system stack, is more difficult to bypass than a software monitor and hardware-based protections are also potentially more fine-grained than is possible in software: an individual instruction executing on a processor may entail multiple memory accesses, all of which may be tracked in hardware. Finally, hardware-based protection can be performed without the necessity of altering application binaries. This article presents a proof-of-concept codesign of a small embedded processor with a hardware monitor protecting against ROP-style code reuse attacks. While the case study is small, it indicates, we argue, an approach to rapid-prototyping runtime monitors in hardware that is quick, flexible, and extensible as well as being amenable to formal verification.},
   url_Paper = "https://harrisonwl.github.io/assets/papers/rsp18.pdf",
 }
+
 
 @inproceedings{reynolds17,
   title = {A Core Calculus for Secure Hardware: Its Formal Semantics and Proof System},
