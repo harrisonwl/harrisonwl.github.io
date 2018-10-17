@@ -50,7 +50,7 @@ Language-based methods in computer security, all aspects of programming language
 
 #### __Recent Publications__
 
-* _Language Abstractions for Hardware-based Control-Flow Integrity Monitoring._ Bill Harrison and Gerard Allwein. To appear in Proceedings of the 2018 International Conference on Reconfigurable Computing and FPGAs. [pdf]({{ site.baseurl }}/assets/papers/reconfig18.pdf)
+* _Language Abstractions for Hardware-based Control-Flow Integrity Monitoring._ Bill Harrison and Gerard Allwein. To appear in Proceedings of the 2018 International Conference on Reconfigurable Computing and FPGAs. [pdf]({{ site.baseurl }}/assets/papers/reconfig18.pdf)  [codebase]({{ site.baseurl }}/assets/code/ReConFig18codebase.tar.gz)
 * _The Mechanized Marriage of Effects and Monads with Applications to High Assurance Hardware._ Tom Reynolds, Bill Harrison, Adam Procter, and Gerard Allwein. To appear in ACM Transactions on Embedded Computing Systems. [pdf]({{ site.baseurl }}/assets/papers/tecs18.pdf)
 * _Semantics-directed Prototyping of Hardware Runtime Monitors._ Bill Harrison and Gerard Allwein. To appear in Proceedings of the 29th International Symposium on Rapid System Prototyping (RSP). [pdf]({{ site.baseurl }}/assets/papers/rsp18.pdf)
 * _A Core Calculus for Secure Hardware: Its Formal Semantics and Proof System._ Tom Reynolds, Adam Procter, Bill Harrison, and Gerard Allwein. 15th ACM-IEEE International Conference on Formal Methods and Models for System Design (MEMOCODE17). [pdf]({{ site.baseurl }}/assets/papers/memocode17.pdf)
