@@ -23,8 +23,8 @@ title: "Home"
 
 #### __Biographical information__
 
-* Director, MU Center for High Assurance Computing
-* Associate Professor of Computer Science (joined MU in 2003)
+* Senior Cybersecurity Research Scientist at Oak Ridge National Laboratory
+* Formerly, Associate Professor of Computer Science at the University of Missouri 
 * Recipient: NSF CAREER Award 2008 (CyberTrust program) 
 * Post-doctoral Researcher at Oregon Graduate Institute from June 2000-August 2003 
 * Visiting Lecturer (Computer Science), Indiana University, September 1999-May 2000 
@@ -37,13 +37,11 @@ title: "Home"
 Language-based methods in computer security, all aspects of programming languages design and implementation, model-driven system design and synthesis, Computer and information security, malware analysis, and formal methods.
 
 #### __Contact Information__
-* __Address:__ 318 Engineering Building North, University of Missouri, Columbia, MO 65209
-* __Email:__ harrisonwl@missouri.edu 
+* __Email:__ william.lawrence.harrison@gmail.com
 * <a href = "https://harrisonwl.github.io/assets/cv/harrison-cv-2018.pdf">Curriculum Vitae</a>
 
 #### __External Links__
 * <a href="https://www.researchgate.net/profile/William_Harrison6">My ResearchGate profile</a>
-* <a href="http://engineering.missouri.edu/person/harrisonw/">MU College of Engineering Page</a>
 * <a href="http://mu-chaco.github.io/ReWire/">The ReWire Functional Hardware Description Language</a>
 * <a href="https://cal.berkeley.edu/william.harrison">Berkeley Alumni Page</a>
 * <a href="https://github.com/harrisonwl">My GitHub profile</a>
