@@ -1,6 +1,6 @@
 # Site title and subtitle. This is used in _includes/header.html
 title: 'William L. Harrison, Ph.D'
-subtitle: 'Center for High Assurance Computing'
+#subtitle: 'Center for High Assurance Computing'
 
 #gems: [jekyll_figure]
 #
