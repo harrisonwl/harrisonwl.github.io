@@ -1,0 +1,1106 @@
+\documentclass[11pt]{article}
+
+%A Few Useful Packages
+\usepackage{marvosym}
+%\usepackage{fontspec} 					%for loading fonts
+%\usepackage{xunicode}
+%\usepackage{xltxtra}
+\usepackage{url}
+\usepackage{parskip} 	
+\usepackage{enumitem}
+
+%other packages for formatting
+\RequirePackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+%\usepackage[big]{layaureo} 				%better formatting of the A4 page
+% an alternative to Layaureo can be ** \usepackage{fullpage} **
+\usepackage{supertabular} 				%for Grades
+\usepackage{titlesec}					%custom \section
+\usepackage{hyperref}
+
+%Setup hyperref package, and colours for links
+
+\usepackage[text={6in,9in},centering]{geometry}
+
+
+%FONTS
+%\defaultfontfeatures{Mapping=tex-text}
+%%\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin}
+%%%% modified for Karol Kozioł for ShareLaTeX use
+%\setmainfont[
+%SmallCapsFont = Fontin-SmallCaps.otf,
+%BoldFont = Fontin-Bold.otf,
+%ItalicFont = Fontin-Italic.otf
+%]
+%{Fontin.otf}
+%%%
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+%Tweak a bit the top margin
+%\addtolength{\voffset}{-1.3cm}
+
+%Italian hyphenation for the word: ''corporations''
+\hyphenation{im-pre-se}
+
+%-------------WATERMARK TEST [**not part of a CV**]---------------
+\usepackage[absolute]{textpos}
+
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+\setlength{\parindent}{0pt}
+
+%--------------------BEGIN DOCUMENT----------------------
+\begin{document}
+
+%WATERMARK TEST [**not part of a CV**]---------------
+%\font\wm=''Baskerville:color=787878'' at 8pt
+%\font\wmweb=''Baskerville:color=FF1493'' at 8pt
+%{\wm 
+%	\begin{textblock}{1}(0,0)
+%		\rotatebox{-90}{\parbox{500mm}{
+%			Typeset by Alessandro Plasmati with \XeTeX\  \today\ for 
+%			{\wmweb \href{http://www.aleplasmati.comuv.com}{aleplasmati.comuv.com}}
+%		}
+%	}
+%	\end{textblock}
+%}
+
+\pagestyle{empty} % non-numbered pages
+
+%\font\fb=''[cmr10]'' %for use with \LaTeX command
+
+%--------------------TITLE-------------
+\par{\centering
+		{\Huge \textsc{William Harrison}, Ph.D
+	}\bigskip
+%	\\
+%	1238 Sunset Drive, Columbia, MO 65203
+%	\\ 
+%	\href{mailto:william.lawrence.harrison@gmail.com}{william.lawrence.harrison@gmail.com}
+%	\\
+%	\href{https://harrisonwl.github.io}{https://harrisonwl.github.io}
+	\par}
+
+
+\section{Contact}
+
+\begin{tabular}{rl}
+    \textsc{Address:}   & 3145 Fountain Park Blvd, Knoxville TN 37917 \\
+    \textsc{Phone:}     & 573 268-7402\\
+    \textsc{Email:}     & \href{mailto:william.lawrence.harrison@gmail.com}{william.lawrence.harrison@gmail.com}\\
+    \textsc{Web:}       & \href{https://harrisonwl.github.io}{https://harrisonwl.github.io}
+\end{tabular}
+
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{Education}
+
+\begin{tabular}{rl}	
+\textsc{May 2001} & 
+Ph.D., Computer Science, \textbf{University of Illinois at Urbana-Champaign}.
+\\
+	&    Dissertation: ``Modular Compilers and Their Correctness Proofs.''
+  \\
+  & Committee Chairman:  Samuel Kamin
+
+\\
+\\
+\textsc{June 1992}
+    & M.S., Computer Science, \textbf{University of California, Davis}.
+    \\ 
+    & Thesis: ``Mechanizing the Axiomatic Semantics for a Programming 
+    \\& \hspace{9ex} Language with Asynchronous Send and Receive in HOL.''
+    \\
+    & Thesis Advisor: Karl Levitt
+%
+\\
+\\
+%
+\textsc{June 1986} &     B.A., Mathematics,   \textbf{University of California, Berkeley}.
+\end{tabular}
+
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{Academic  \& Professional Appointments }
+
+\begin{tabular}{r|p{11cm}}
+ 
+\textsc{Aug 2017--Present} & {\bf Senior Research Scientist}, Oak Ridge National Laboratory, Cyber \& Information Security Research Group (CISR)
+\\
+\multicolumn{2}{c}{}
+\\[-1ex]
+
+\textsc{Sep 2003--Jul 2019} & {\bf Associate Professor}, Department of Computer
+Science,
+University of Missouri at Columbia. Promotion and tenure 5/26/2009
+\\
+\multicolumn{2}{c}{}
+\\[-1ex]
+
+
+\textsc{Aug 2013--Jul 2014} & {\bf Visiting Scientist}, National Security Agency\\
+\multicolumn{2}{c}{}
+\\[-1ex]
+
+\textsc{Apr 2011--present} & {\bf Director}, The Center for High Assurance Computing at the University of Missouri
+\\
+\multicolumn{2}{c}{}
+\\[-1ex]
+
+
+\textsc{Sep 2010--Aug 2013} & {\bf Research Consultant}, Pro-telligent, Inc. 
+Arlington, VA
+\\
+\multicolumn{2}{c}{}
+\\[-1ex]
+
+\textsc{Jun 2000--Aug 2003} & {\bf Senior Research Associate \& Adjunct Professor}, Computer
+Science Dept.,
+Oregon Graduate Institute, Beaverton OR
+\\
+\multicolumn{2}{c}{}
+\\[-1ex]
+
+\textsc{Sep 2000--Dec 2000} & {\bf Senior Compiler Engineer (consultant)}, Reservoir
+Laboratories, Portland, Oregon.
+\\
+\multicolumn{2}{c}{}
+\\[-1ex]
+
+\textsc{Aug 1999--May 2000} &
+    {\bf Visiting Lecturer}, Department of Computer Science,
+	Indiana University, Bloomington, IN 47401.
+	\\
+	\multicolumn{2}{c}{}
+	\\[-1ex]
+	
+\textsc{Spring 1999} & 
+	{\bf Visiting Lecturer}, Department of Computer Science,
+	  University of Illinois at Urbana-Champaign, Urbana, IL.
+\end{tabular}
+
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{Research Interests}
+
+Reconfigurable computing and high-level synthesis; Hardware and Embedded system security;
+Computer security and
+language-based methods in security; Trustworthy computing; Formal methods (particularly with respect to
+hardware/software codesign);  Programming language
+design and implementation.
+
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{Personal Information}
+
+\begin{itemize}[leftmargin=0mm]
+\item[]  I am a US citizen.
+
+%\item[]  I have a Top Secret/SCI security clearance.
+
+\item[]  I am married to Amber Bradshaw, who is a ceramic artist.
+
+\item[]  We have two children: Tegan and Caden (twins, 9 years old). 
+
+\end{itemize}
+
+
+
+
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{Funding History}
+
+\noindent{\bf Proposals Under Submission}
+
+\begin{itemize}[leftmargin=0.0mm]
+\item[]
+{\bf Agency:} Office of Naval Research.
+\\
+{\bf Title:} High Assurance FPGA Design.
+\\
+{\bf Proposed Budget:} \$2,980,000.
+\\
+%{\bf Period:}   May 2016  --  August 2019.
+%\\
+{\bf Role:}    Collaborative research proposal with Dr. Gerard Allwein (US Naval Research Laboratory) and Professor Jason Bakos (University of South Carolina, Computer Science \& Engineering).
+
+\end{itemize}
+
+
+\noindent{\bf Active Grants and Contracts}
+
+\begin{enumerate}[leftmargin=0.0mm]
+\item
+{\bf Agency:} US Naval Research Laboratory.
+\\
+{\bf Title:} Mechanizing the Metatheory of the ReWire Language with Applications.
+\\
+{\bf Amount:} \$720,000.
+\\
+{\bf Period:}   May 2016  --  August 2019.
+\\
+{\bf Role:}    Sole  Principal investigator.
+
+\item
+{\bf Agency:} US Naval Research Laboratory.
+\\
+{\bf Title:} Integrated Formal Methods for Secure FPGA Development.
+\\
+{\bf Amount:} \$300,000.
+\\
+{\bf Period:}   January 2019  --  December 2021.
+\\
+{\bf Role:}    Sole  Principal investigator.
+\end{enumerate}
+
+
+\noindent{\bf Completed Grants and Contracts}
+
+\begin{enumerate}[leftmargin=0.0mm]
+\item
+{\bf Agency:} US Naval Research Laboratory.
+\\
+{\bf Title:} Type-Based Analysis of Security Flows in ReWire Circuit Specifications.
+\\
+{\bf Amount:} \$99,999.
+\\
+{\bf Period:}   October 2014  --  October 2015.
+\\
+{\bf Role:}     Sole Principal investigator.
+
+
+
+\end{enumerate}
+
+\newpage
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%\section{Funding History (cont'd)}
+
+\begin{enumerate}[leftmargin=0.0mm,resume]
+\item  {\bf Agency:} National Security Agency.\\
+               {\bf Title:} Inter-agency Personnel Agreement.\\
+               {\bf Amount:} \$144,190.00 \\
+               {\bf Period:} August 2013 -- August 2014.
+
+\item
+{\bf Agency:} Department of Defense, Federal Voting Assistance Program (FVAP).
+\\
+{\bf Title:} Secure Ballot Delivery to UOCAVA Voters (Uniformed, Overseas, Citizens Absentee Voters). 
+\\
+{\bf Amount:} \$550,000.
+\\
+{\bf Period:} May 1, 2012 -- April 30, 2015.
+\\
+{\bf Role:} Collaborative research with Dr. Dale Musser of MU's Information Technology Program and Dr. Keith Politte of MU's Reynolds School of Journalism. 
+
+\item
+{\bf Agency:} Department of Education.
+ ~\\
+{\bf Title:} Graduate Assistance in Areas of National Need (GAANN) Fellowships.
+\\
+{\bf Amount:} \$240,000.
+\\
+{\bf Period:} September 1, 2011 -- May 15, 2015.
+\\
+{\bf Role:} Co-Investigator. Two of my Ph.D students (Adam Procter and Christopher Hathhorn) were GAANN fellows. 
+
+\item
+{\bf Agency:} National Science Foundation.
+\\
+{\bf Title:} CAREER: Automated Synthesis of High Assurance Security Kernels.
+\\
+{\bf Amount:} \$450,000.
+\\
+{\bf Period:}   June 1, 2008  --  May 31, 2013.
+\\
+{\bf Role:}      Sole Principal Investigator.
+
+\item
+{\bf Agency:} Office of the Asst. Secretary of Defense for Research and Development (ASD(R\&E)).
+\\
+{\bf Title:} Understanding Security Flows in the Many Core Era.
+\\
+{\bf Amount:} \$1,370,000.
+\\
+{\bf Period:}   January 2012  --  July 2015.
+\\
+{\bf Role:}      Principal Investigator. Collaborative Research with Dr. David Andrews (University of Arkansas) and Dr. Gerard Allwein (NRL).
+
+\item
+{\bf Agency:} US Naval Research Laboratory.
+\\
+{\bf Title:} MILS Hardware and Its Formal Methods-based Security.
+\\
+{\bf Amount:} \$810,000.
+\\
+{\bf Period:}   April 2008  --  April 2011.
+\\
+{\bf Role:}      Principal Investigator. Collaborative Research with Dr. David Andrews (University of Arkansas) and Dr. Gerard Allwein (NRL).
+
+
+\item
+{\bf Agency:} Department of Defense through OHSU/OGI.
+\\
+{\bf Title:} System Information Assurance II
+\\
+{\bf Amount:} \$31,703 
+\\
+{\bf Period:}   July 1, 2004  --  July 31, 2006
+\\
+{\bf Role:}      Principal Investigator
+
+\item
+{\bf Agency:} University of Missouri-Columbia Research Council.
+\\
+{\bf Title:} Big Twelve Faculty Fellowship
+\\
+{\bf Amount:} \$2,400
+\\
+{\bf Period:}   June 1, 2005  --  August 31, 2005 
+\\
+{\bf Role:}      Sole Principal Investigator
+\end{enumerate}
+
+\newpage
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{Peer-reviewed Publications}
+
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\noindent{\bf{Book Chapters}}
+
+\begin{enumerate}[leftmargin=0.0mm]
+\item
+Gerard Allwein and William L. Harrison.
+\newblock Distributed Modal Logic.
+\newblock {\it J. Michael Dunn on Information Based Logics, Book Chapter, pages 331-362, Springer Verlag, 2016}.
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\noindent{\bf{Journal Publications}}
+
+\begin{enumerate}[leftmargin=0.0mm]
+
+
+\item
+Thomas Reynolds, Adam Procter, William L. Harrison, and Gerard Allwein.
+\newblock The Mechanized Marriage of Effects and Monads with Applications to High Assurance Hardware.
+\newblock {\it ACM Transactions on Embedded Computing Systems}, 2019, vol. 18, pages 1-26. 
+
+
+\item
+Gerard Allwein, William L. Harrison, and Thomas Reynolds.
+\newblock Distributed Relation Logic.
+\newblock {\it Logic and Logical Philosophy}, volume 26, number 1, March 2017, pages 19-61.
+
+
+\item
+Adam Procter, William L. Harrison, Ian Graves, Michela Becchi, and Gerard Allwein.
+\newblock A Principled Approach to Secure Multi-Core Processor Design with ReWire
+\newblock {\it ACM Transactions on Embedded Computing Systems}, volume 16, number 2, Article 33 (January 2017).
+
+
+\item
+Gerard Allwein, William Harrison and David Andrews.
+\newblock Simulation logic.
+\newblock {\it Logic and Logical Philosophy, vol. 26, no. 3}, 2014.
+
+\item
+G.~Allwein, Y.~Yang, and W.~L. Harrison.
+\newblock Qualitative decision theory via channel theory.
+\newblock {\em Logic and Logical Philosophy}, Volume 20, Number 1-2 (2011), pages 81--110.
+
+\item
+W.~L. Harrison and J.~Hook.
+\newblock Achieving information flow security through monadic control of
+  effects.
+\newblock {\em Journal of  Computer Security}, 17:599--653, October 2009.
+
+\item
+X.~Z. Fu, H.~Wang, W.~L. Harrison, and R.~Harrison.
+\newblock {RNA} pseudoknot prediction using term rewriting.
+\newblock {\em International Journal of Data Mining and Bioinformatics}, 2(1):78-93, February 2008.
+
+\item
+W.~L. Harrison and R.~B. Kieburtz.
+\newblock The logic of demand in {H}askell.
+\newblock {\em Journal of Functional Programming}, 15(6):837--891, 2005.
+
+
+\item
+W.~L. Harrison.
+\newblock Cheap (but functional) threads.
+\newblock 44 pages. Accepted for publication in: {\em Higher-Order Symbolic Computation}. 
+
+\end{enumerate}
+
+
+
+
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\noindent{{\bf Under Submission}}
+
+\begin{enumerate}[leftmargin=0.0mm]
+
+
+\item
+Gerard Allwein, William Harrison and Thomas Reynolds.
+\newblock Channel Theory and Information Flow.
+\newblock {\it Journal of Applied Non-classical Logic}, 2017.
+
+
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\noindent{{\bf Peer-reviewed Conference Publications}}
+
+\begin{enumerate}[leftmargin=0.0mm]
+
+\item 
+William L. Harrison and Gerard Allwein.
+\newblock Verifiable Security Templates for Hardware.
+\newblock {\it Proceedings of Design, Automation, and Test in Europe (DATE 20)}. To appear.
+
+
+
+\item 
+William L. Harrison and Gerard Allwein.
+\newblock Language Abstractions for Hardware-based Control-Flow Integrity Monitoring.
+\newblock {\it Proceedings of the International Conference on Reconfigurable Computing and FPGAs (ReConFig18)}.
+
+
+\item 
+William L. Harrison and Gerard Allwein.
+\newblock Semantics-directed Prototyping of Hardware Runtime Monitors.
+\newblock {\it Proceedings of the 29th International Symposium on Rapid System Prototyping (RSP) (RSP18)}.
+\end{enumerate}
+
+\section{Peer-reviewed Publications (cont'd)}
+
+\begin{enumerate}[leftmargin=0.0mm,resume]
+\item 
+Thomas N. Reynolds, Adam Procter, William L. Harrison, and Gerard Allwein.
+\newblock A Core Calculus for Secure Hardware: Its Formal Semantics and Proof System.
+\newblock {\it Proceedings of the 15th ACM-IEEE International Conference on Formal Methods and Models for System Design (MEMOCODE17)}, 2017.
+
+
+\item
+William L. Harrison, Adam Procter, and Gerard Allwein.
+\newblock Model-driven Design \& Synthesis of the SHA-256 Cryptographic Hash Function in ReWire.
+\newblock {\it Proceedings of the 27th International Symposium on Rapid System Prototyping (RSP), 2016}.
+
+\item
+William L. Harrison, Adam Procter, Ian Graves, Michela Becchi, and Gerard Allwein. 
+\newblock A Programming Model for Reconfigurable Computing Based in Functional Concurrency.
+\newblock {\it Proceedings of the 11th International Symposium on Reconfigurable Communication-centric Systems-on-Chip (ReCoSoC 2016)}.
+
+\item
+Ian Graves, Adam Procter, William L. Harrison, and Gerard Allwein.
+\newblock Provably Correct Development of reconfigurable hardware designs via equational reasoning.
+\newblock {\it Proceedings of the 2015 International Conference on
+Field-Programmable Technology (FPT '15)}.
+
+\item
+Adam Procter, William L. Harrison, Ian Graves, Michela Becchi, and Gerard Allwein. 
+\newblock Semantics driven hardware design, implementation, and verification with ReWire. 
+\newblock {\it ACM SIGPLAN/SIGBED Conf. on Languages, Compilers, Tools and Theory for Embedded Systems (LCTES), 2015.} 
+
+\item
+Ian Graves, Adam Procter, William L. Harrison, Michela Becchi and Gerard Allwein.
+\newblock Hardware Synthesis from Functional Embedded Domain-Specific Languages.
+\newblock {\it Proceedings of the 2015 11th International Symposium on 
+Applied Reconfigurable Computing}.
+
+
+\item
+Adam Procter, William L. Harrison, Ian Graves, Michela Becchi and Gerard Allwein.
+\newblock Semantics-directed Machine Architecture in ReWire.
+\newblock {\it Proceedings of the 2013 International Conference on Field Programmable Technology.}
+
+\item
+Robert Harrison and William L. Harrison.
+\newblock Quantitative Analysis of Error Injection Covert Channels.
+\newblock {\it Proceedings of the International Workshop on Quantitative Aspects in Security Assurance (QASA 2013).}
+
+\item
+   William L. Harrison, Adam Procter and Gerard Allwein.
+\newblock The Confinement Problem in the Presence of Faults.
+\newblock {\it Proceedings of the 2012 International Conference on Formal Engineering Methods.}
+                  
+\item
+Chris Hathhorn, Michela Becchi, William L. Harrison and Adam Procter
+\newblock Formal Semantics of Heterogeneous CUDA-C: A Modular Approach with Applications.
+\newblock {\it Proceedings of the 2012 Systems Software Verification Conference.}
+
+\item
+Gerard Allwein, William L. Harrison and David Andrews.
+\newblock Simulation Logic.
+\newblock {\it Proceedings of the 2012 Conference on Non-Classical Logics.}
+
+\item
+ Adam Procter, William L. Harrison and Aaron Stump.
+ \newblock The Design of a Practical Proof Checker for a Lazy Functional Language.
+ \newblock {\it Proceedings of the 2012 Trends in Functional Programming Conference.}
+
+\end{enumerate}
+
+\section{Peer-reviewed Publications (cont'd)}
+
+\begin{enumerate}[leftmargin=0.0mm,resume]
+\item
+W.~L. Harrison, B.~Schulz, A.~Procter, A.~Lukefahr, and G.~Allwein.
+\newblock Towards semantics-directed system design and synthesis.
+\newblock In {\em Proceedings of the 2011 International Conference on
+  Engineering Reconfigurable Systems and Algorithms (ERSA11)}, 2011.
+
+
+
+\item
+G.~Allwein and W.~L. Harrison.
+\newblock A channel theoretic account of separation security.
+\newblock In {\em Proceedings of the 2011 International Conference on
+  Engineering Reconfigurable Systems and Algorithms (ERSA11)}, 2011.
+
+
+\item
+G.~Allwein, Y.~Yang, and W.~L. Harrison.
+\newblock Decision theory via channel theory.
+\newblock In {\em Proceedings of the Logic in Cognitive Science Conference}. The Nicolaus Copernicus
+  University Press, 2010.
+
+\item
+G.~Allwein and W.~L. Harrison.
+\newblock Partially-ordered modalities.
+\newblock In {\em Proceedings of the Advances in Modal Logic (AiML) Conference}, pages 1--21, 2010.
+
+\item
+W.~L. Harrison, A.~Procter, J.~Agron, G.~Kimmel, and G.~Allwein.
+\newblock Model-driven engineering from modular monadic semantics:
+  Implementation techniques targeting hardware and software.
+\newblock In {\em DSL '09: Proc. of the IFIP TC 2 Working Conference on
+  Domain-Specific Languages}, pages 20--44, 2009.
+
+
+
+\item
+W.~L. Harrison, G.~Allwein, A.~Gill, and A.~Procter.
+\newblock Asynchronous exceptions as an effect.
+\newblock In {\em Proceedings of the Mathematics of Program Construction
+  (MPC08)}, pages 153--176, 2008.
+
+
+
+\item
+P.~S. Kariotis, A.~M. Procter, and W.~L. Harrison.
+\newblock Making monads first-class with template haskell.
+\newblock In {\em Proceedings of the first ACM SIGPLAN Symposium on Haskell},
+  Haskell '08, pages 99--110, New York, NY, USA, 2008. ACM.
+
+\item
+W.~L. Harrison.
+\newblock The essence of multitasking.
+\newblock In {\em 11th International Conference on Algebraic Methodology and
+  Software Technology {(AMAST 2006)}}, pages 158--172, July 2006.
+
+
+\item
+W.~L. Harrison.
+\newblock Proof abstraction for imperative languages.
+\newblock In {\em Proceedings of the 4th Asian Symposium on Programming
+  Languages and Systems (APLAS06)}, pages 97--113, 2006.
+
+\item
+W.~L. Harrison and J.~Hook.
+\newblock Achieving information flow security through precise control of
+  effects.
+\newblock In {\em 18th IEEE Computer Security Foundations Workshop (CSFW05)},
+  pages 16--30, Aix-en-Provence, France, June 2005.
+
+\item
+W.~L. Harrison.
+\newblock A simple semantics for polymorphic recursion.
+\newblock In {\em Proceedings of the 3rd Asian Symposium on Programming
+  Languages and Systems (APLAS05)}, pages 37--51, Tsukuba, Japan, November
+  2005.
+
+\item
+X.~Z. Fu, H.~Wang, W.~L. Harrison, and R.~Harrison.
+\newblock {RNA} pseudoknot prediction using term rewriting.
+\newblock In {\em Proceedings of IEEE Fifth Symposium on Bioinformatics and
+  Bioengineering (BIBE05)}, pages 169--176, Minneapolis, MN, October 2005.
+
+\item
+W.~L. Harrison and R.~W. Harrison.
+\newblock Domain specific languages for cellular interactions.
+\newblock In {\em Proceedings of the 26th Annual IEEE International Conference
+  on Engineering in Medicine and Biology (EMBC04)}, September 2004.
+
+\item
+W.~L. Harrison, M.~Tullsen, and J.~Hook.
+\newblock Domain separation by construction.
+\newblock In {\em LICS03 Satellite Workshop on Foundations of Computer Security
+  (FCS03)}, June 2003.
+\newblock 21 pages.
+
+\end{enumerate}
+
+\section{Peer-reviewed Publications (cont'd)}
+
+\begin{enumerate}[leftmargin=0.0mm,resume]
+\item
+W.~L. Harrison, T.~Sheard, and J.~Hook.
+\newblock Fine control of demand in {Haskell}.
+\newblock In {\em 6th International Conference on the Mathematics of Program
+  Construction (MPC02), Dagstuhl, Germany}, volume 2386 of {\em Lecture Notes in Computer Science}, pages 68--93. 2002.
+
+
+
+\item
+W.~L. Harrison and R.~Kieburtz.
+\newblock Pattern-driven reduction in haskell.
+\newblock In {\em 2nd International Workshop on Reduction Strategies in
+  Rewriting and Programming (WRS02)}, Copenhagen, Denmark, 2002.
+
+
+\item
+W.~L.~Harrison and T.~Sheard.
+\newblock Dynamically adaptable software with metacomputations in a staged
+  language.
+\newblock In {\em Proceedings of the Second International Workshop on
+  Semantics, Applications, and Implementation of Program Generation (SAIG)},
+  volume 2196 of {\em Lecture Notes in Computer Science}, pages 163--182,
+  Florence, Italy, 2001. Springer-Verlag.
+
+
+\item
+W.~L. Harrison and S.~Kamin.
+\newblock Metacomputation-based compiler architecture.
+\newblock In {\em 5th International Conference on the Mathematics of Program
+  Construction, Ponte de Lima, Portugal}, volume 1837 of {\em Lecture Notes in
+  Computer Science}, pages 213--229. Springer-Verlag, 2000.
+
+
+\item
+W.~L. Harrison and S.~N. Kamin.
+\newblock Modular compilers based on monad transformers.
+\newblock In {\em Proceedings of the 1998 International Conference on Computer
+  Languages}, pages 122--131. IEEE Computer Society Press, 1998.
+
+
+\item
+W.~L. Harrison, K.~Levitt, and M.~Archer.
+\newblock An {HOL} mechanization of the axiomatic semantics of a simple
+  distributed programming language.
+\newblock In {\em Proceedings of the International Workshop on Higher-Order
+  Logic Theorem Proving and Its Applications}, pages 347--358, Leuven, Belgium,
+  September 1992.
+
+\item
+W.~L. Harrison and K.~Levitt.
+\newblock Mechanizing security in {HOL}.
+\newblock In {\em Proceedings of the 1991 International Workshop on the {HOL}
+  Theorem Proving System and its Applications}, pages 63--66, Davis,
+  California, 1991. IEEE Computer Society Press.
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\noindent{{\bf Dissertation and Master's Thesis}}
+
+\begin{enumerate}[leftmargin=0.0mm]
+
+\item
+W.~L. Harrison.
+\newblock {\em Modular Compilers and Their Correctness Proofs}.
+\newblock PhD thesis, University of Illinois at Urbana-Champaign, 2001.
+
+\item
+W.~L. Harrison.
+\newblock \emph{Mechanizing the axiomatic semantics for a programming language with
+  asynchronous send and receive in {HOL}.}
+\newblock Master's thesis, University of California, Davis, 1992.
+
+
+\end{enumerate}
+
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\noindent{{\bf Technical Reports}}
+
+
+
+\begin{enumerate}[leftmargin=0.0mm]
+
+\item
+Gerard Allwein and William L. Harrison.
+\newblock {Distributed Logics}.
+\newblock Technical Report NRL/MR/5540-14-9565, US Naval Research Laboratory, 2014. 
+
+\item
+W.~L. Harrison.
+\newblock {Mechanizing the Axiomatic Semantics for a Programming Language with
+  Asynchronous Send and Receive in HOL}.
+\newblock Technical Report CSE-92-20, University of California at Davis, 1992.
+
+
+\item
+W.~Harrison, K.~Levitt, and M.~Archer.
+\newblock {Towards a Verified Code Basis for a Secure Distributed Operating
+  System}.
+\newblock Technical Report CSE-92-19, University of California at Davis, 1992.
+
+\end{enumerate}
+
+
+
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{Selected Honors, Memberships, and Service}
+
+
+\begin{itemize}[leftmargin=0mm]
+
+\item[] Program Committee member, 13th International Conference on
+Mathematics of Program Construction (MPC), 2019.
+
+\item[] Program Committee member, 2018 International Conference on Reconfigurable Computing and FPGAs (ReConFig), 2018.
+
+\item[] Program Committee member, 30th International Conference on Computer Aided Verification (CAV), 2018.
+
+\item[] Selected for Intel Corporation's 2017 Hardware Accelerator Research Program.
+
+\item[] Program Chair for 
+Seventh Workshop on Design, Modeling and Evaluation of Cyber Physical Systems (CyPhy'17).
+
+\item[] Organized special session entitled \emph{The Confluence of Secure Hardware and Programming Languages} for the International Conference on 
+Engineering of Reconfigurable Systems and Algorithms (ERSA 11).
+
+\item[]  Recipient, National Science Foundation CAREER award (CyberTrust program) in 2008.
+
+\item[] Received \emph{Certificate of Appreciation} from the University of Missouri College of Engineering Graduating Seniors on December 11, 2009 for teaching excellence.
+
+\item[] Member of ACM and IEEE.
+
+\item[] Lead successful effort to earn the University of Missouri accreditation as a National Security Agency Center of Academic Excellence in 2007. 
+
+\item[] Invited participant to the NSF High-Confidence Software
+  Platforms for Cyber-Physical Systems (HCSP-CPS) Workshop, November
+  30-December 1, 2006 in Alexandria, Virginia.
+
+\item[] Summer Faculty Fellow to the 2006 Office of Naval Research/ASEE
+  Summer Faculty Research Program. Research performed in the Software
+  Engineering Section of the Naval Research Laboratory's Center for
+  High Assurance Computer Systems in Washington, DC. 
+
+\item[]  Member of the program committees for the {\em Colloquium for Information Systems Security Education} (CISSE 2011, 2012), {\em ACM Symposium on the Implementation of Functional Languages} (IFL11), {\em ACM SIGPLAN 2008
+    Haskell Symposium} (Haskell08), the {\em 7th International
+Conference on the Mathematics of Program Construction} (MPC06).
+
+\item[] Reviewer for the {\em Journal of Computer Security} (JCS), the {\em Journal of Functional Programming} (JFP),
+the {\em ACM Transactions on Programming Languages and Systems} (TOPLAS),
+the {\em Theoretical Computer Science} (TCS),
+the {\em Journal of Software Testing, Verification and Reliability},
+the {\em ACM Journal of Experimental Algorithmics} (JEA), and the {\em American
+Medical Informatics Association Symposium 2005} (AMIA 2005). 
+
+
+\item[] Received \emph{Big Twelve Faculty Fellowship}, University of
+  Missouri, Columbia; visited University of Kansas System Level Design (SLDG)
+  and Hybrid Threads groups.
+
+
+\item[] University of Missouri nominee for 2005 {\em Microsoft New Faculty Fellowship} for Bioinformatics research.
+
+\item[] Frequent invitations to serve and participation (usually once or twice per year)  on National Science Foundation review panels.
+\end{itemize}
+
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{Selected Honors, Memberships, and Service (cont'd)}
+
+\begin{itemize}[leftmargin=0.0mm]
+
+\item[] Chaired recruiting committee that ultimately resulted in the hiring of Drs. Rohit Chadha and Prasad Calyam in the MU Computer Science department. 
+
+
+\item[] Currently chairing recruiting committee for the area of ``High Assurance Cyber Physical Systems'' in the MU Computer Science department. Expect to hire 5 faculty.
+
+\end{itemize}
+
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+\section{Invited Talks and Conference Presentations}
+
+\begin{itemize}[leftmargin=0mm]
+
+\item[]{\it Semantics-directed Prototyping of Hardware Runtime Monitors}. The 29th International Symposium on Rapid System Prototyping (RSP), October 2018.
+
+\item[]{\it Why Functional Hardware Description Matters.}
+Oak Ridge National Laboratory, Oak Ridge TN, 3/13/2017.
+
+
+\item[]{\it Model-driven Design \& Synthesis of the SHA-256 Cryptographic Hash Function in ReWire.} The 27th International Symposium on Rapid System Prototyping (RSP), 2016.
+
+\item[]{\it A Programming Model for Reconfigurable Computing Based in Functional Concurrency.} The 11th International Symposium on Reconfigurable Communication-centric Systems-on-Chip (ReCoSoC 2016).
+
+\item[]{\it Provably Correct Development of reconfigurable hardware designs via equational reasoning.} The 2015 International Conference on Field-Programmable Technology (FPT ?15).
+
+\item[]{\it High Assurance Hardware with ReWire: Just Say No! to Semantic Archaeology.}
+The Technical Cooperation Program (TTCP) workshop, Defence Science \& Technology Organization (DSTO), Adelaide Australia, 5/18/2015.
+
+\item[]{\it High Assurance Hardware with ReWire: Just Say No! to Semantic Archaeology.}
+High Confidence Software and Systems (HCSS) NSA workshop, Annapolis MD, 5/6/2015.
+
+\item[]{\it High Assurance Hardware with ReWire: Just Say No! to Semantic Archaeology.}
+Oak Ridge National Laboratory, Oak Ridge TN, 3/3/2015.
+
+\item[]{\it The Confinement Problem in the Presence of Faults.} Proceedings of the 2012 International Conference on Formal Engineering Methods.
+
+\item[]{\it Towards semantics-directed system design and synthesis.}
+International Conference on
+  Engineering Reconfigurable Systems and Algorithms (ERSA), 7/19/2011.
+
+\item[]{\it Understanding Security Flows in the Many Core Era.}
+National Security Agency, Information Assurance Directorate, 
+10/14/2010, Sponsor: Brad Martin.
+
+\item[]{\it An Academic Response to National Science and Technology Challenges.}
+Department of Defense Intelligence Information Systems (DoDIIS) Worldwide Conference, 5/26/2010.
+
+\item[]{\it Model-driven Synthesis of High Assurance Secure Systems.} University of Iowa, 10/23/09, Sponsor: Professor Aaron Stump.
+
+\item[]{\it Model-driven Synthesis of High Assurance Secure Systems.} Galois, Inc., 5/20/08, Sponsor: John Launchbury.
+\end{itemize}
+
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+%%%%%%%%%%%%
+\section{Invited Talks and Conference Presentations (cont'd)}
+
+\begin{itemize}[leftmargin=0mm]
+
+\item[]{\it Compiling for Security.} Missouri Institute of Technology (formerly University of Missouri, Rolla), 4/28/08, Sponsor: Professor Bruce McMillen.
+
+\item[]{\it Proof Abstraction for Imperative Languages.} The 4th Asian Symposium on Programming Languages and Systems (APLAS06), Sydney, Australia, 11/8/2006. 
+
+\item[]{\it The Essence of Multitasking.} The 11th International Conference on Algebraic Methodology and Software Technology (AMAST06), Kuuresaare, Estonia, 7/5/06.
+
+\item[]{\it Domain-specific Languages for Cellular Interactions.} University of Kansas, 4/29/05, Sponsor: Professor Perry Alexander. 
+
+\item[]{\it A Simple Semantics for Polymorphic Recursion.}, Proceedings of the 3rd Asian Symposium on Programming Languages and Systems (APLAS05), Tsukuba, Japan, 11/3/2005.
+
+\item[]{\it Achieving Information Flow Security Through Precise Control of Effects.} The 18th IEEE Computer Security Foundations Workshop (CSFW05), Aix-en-Provence, France, 7/20/05.
+
+\item[]{\it Information-flow Security \& Monadic Effects.}
+University of Illinois at Urbana-Champaign, 4/18/2005, Sponsor:
+Professor Jos\'{e} Meseguer.
+
+\item[]{\it Domain-specific Languages for Cellular Interactions.} The 26th Annual IEEE International Conference on Engineering in Medicine and Biology, San Francisco, California, 9/3/04.
+
+\item[]{\it Domain-specific Languages for Biology.} Georgia State
+  University, 5/26/2004, Sponsor: Professor Yi Pan.
+
+\item[]{\it Domain Separation by Construction.} LICS03 Satellite Workshop on Foundations of Computer Security (FCS03), Ottawa, Canada, 6/26/03. 
+
+\item[]{\it Prospects for Modular Compilation.}
+Rice University, 12/11/2002, Sponsor: Professor Walid Taha.
+
+\item[]{\it Domain-specific Languages for Compilation.}
+University of Alabama, 11/22/2002, Sponsor: Professor Joel Jones.
+
+\item[]{\it Pattern-driven Reduction in Haskell.} Second International Workshop on Reduction Strategies in Rewriting and Programming, Copenhagen, Denmark, 7/21/02.
+
+\item[]{\emph{Fine Control of Demand in Haskell.}} The Sixth International Conference on the Mathematics of Program Construction (MPC02), Dagstuhl, Germany, 7/8/02. 
+
+\item[]{\it Dynamically Adaptable Software with Metacomputations in a Staged Language.} The Second Workshop on the Semantics, Applications and Implementation of Program Generation (SAIG01), Florence, Italy, 9/6/01. 
+
+\item[]{\it Metacomputation-based Compiler Architecture.} The Fifth International Conference on the Mathematics of Program Construction (MPC00), Ponte de Lima, Portugal. 7/5/00. 
+
+\item[]{\it Modular Compilers Based on Monad Transformers.} The IEEE International Conference on Computer Languages (ICCL98), Chicago, Illinois. 5/16/98.
+
+\end{itemize}
+
+
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{Students \& Postdocs Supervised}
+
+\noindent{\bf Postdoctoral Researchers Supervised}
+
+\begin{enumerate}[leftmargin=0.0mm]
+\item Adam Procter. 1/2015-5/2016.
+\item Soumya Sanyal. 9/2013-9/2015.
+\end{enumerate}
+
+\noindent{\bf Graduated Ph.D Students}
+
+\begin{enumerate}[leftmargin=0.0mm]
+\item Adam Procter. GAANN fellow. Graduated: 12/2014.\\
+\newblock Dissertation: \emph{Semantics-directed Design and Implementation of High Assurance Hardware}.
+
+\item Ian Graves. Graduated: 12/2015.\\
+\newblock Dissertation: \emph{Device-level Composition in ReWire}.
+
+
+\item Christopher Hathhorn. GAANN Fellow. Graduated: 12/2017.\\
+\newblock Dissertation: \emph{Defining the Undefinedness of C11: Practical Semantics-based Program Analysis}.
+
+
+\end{enumerate}
+
+
+\noindent{\bf Current Ph.D Students}
+
+\begin{enumerate}[leftmargin=0.0mm]
+
+\item Thomas Reynolds. Started Fall semester 2014.
+
+\item Qianli Zhang. Started Fall semester 2016.
+
+\item Trevor Bajkowski. Started Fall semester 2018.
+
+\item Matthew Deardorff. Started Fall semester 2018.
+
+\end{enumerate}
+
+%\subsection*{\it Current MS Student}
+%
+%\begin{hangingdesc}{}
+%
+%\end{hangingdesc}
+
+\noindent{\bf Graduated MS Students}
+
+\begin{enumerate}[leftmargin=0.0mm]
+\item Daniel Dunn. Thesis: Penetration Testing FOSCAM IP Cameras. Graduated: 5/2018.
+\item Zolbayar Magsar. Graduated: 5/2016.
+\item Richard Wallen. Graduated: 12/2015.
+\item Mohammed Alharbi. Graduated: 5/2013.
+\item Jared Kvanvig. Thesis: Compiler Infrastructure for the Cheap Threads Compiler. Graduated: 12/2009.
+\item Ajay Nagar.  Non-thesis. Graduated: 5/2009.
+\item Megha Rao. Thesis: Physical Security in a Nuclear Environment. Graduated: 12/2008.
+\item Pericles S. Kariotis. Thesis: Making Monads First-class Using Template Haskell. Graduated: 12/2008.
+\end{enumerate}
+
+
+\newpage
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+%%%%%%%%%%
+\section{References}
+
+\begin{minipage}[t]{3.1in}
+\begin{flushleft}
+Professor David Andrews\\
+Dept. of Computer Science Engineering \\
+University of Arkansas\\ 
+Fayetteville, Arkansas 72701 \\
+Phone: (479) 575-4394 \\
+Email: dandrews@uark.edu
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{3.1in}
+\begin{flushleft}
+Stanley Chincheck\\
+Director, Center for High Confidence Systems\\
+US Naval Research Laboratory\\ 
+Washington, DC  \\
+Phone:  (202) 767-2932 \\
+Email: stanley.chincheck@nrl.navy.mil
+\end{flushleft}
+\end{minipage}
+\vspace{3ex}
+
+\begin{minipage}[t]{3.1in}
+\begin{flushleft}
+Dr. Gerard Allwein\\
+Center for High Confidence Systems\\
+Formal Methods Section (5543)\\
+US Naval Research Laboratory\\ 
+Washington, DC  \\
+Phone: (202) 404-3748 \\
+Email: gerard.allwein@nrl.navy.mil
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{3.1in}
+\begin{flushleft}
+Professor Samuel Kamin (emeritus)\\
+Department of Computer Science\\
+The University of Illinois at Urbana-Champaign\\
+Urbana, IL 61801. USA\\
+Phone: (217) 390-7505\\
+Email: kamin@uiuc.edu
+\end{flushleft}
+\end{minipage}
+
+\vspace{3ex}
+
+
+\begin{minipage}[t]{3.1in}
+\begin{flushleft}
+Professor James Hook\\
+Associate Dean,
+Maseeh College of Engineering and Computer Science\\
+%Professor of Computer Science Department \\
+Portland State University \\
+Portland, Oregon 97207-0751\\
+Phone: (503) 725-5540 \\
+Email: hook@cs.pdx.edu
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{3.1in}
+\begin{flushleft}
+Professor Michela Becchi\\
+Dept. of Electrical and Computer Engineering\\
+North Carolina State University\\
+Phone: (573) 823-5537\\
+Email: mbecchi@ncsu.edu
+\end{flushleft}
+\end{minipage}
+
+
+\end{document}
