@@ -38,7 +38,7 @@ Language-based methods in computer security, all aspects of programming language
 
 #### __Contact Information__
 * __Email:__ william.lawrence.harrison@gmail.com
-* <a href = "https://harrisonwl.github.io/assets/cv/harrison-cv-2019.pdf">Curriculum Vitae</a>
+* <a href = "https://harrisonwl.github.io/assets/cv/harrison-cv-2019.pdf">Curriculum Vitae</a> (slightly out of date)
 
 #### __External Links__
 * <a href="https://www.researchgate.net/profile/William_Harrison6">My ResearchGate profile</a>
