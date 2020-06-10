@@ -48,7 +48,8 @@ Language-based methods in computer security, all aspects of programming language
 
 #### __Recent Publications__
 
-* _Verifiable Security Templates for Hardware._, Bill Harrison and Gerard Allwein. To appear: Proceedings of 2020 Design, Automation, and Test Europe (DATE). [pdf]({{ site.baseurl }}/assets/papers/date20.pdf)
+* _Strongly Bounded Termination with Applications to Security and Hardware Synthesis._, Tom Reynolds, Rohit Chadha, Bill Harrison, and Gerard Allwein. To Appear: Proceedings of TyDe 2020: ACM Workshop on Type Driven Development. [pdf]({{ site.baseurl }}/assets/papers/tyde20.pdf)
+* _Verifiable Security Templates for Hardware._, Bill Harrison and Gerard Allwein. Proceedings of 2020 Design, Automation, and Test Europe (DATE). [pdf]({{ site.baseurl }}/assets/papers/date20.pdf)
 * _Language Abstractions for Hardware-based Control-Flow Integrity Monitoring._ Bill Harrison and Gerard Allwein. Proceedings of the 2018 International Conference on Reconfigurable Computing and FPGAs. [pdf]({{ site.baseurl }}/assets/papers/reconfig18.pdf)  [codebase]({{ site.baseurl }}/assets/code/ReConFig18codebase.tar.gz)
 * _The Mechanized Marriage of Effects and Monads with Applications to High Assurance Hardware._ Tom Reynolds, Bill Harrison, Adam Procter, and Gerard Allwein. ACM Transactions on Embedded Computing Systems (Feb 2019). [pdf]({{ site.baseurl }}/assets/papers/tecs18.pdf)
 * _Semantics-directed Prototyping of Hardware Runtime Monitors._ Bill Harrison and Gerard Allwein. To appear in Proceedings of the 29th International Symposium on Rapid System Prototyping (RSP). [pdf]({{ site.baseurl }}/assets/papers/rsp18.pdf)
