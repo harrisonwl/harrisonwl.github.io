@@ -23,7 +23,8 @@ title: "Home"
 
 #### __Biographical information__
 
-* Senior Cybersecurity Research Scientist at Oak Ridge National Laboratory
+* Currently, Principal Research Scientist at Two Six Technologies
+* Formerly, Senior Cybersecurity Research Scientist at Oak Ridge National Laboratory
 * Formerly, Associate Professor of Computer Science at the University of Missouri 
 * Recipient: NSF CAREER Award 2008 (CyberTrust program) 
 * Post-doctoral Researcher at Oregon Graduate Institute from June 2000-August 2003 
