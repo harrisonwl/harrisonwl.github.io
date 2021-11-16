@@ -7,19 +7,6 @@ title: "Home"
 {% figure 4Ps pdf 'Your caption here' %}
 {% endcomment %}
 
-#### __Biographical information__
-
-* Currently, Principal Research Scientist at Two Six Technologies
-* Formerly, Senior Cybersecurity Research Scientist at Oak Ridge National Laboratory
-* Formerly, Associate Professor of Computer Science at the University of Missouri 
-* Recipient: NSF CAREER Award 2008 (CyberTrust program) 
-* Post-doctoral Researcher at Oregon Graduate Institute from June 2000-August 2003 
-* Visiting Lecturer (Computer Science), Indiana University, September 1999-May 2000 
-* Ph.D (Computer Science), University of Illinois at Urbana-Champaign 2001 
-* M.S. (Computer Science), University of California at Davis, August, 1992 
-* B.A. (Mathematics), University of California at Berkeley, May 1986
-
-
 <div class="main_block">
 
     <div class="inner_block">
@@ -32,6 +19,20 @@ title: "Home"
 </div>
 
 <div></div>
+
+
+#### __Biographical information__
+
+* Currently, Principal Research Scientist at Two Six Technologies
+* Formerly, Senior Cybersecurity Research Scientist at Oak Ridge National Laboratory
+* Formerly, Associate Professor of Computer Science at the University of Missouri 
+* Recipient: NSF CAREER Award 2008 (CyberTrust program) 
+* Post-doctoral Researcher at Oregon Graduate Institute from June 2000-August 2003 
+* Visiting Lecturer (Computer Science), Indiana University, September 1999-May 2000 
+* Ph.D (Computer Science), University of Illinois at Urbana-Champaign 2001 
+* M.S. (Computer Science), University of California at Davis, August, 1992 
+* B.A. (Mathematics), University of California at Berkeley, May 1986
+
 
 
 #### __Research Interests__
