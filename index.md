@@ -7,20 +7,6 @@ title: "Home"
 {% figure 4Ps pdf 'Your caption here' %}
 {% endcomment %}
 
-
-<div class="main_block">
-
-    <div class="inner_block">
-    <img src="{{ site.baseurl }}/images/new-headshot-small.jpg"  style="display: block; margin: 0 auto; max-width: 50%;" alt="Screenshot" height="185" width="185"/>
-    </div>
-
-    <div class="inner_block">
-
-    </div>    
-</div>
-
-<div></div>
-
 #### __Biographical information__
 
 * Currently, Principal Research Scientist at Two Six Technologies
@@ -32,6 +18,20 @@ title: "Home"
 * Ph.D (Computer Science), University of Illinois at Urbana-Champaign 2001 
 * M.S. (Computer Science), University of California at Davis, August, 1992 
 * B.A. (Mathematics), University of California at Berkeley, May 1986
+
+
+<div class="main_block">
+
+    <div class="inner_block">
+    <img src="{{ site.baseurl }}/images/headshot-small.jpg"  style="display: block; margin: 0 auto; max-width: 50%;" alt="Screenshot" height="185" width="185"/>
+    </div>
+
+    <div class="inner_block">
+
+    </div>    
+</div>
+
+<div></div>
 
 
 #### __Research Interests__
