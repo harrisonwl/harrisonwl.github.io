@@ -10,7 +10,7 @@ title: "Home"
 <div class="main_block">
 
     <div class="inner_block">
-    <img src="{{ site.baseurl }}/images/headshot-small.jpg"  style="display: block; margin: 0 auto; max-width: 50%;" alt="Screenshot" height="185" width="185"/>
+    <img src="{{ site.baseurl }}/images/headshot-small.jpg"  style="display: block; margin: 0 auto; max-width: 50%;" alt="Screenshot" height="165" width="165"/>
     </div>
 
     <div class="inner_block">
