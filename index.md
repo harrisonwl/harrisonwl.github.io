@@ -23,7 +23,7 @@ title: "Home"
 
 #### __Biographical information__
 
-* Currently, Principal Research Scientist at Two Six Technologies
+* Currently, Senior Principal Research Scientist at Two Six Technologies
 * Formerly, Senior Cybersecurity Research Scientist at Oak Ridge National Laboratory
 * Formerly, Associate Professor of Computer Science at the University of Missouri 
 * Recipient: NSF CAREER Award 2008 (CyberTrust program) 
@@ -36,7 +36,7 @@ title: "Home"
 
 
 #### __Research Interests__
-Language-based methods in computer security, all aspects of programming languages design and implementation, model-driven system design and synthesis, Computer and information security, malware analysis, and formal methods.
+Language-based methods in computer security, all aspects of programming languages design and implementation, functional high-level synthesis, Computer and information security, malware analysis, and formal methods.
 
 #### __Contact Information__
 * __Email:__ william.lawrence.harrison@gmail.com
@@ -50,6 +50,7 @@ Language-based methods in computer security, all aspects of programming language
 
 #### __Recent Publications__
 
+* _Formalized High Level Synthesis with Applications to Cryptographic Hardware._, Bill Harrison, Ian Blumenfeld, Eric Bond, Chris Hathhorn, Paul Li, May Torrence, and Jared Ziegler. Proceedings of the 2023 NASA Formal Methods Symposium (NFM23). [pdf]({{ site.baseurl }}/assets/papers/nfm23.pdf)
 * _A Mechanized Semantic Metalanguage for High Level Synthesis._, Bill Harrison, Chris Hathhorn, and Gerard Allwein. Proceedings of PPDP 2021: 23rd International Symposium on Principles and Practice of Declarative Programming. [pdf]({{ site.baseurl }}/assets/papers/ppdp21.pdf) [code]({{ site.baseurl }}/assets/code/ppdp21codebase.tar.gz)
 * _Strongly Bounded Termination with Applications to Security and Hardware Synthesis._, Tom Reynolds, Rohit Chadha, Bill Harrison, and Gerard Allwein. Proceedings of TyDe 2020: ACM Workshop on Type Driven Development. [pdf]({{ site.baseurl }}/assets/papers/tyde20.pdf)
 * _Verifiable Security Templates for Hardware._, Bill Harrison and Gerard Allwein. Proceedings of 2020 Design, Automation, and Test Europe (DATE). [pdf]({{ site.baseurl }}/assets/papers/date20.pdf)
