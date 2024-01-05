@@ -44,7 +44,7 @@ Language-based methods in computer security, all aspects of programming language
 
 #### __External Links__
 * <a href="https://www.researchgate.net/profile/William_Harrison6">My ResearchGate profile</a>
-* <a href="http://mu-chaco.github.io/ReWire/">The ReWire Functional Hardware Description Language</a>
+* <a href="http://rewire-hardware.github.io/ReWire/">The ReWire Functional Hardware Description Language</a>
 * <a href="https://cal.berkeley.edu/william.harrison">Berkeley Alumni Page</a>
 * <a href="https://github.com/harrisonwl">My GitHub profile</a>
 
