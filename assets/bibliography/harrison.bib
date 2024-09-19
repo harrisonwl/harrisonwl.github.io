@@ -37,6 +37,17 @@ the more optimized for performance an accelerator is, the more challenging its v
   url_Paper = "https://harrisonwl.github.io/assets/papers/nfm23.pdf",
 }
 
+@inproceedings{harrison24,
+  title = {Temporal Staging for Correct-by-Construction Cryptographic Hardware},
+  author = {Forman, Yakir and Harrison, William L.},
+  booktitle = {Rapid Systems Prototyping (RSP24)},
+  year = {2024},
+  abstract = {
+ There is a conceptual divide between the ways cryptographic algorithms are defined (i.e., informal imperative pseudocode) and commodity hardware design languages (e.g., Verilog). How does one even begin to compare a pseudocode to an HDL design that purports to implement it in hardware? Bridging this divide requires substantial manual intervention and, consequently, ``shrinking the divide'' can drastically reduce the cost of high-assurance cryptographic hardware by reducing the cost of formal verification. We present a correct-by-construction methodology for the functional hardware design language, ReWire, in which a reference cryptographic algorithm is transformed into a provably correct hardware design with a program transformation called temporal staging. We illustrate this methodology with case studies including one for the BLAKE2b cryptographic hash function. Because the reference algorithm, the temporal staging transformation, and the resulting implementation are all expressed in ReWire, formal verification can proceed immediately via a published ReWire semantics.
+},
+  url_Paper = "https://harrisonwl.github.io/assets/papers/rsp24.pdf",
+}
+
                   
 @inproceedings{harrison21,
   title = {A Mechanized Semantic Metalanguage for High Level Synthesis},

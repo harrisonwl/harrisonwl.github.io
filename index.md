@@ -23,7 +23,8 @@ title: "Home"
 
 #### __Biographical information__
 
-* Currently, Senior Principal Research Scientist at Two Six Technologies
+* Currently, Senior Formal Methods Researcher/Directorate Fellow at Idaho National Laboratory
+* Formerly, Senior Principal Research Scientist at Two Six Technologies
 * Formerly, Senior Cybersecurity Research Scientist at Oak Ridge National Laboratory
 * Formerly, Associate Professor of Computer Science at the University of Missouri 
 * Recipient: NSF CAREER Award 2008 (CyberTrust program) 
@@ -50,6 +51,7 @@ Language-based methods in computer security, all aspects of programming language
 
 #### __Recent Publications__
 
+* _Temporal Staging for Correct-by-Construction Cryptographic Hardware._, Yakir Forman and Bill Harrison. Proceedings of the 2024 Rapid Systems Prototyping (RSP24). [pdf]({{ site.baseurl }}/assets/papers/rsp24.pdf)
 * _Formalized High Level Synthesis with Applications to Cryptographic Hardware._, Bill Harrison, Ian Blumenfeld, Eric Bond, Chris Hathhorn, Paul Li, May Torrence, and Jared Ziegler. Proceedings of the 2023 NASA Formal Methods Symposium (NFM23). [pdf]({{ site.baseurl }}/assets/papers/nfm23.pdf)
 * _A Mechanized Semantic Metalanguage for High Level Synthesis._, Bill Harrison, Chris Hathhorn, and Gerard Allwein. Proceedings of PPDP 2021: 23rd International Symposium on Principles and Practice of Declarative Programming. [pdf]({{ site.baseurl }}/assets/papers/ppdp21.pdf) [code]({{ site.baseurl }}/assets/code/ppdp21codebase.tar.gz)
 * _Strongly Bounded Termination with Applications to Security and Hardware Synthesis._, Tom Reynolds, Rohit Chadha, Bill Harrison, and Gerard Allwein. Proceedings of TyDe 2020: ACM Workshop on Type Driven Development. [pdf]({{ site.baseurl }}/assets/papers/tyde20.pdf)
