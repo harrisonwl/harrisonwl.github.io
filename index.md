@@ -49,8 +49,9 @@ Language-based methods in computer security, all aspects of programming language
 * <a href="https://my.berkeley.edu/profile/williamharrison5/">Berkeley Alumni Page</a>
 * <a href="https://github.com/harrisonwl">My GitHub profile</a>
 
-#### __Recent Publications__
+#### _Selected Publications__
 
+* _Enforcing MAVLink Safety \& Security Properties via Refined Multiparty Session Types._, Arthur Amorim, Max Taylor, Gary T. Leavens, William Harrison, Lance Joneckis, and Trevor Kann. To appear: Proceedings of the 2025 NASA Formal Methods Symposium (NFM25).
 * _Temporal Staging for Correct-by-Construction Cryptographic Hardware._, Yakir Forman and Bill Harrison. Proceedings of the 2024 Rapid Systems Prototyping (RSP24). [pdf]({{ site.baseurl }}/assets/papers/rsp24.pdf)
 * _Formalized High Level Synthesis with Applications to Cryptographic Hardware._, Bill Harrison, Ian Blumenfeld, Eric Bond, Chris Hathhorn, Paul Li, May Torrence, and Jared Ziegler. Proceedings of the 2023 NASA Formal Methods Symposium (NFM23). [pdf]({{ site.baseurl }}/assets/papers/nfm23.pdf)
 * _A Mechanized Semantic Metalanguage for High Level Synthesis._, Bill Harrison, Chris Hathhorn, and Gerard Allwein. Proceedings of PPDP 2021: 23rd International Symposium on Principles and Practice of Declarative Programming. [pdf]({{ site.baseurl }}/assets/papers/ppdp21.pdf) [code]({{ site.baseurl }}/assets/code/ppdp21codebase.tar.gz)
