@@ -23,7 +23,8 @@ title: "Home"
 
 #### __Biographical information__
 
-* Currently, Senior Formal Methods Researcher/Directorate Fellow at Idaho National Laboratory
+* Currently, Principal Scientist, Galois, Inc. 
+* Formerly, Senior Formal Methods Researcher/Directorate Fellow at Idaho National Laboratory
 * Formerly, Senior Principal Research Scientist at Two Six Technologies
 * Formerly, Senior Cybersecurity Research Scientist at Oak Ridge National Laboratory
 * Formerly, Associate Professor of Computer Science at the University of Missouri 
