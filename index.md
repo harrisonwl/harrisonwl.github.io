@@ -45,8 +45,9 @@ Language-based methods in computer security, all aspects of programming language
 * <a href = "https://harrisonwl.github.io/assets/cv/harrison-cv2025.pdf">Curriculum Vitae</a>
 
 #### __External Links__
+* <a href="https://harrisonwl.github.io/rewire-by-example/rewire-by-example.html">ReWire by Example Tutorial</a>
+* <a href="https://github.com/twosixlabs/ReWire">The ReWire Functional Hardware Description Language.</a> ReWire is freely available.
 * <a href="https://www.researchgate.net/profile/William_Harrison6">My ResearchGate profile</a>
-* <a href="https://github.com/twosixlabs/ReWire">The ReWire Functional Hardware Description Language.</a> ReWire is freely available and its most up-to-date toolchain is hosted by Two Six Technologies.
 * <a href="https://my.berkeley.edu/profile/williamharrison5/">Berkeley Alumni Page</a>
 * <a href="https://github.com/harrisonwl">My GitHub profile</a>
 
