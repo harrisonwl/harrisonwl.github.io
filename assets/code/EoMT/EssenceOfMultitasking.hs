@@ -2,8 +2,6 @@ module EssenceOfMultitasking where
 
 import Prelude hiding (exp)
 import ThreadLanguage
--- import MonadicConstructions hiding (u,g)
--- ^^^ N.b., not using "roll-your-own" monad transformers
 
 import Control.Monad.Identity
 import Control.Monad.State
@@ -26,36 +24,31 @@ type St  = StateT Sto IO
 type R   = ResT St 
 type Re  = ReacT Rsp Req St  -- N.b., the order of Rsp and Req
 
---- I define several new names for 
---- the bind's and unit's of St, R, Re to
---- avoid confusion due to overloading
-etaSt :: a -> St a
-etaSt = return
+pop :: R a -> R (Either a (R a))
+pop (ResT x) = lift $ do
+                         r <- x 
+                         case r of
+                            Left a  -> return (Left a)
+                            Right x -> return (Right x)
 
-(*=) :: St a -> (a -> St b) -> St b
-(*=) = (>>=)
-
-(!!=) :: R a -> (a -> R b) -> R b
-(!!=) = (>>=)
-
-etaR :: a -> R a
-etaR = return -- Done
-
-(||=) :: Re a -> (a -> Re b) -> Re b
-(||=) = (>>=)
-
-etaRe :: a -> Re a
-etaRe = return -- D
+twist :: R a -> R a -> R a
+twist x y = do
+               r <- pop x
+               case r of
+                  Left _   -> y
+                  Right kx -> twist y kx
 
                   ------------------
                   ---  Liftings  ---
                   ------------------
 
-stepR :: Monad m => m a -> ResT m a
-stepR x = ResT $ x >>= return . Left
-
 stepRe :: St a -> Re a
-stepRe x = ReacT (x >>= return . Left) >>= \ a -> signal Cont >> return a
+stepRe x = lift x >>= \ a -> signal Cont >> return a
+
+atomR :: Monad m => m a -> ResT m a
+atomR x  = ResT $ x >>= \ v -> return (Right (return v))
+
+atomRe f = \ i -> lift (f i) >>= signal
 
 -- pull is different from the paper. Given an (Re a) thread, 
 -- it "executes" its first atom, and returns its continuation.
@@ -96,30 +89,30 @@ sigI q = signal q >> return () -- ignores the return Rsp
 -- written [i|->v] in the figure
 tweek i v sigma = \ n -> if i==n then v else sigma n
 store :: Loc -> Int -> Re ()
-store loc v = (stepRe . u) (tweek loc v)
+store loc v = (lift . u) (tweek loc v)
 
 -- "exp"  is "E[[-]]" 
 exp  :: Exp -> Re Int
 exp (Address l)  = lift $ getloc l
 exp (Lit i)      = return i
-exp GetPID       = signal GetPIDReq ||= (return . prj)
+exp GetPID       = signal GetPIDReq >>= (return . prj)
    where prj = \ (GetPIDRsp pid) -> pid
 
 -- "atom" is "A[[-]]"
 atom  :: Event -> Re ()
-atom (Write x e)    = (exp e) ||= store x
+atom (Write x e)    = (exp e) >>= store x
 atom Sleep          = sigI SleepReq
 atom (Fork p)       = sigI (ForkReq p)
-atom (Print m e)    = (exp e) ||= (sigI . PrintReq . output m) 
+atom (Print m e)    = (exp e) >>= (sigI . PrintReq . output m) 
     where output m v = m ++ " " ++ show v ++ " "
-atom (Broadcast e)  = (exp e) ||= (sigI . BcastReq)
-atom (Receive x)    = signal RecvReq ||= (store x . prj)
+atom (Broadcast e)  = (exp e) >>= (sigI . BcastReq)
+atom (Receive x)    = signal RecvReq >>= (store x . prj)
      where prj (RecvRsp m) = m
 atom Psem           = sigI GetSemReq
 atom Vsem           = sigI ReleaseSemReq
-atom (Kill e)       = (exp e) ||= (sigI . KillReq)
+atom (Kill e)       = (exp e) >>= (sigI . KillReq)
 atom (Inc l)        = lift (inc l) >> sigI Cont
-    where inc l = (getloc l) *= (u . (tweek l) . (\ v -> v+1))
+    where inc l = (getloc l) >>= (u . (tweek l) . (\ v -> v+1))
 
 -- "proc" is "P[[-]]"
 proc :: Process -> ReacT Rsp Req St b
@@ -128,12 +121,6 @@ proc (Process e p) = atom e >> proc p
                   ----------------------
                   ---  Schedulers  ---
                   ----------------------
-
---
-cont :: Monad m => (Rsp -> ReacT Rsp Req m a) -> Rsp -> ReacT Rsp Req m a
--- cont :: (Rsp -> St (Re a)) -> Rsp -> Re a
-cont u rsp = ReacT (return (Right (Cont, \ Ack -> u rsp)))
--- ^^^ phase this out
 
 reset :: Monad m => o -> (i -> ReacT i o m a) -> ReacT i o m a
 reset q k = ReacT (return (Right (q, k)))
