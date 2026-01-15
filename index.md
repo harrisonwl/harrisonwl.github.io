@@ -42,7 +42,7 @@ Language-based methods in computer security, all aspects of programming language
 
 #### __Contact Information__
 * __Email:__ william.lawrence.harrison@gmail.com
-* <a href = "https://harrisonwl.github.io/assets/cv/harrison-cv2025.pdf">Curriculum Vitae</a>
+* <a href = "https://harrisonwl.github.io/assets/cv/harrison-cv2026.pdf">Curriculum Vitae</a>
 
 #### __External Links__
 * <a href="https://harrisonwl.github.io/rewire-by-example/rewire-by-example.html">ReWire by Example Tutorial</a>
