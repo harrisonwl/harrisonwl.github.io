@@ -51,7 +51,7 @@ Language-based methods in computer security, all aspects of programming language
 * <a href="https://my.berkeley.edu/profile/williamharrison5/">Berkeley Alumni Page</a>
 * <a href="https://github.com/harrisonwl">My GitHub profile</a>
 
-#### _Selected Publications__
+#### _Selected Publications_
 
 * _Enforcing MAVLink Safety & Security Properties via Refined Multiparty Session Types._, Arthur Amorim, Max Taylor, Gary T. Leavens, William Harrison, Lance Joneckis, and Trevor Kann. Proceedings of the 2025 NASA Formal Methods Symposium (NFM25).
 * _Temporal Staging for Correct-by-Construction Cryptographic Hardware._, Yakir Forman and Bill Harrison. Proceedings of the 2024 Rapid Systems Prototyping (RSP24). [pdf]({{ site.baseurl }}/assets/papers/rsp24.pdf)  [slides]({{ site.baseurl }}/assets/papers/slides-rsp24.pdf)
